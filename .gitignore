@@ -1,0 +1,8 @@
+ide/
+logs/
+pkg/
+session-state/
+vscode.session.metadata.cache.json
+config.json
+command-history-state.json
+.DS_Store
