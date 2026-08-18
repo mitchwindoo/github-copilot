@@ -6,3 +6,19 @@ vscode.session.metadata.cache.json
 config.json
 command-history-state.json
 .DS_Store
+
+# Copilot/VS Code runtime state, caches, and local process artifacts
+data.db
+data.db-shm
+data.db-wal
+data.db.pre-update-backup-*
+repo-metadata-cache.db
+repo-metadata-cache.db-shm
+repo-metadata-cache.db-wal
+session-store.db
+session-store.db-shm
+session-store.db-wal
+run/
+marketplace-cache/
+media-cache/
+installed-plugins/
