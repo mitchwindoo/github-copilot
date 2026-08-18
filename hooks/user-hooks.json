@@ -4,8 +4,8 @@
     "sessionStart": [
       {
         "type": "command",
-        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
-        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "bash": "python3 ./hooks/scripts/governance_audit.py",
+        "powershell": "python .\\hooks\\scripts\\governance_audit.py",
         "cwd": ".",
         "env": {
           "GOVERNANCE_EVENT": "session_start",
@@ -17,8 +17,8 @@
     "userPromptSubmitted": [
       {
         "type": "command",
-        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
-        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "bash": "python3 ./hooks/scripts/governance_audit.py",
+        "powershell": "python .\\hooks\\scripts\\governance_audit.py",
         "cwd": ".",
         "env": {
           "GOVERNANCE_EVENT": "prompt",
@@ -31,8 +31,8 @@
     "sessionEnd": [
       {
         "type": "command",
-        "bash": "python3 ./.github/hooks/scripts/secrets_scanner.py",
-        "powershell": "python .\\.github\\hooks\\scripts\\secrets_scanner.py",
+        "bash": "python3 ./hooks/scripts/secrets_scanner.py",
+        "powershell": "python .\\hooks\\scripts\\secrets_scanner.py",
         "cwd": ".",
         "env": {
           "SCAN_MODE": "warn",
@@ -42,8 +42,8 @@
       },
       {
         "type": "command",
-        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
-        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "bash": "python3 ./hooks/scripts/governance_audit.py",
+        "powershell": "python .\\hooks\\scripts\\governance_audit.py",
         "cwd": ".",
         "env": {
           "GOVERNANCE_EVENT": "session_end",
