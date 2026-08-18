@@ -1,1 +1,0 @@
-Let me first check the current header state, then make the change.
