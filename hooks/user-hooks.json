@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
+        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "cwd": ".",
+        "env": {
+          "GOVERNANCE_EVENT": "session_start",
+          "GOVERNANCE_LEVEL": "standard"
+        },
+        "timeoutSec": 5
+      }
+    ],
+    "userPromptSubmitted": [
+      {
+        "type": "command",
+        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
+        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "cwd": ".",
+        "env": {
+          "GOVERNANCE_EVENT": "prompt",
+          "GOVERNANCE_LEVEL": "standard",
+          "BLOCK_ON_THREAT": "false"
+        },
+        "timeoutSec": 10
+      }
+    ],
+    "sessionEnd": [
+      {
+        "type": "command",
+        "bash": "python3 ./.github/hooks/scripts/secrets_scanner.py",
+        "powershell": "python .\\.github\\hooks\\scripts\\secrets_scanner.py",
+        "cwd": ".",
+        "env": {
+          "SCAN_MODE": "warn",
+          "SCAN_SCOPE": "diff"
+        },
+        "timeoutSec": 30
+      },
+      {
+        "type": "command",
+        "bash": "python3 ./.github/hooks/scripts/governance_audit.py",
+        "powershell": "python .\\.github\\hooks\\scripts\\governance_audit.py",
+        "cwd": ".",
+        "env": {
+          "GOVERNANCE_EVENT": "session_end",
+          "GOVERNANCE_LEVEL": "standard"
+        },
+        "timeoutSec": 5
+      }
+    ]
+  }
+}
