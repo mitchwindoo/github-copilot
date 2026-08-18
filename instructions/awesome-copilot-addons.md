@@ -22,6 +22,10 @@ This repo already uses custom instructions, skills, and guardrails. These are th
 - [.NET Upgrade](https://raw.githubusercontent.com/github/awesome-copilot/main/agents/dotnet-upgrade.agent.md) - .NET modernization and cleanup.
 - [API Architect](https://raw.githubusercontent.com/github/awesome-copilot/main/agents/api-architect.agent.md) - API design and guidance.
 
+### Repo-local add-ons
+
+- [Lightpanda Browser Skill](../skills/lightpanda-browser/SKILL.md) - fast headless browser automation for crawling, dynamic-page testing, and agent browser sessions. See [lightpanda-browser-quick-reference.md](../plans/lightpanda-browser-quick-reference.md) for the portable setup.
+
 ### Process add-ons
 
 - [Agentic Workflows](https://awesome-copilot.github.com/learning-hub/agentic-workflows/)

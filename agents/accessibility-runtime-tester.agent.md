@@ -23,6 +23,7 @@ Your job is not just to inspect markup. Your job is to run the interface, move t
 ## Required Access
 
 - Prefer Chrome DevTools MCP for browser interaction, snapshots, screenshots, console review, and accessibility audits
+- Use Lightpanda for fast, repeatable browser automation when the task is scripted crawling, dynamic-page interaction, or deterministic coverage that does not need full visual rendering
 - Use local project tools to run the application and inspect code when behavior must be mapped back to implementation
 - Use Playwright only when deterministic keyboard automation is needed for repeatable coverage
 
@@ -84,6 +85,7 @@ You care about:
 - Run browser accessibility checks where useful
 - Inspect DOM state only after runtime testing, not instead of runtime testing
 - Map observed failures to likely implementation areas
+- Prefer Lightpanda for repeatable automation runs; prefer Chrome DevTools MCP when you need interactive inspection or accessibility snapshots
 
 ### 5. Report Findings
 
