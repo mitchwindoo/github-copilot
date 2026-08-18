@@ -1,0 +1,12 @@
+id: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+cwd: c:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+git_root: C:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+repository: NXEdge/SHD-Ignition-BOI1
+host_type: github
+branch: feature/plc-resident-production-queue
+client_name: vscode-agent-host
+name: "Install skills from this directory and test the api methods against local host, using the tokens in gateway.env, make sure built in api skills are separate from these skills as added tools \r\n\"C:\\Users\\MitchellLandreth\\Downloads\\ignition-ai-toolkit-8-3-downloads\""
+user_named: false
+summary_count: 0
+created_at: 2026-08-11T21:11:36.725Z
+updated_at: 2026-08-11T21:18:26.466Z

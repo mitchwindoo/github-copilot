@@ -1,0 +1,32 @@
+2026-08-11T19:31:14.297Z [INFO] Shell completions: no supported shell detected, skipping
+2026-08-11T19:31:14.297Z [INFO] Starting CLI in server mode (stdio)
+2026-08-11T19:31:14.302Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-08-11T19:31:14.306Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-08-11T19:31:14.306Z [INFO] Server started, waiting for requests
+2026-08-11T19:31:16.244Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:31:16.251Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:31:16.255Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:31:16.266Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:31:16.266Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 157776ms) from https://github.com
+2026-08-11T19:31:16.266Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:31:16.266Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:31:16.274Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:31:16.331Z [INFO] Workspace initialized: 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52 (checkpoints: 0)
+2026-08-11T19:31:16.431Z [INFO] Registering extension tools on session 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52
+2026-08-11T19:31:16.431Z [INFO] Created session: 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52
+2026-08-11T19:31:16.434Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 157951ms) from https://github.com
+2026-08-11T19:31:16.434Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:31:16.435Z [INFO] Remote session export enabled: https://api.business.githubcopilot.com/agents
+2026-08-11T19:31:16.454Z [INFO] Loaded 0 extension(s) for session 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52
+2026-08-11T19:31:16.879Z [INFO] RemoteSessionExporter: deferring MC session creation until first user.message
+2026-08-11T19:31:16.879Z [INFO] Remote session export deferred until first user message
+2026-08-11T19:31:17.114Z [WARNING] .github\agents\security-vulnerability-manager.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:31:17.114Z [WARNING] .github\agents\skeptical-implementation-reviewer.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:31:17.114Z [WARNING] .github\agents\software-wiki.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:31:19.470Z [INFO] Closing session 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52
+2026-08-11T19:31:19.486Z [INFO] Cleaning up session 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52: Session destroyed
+2026-08-11T19:31:19.487Z [INFO] Destroyed session 8788328a-e6e9-4fae-aeaf-c07ebbf0ae52 after last owner stdio-f03b8044-5209-4a56-88ae-1bdd014e9d69 detached
+2026-08-11T19:31:19.488Z [INFO] Preparing runtime for graceful shutdown
+2026-08-11T19:31:19.488Z [INFO] Starting graceful shutdown of CLI server
+2026-08-11T19:31:19.488Z [INFO] Destroying 0 active sessions
+2026-08-11T19:31:19.488Z [INFO] CLI server prepared for shutdown; transport remains open for RPC response

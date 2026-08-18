@@ -1,0 +1,12 @@
+id: 737d5f7d-96ab-4827-a5ed-82c802efa48c
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+repository: advancedcontrolsystems/AB-Logix-CI-CD
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: Remove tests\cases from git tracking as that will be a case by case use and does not need to be tracked with the harness
+user_named: false
+summary_count: 0
+created_at: 2026-08-17T22:57:28.874Z
+updated_at: 2026-08-17T22:57:34.744Z

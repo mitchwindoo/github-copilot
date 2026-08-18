@@ -1,0 +1,159 @@
+{
+  "origin": "vscode",
+  "worktreeProperties": {
+    "autoCommit": true,
+    "branchName": "copilot/worktree-2026-07-24T18-14-36",
+    "baseCommit": "427f7e4a4a791914b6d87d9f3e7276826833af6a",
+    "baseBranchName": "main",
+    "baseBranchProtected": false,
+    "upstreamBranchName": "origin/main",
+    "mergeBaseCommit": "427f7e4a4a791914b6d87d9f3e7276826833af6a",
+    "hasGitHubRemote": true,
+    "incomingChanges": 0,
+    "outgoingChanges": 0,
+    "uncommittedChanges": 0,
+    "repositoryPath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git",
+    "worktreePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36",
+    "version": 2,
+    "changes": [
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\README.md",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\README.md",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\README.md",
+        "statistics": {
+          "additions": 54,
+          "deletions": 33
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\App.xaml.cs",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\App.xaml.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\App.xaml.cs",
+        "statistics": {
+          "additions": 25,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Controls\\SpacedStackPanel.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Controls\\SpacedStackPanel.cs",
+        "statistics": {
+          "additions": 101,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Converters\\DependencyStatusConverter.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Converters\\DependencyStatusConverter.cs",
+        "statistics": {
+          "additions": 58,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\MainWindow.xaml",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\MainWindow.xaml",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\MainWindow.xaml",
+        "statistics": {
+          "additions": 115,
+          "deletions": 37
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Models\\DependencyInfo.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Models\\DependencyInfo.cs",
+        "statistics": {
+          "additions": 17,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Models\\DependencyStatus.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Models\\DependencyStatus.cs",
+        "statistics": {
+          "additions": 23,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Properties\\PublishProfiles\\win-x64-selfcontained.pubxml",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Properties\\PublishProfiles\\win-x64-selfcontained.pubxml",
+        "statistics": {
+          "additions": 32,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Services\\DependencyCheckerService.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Services\\DependencyCheckerService.cs",
+        "statistics": {
+          "additions": 253,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Services\\L5xGitCliService.cs",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Services\\L5xGitCliService.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Services\\L5xGitCliService.cs",
+        "statistics": {
+          "additions": 96,
+          "deletions": 30
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\DependencyItemViewModel.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\DependencyItemViewModel.cs",
+        "statistics": {
+          "additions": 43,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\MainViewModel.cs",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\MainViewModel.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\MainViewModel.cs",
+        "statistics": {
+          "additions": 48,
+          "deletions": 3
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\SettingsViewModel.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\ViewModels\\SettingsViewModel.cs",
+        "statistics": {
+          "additions": 89,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\AddEditRepoWindow.xaml",
+        "originalFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\AddEditRepoWindow.xaml",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\AddEditRepoWindow.xaml",
+        "statistics": {
+          "additions": 3,
+          "deletions": 2
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\SettingsWindow.xaml",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\SettingsWindow.xaml",
+        "statistics": {
+          "additions": 158,
+          "deletions": 0
+        }
+      },
+      {
+        "filePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\SettingsWindow.xaml.cs",
+        "modifiedFilePath": "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36\\src\\ABLogixGitManager\\Views\\SettingsWindow.xaml.cs",
+        "statistics": {
+          "additions": 21,
+          "deletions": 0
+        }
+      }
+    ]
+  },
+  "modified": 1784919294479,
+  "created": 1784916885427,
+  "firstUserMessage": "",
+  "archived": true
+}

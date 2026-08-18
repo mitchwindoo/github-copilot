@@ -1,0 +1,561 @@
+2026-08-11T20:03:14.768Z [INFO] Shell completions: no supported shell detected, skipping
+2026-08-11T20:03:14.769Z [INFO] Starting CLI in server mode (stdio)
+2026-08-11T20:03:14.770Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-08-11T20:03:14.773Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-08-11T20:03:14.773Z [INFO] Server started, waiting for requests
+2026-08-11T20:06:16.563Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T20:06:16.563Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T20:06:16.589Z [INFO] Workspace initialized: 7301b439-5d90-4fdc-a99d-6cbfbab0f4ac (checkpoints: 0)
+2026-08-11T20:06:17.462Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T20:06:17.462Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T20:06:17.462Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T20:06:17.462Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T20:06:17.463Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T20:06:17.530Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T20:06:17.530Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T20:06:17.866Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T20:06:17.867Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T20:06:17.867Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T20:06:17.867Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T20:06:17.867Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T20:06:18.160Z [INFO] Created session: 7301b439-5d90-4fdc-a99d-6cbfbab0f4ac
+2026-08-11T20:06:20.591Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T20:06:20.595Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T20:06:20.618Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T20:06:20.932Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T20:06:23.215Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T20:06:26.010Z [WARNING] Allowed model policy requested without a cwd; no models will be allowed.
+2026-08-11T20:06:26.011Z [INFO]  
+2026-08-11T20:06:26.012Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:06:26.012Z [INFO] --- End of group ---
+2026-08-11T20:06:26.502Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T20:06:26.511Z [INFO] --- End of group ---
+2026-08-11T20:06:26.599Z [INFO]  
+2026-08-11T20:06:26.599Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:06:26.599Z [INFO] --- End of group ---
+2026-08-11T20:12:37.058Z [INFO] Completing 1 orphaned tool calls.
+2026-08-11T20:24:24.365Z [INFO]  
+2026-08-11T20:24:24.365Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:24:24.366Z [INFO] --- End of group ---
+2026-08-11T20:24:24.554Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T20:24:24.557Z [INFO] --- End of group ---
+2026-08-11T20:24:24.679Z [INFO]  
+2026-08-11T20:24:24.679Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:24:24.679Z [INFO] --- End of group ---
+2026-08-11T20:32:28.590Z [INFO]  
+2026-08-11T20:32:28.591Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:32:28.591Z [INFO] --- End of group ---
+2026-08-11T20:32:28.812Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T20:32:28.815Z [INFO] --- End of group ---
+2026-08-11T20:32:28.927Z [INFO]  
+2026-08-11T20:32:28.927Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:32:28.927Z [INFO] --- End of group ---
+2026-08-11T20:53:57.267Z [INFO]  
+2026-08-11T20:53:57.267Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:53:57.268Z [INFO] --- End of group ---
+2026-08-11T20:53:57.478Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T20:53:57.481Z [INFO] --- End of group ---
+2026-08-11T20:53:57.628Z [INFO]  
+2026-08-11T20:53:57.628Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:53:57.628Z [INFO] --- End of group ---
+2026-08-11T20:57:48.665Z [INFO]  
+2026-08-11T20:57:48.667Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:57:48.667Z [INFO] --- End of group ---
+2026-08-11T20:57:48.894Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T20:57:48.899Z [INFO] --- End of group ---
+2026-08-11T20:57:49.134Z [INFO]  
+2026-08-11T20:57:49.134Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T20:57:49.134Z [INFO] --- End of group ---
+2026-08-11T21:06:17.535Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:06:17.901Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:06:17.901Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:06:17.901Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:06:17.906Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:06:17.917Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:11:36.722Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:11:36.723Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:11:36.750Z [INFO] Workspace initialized: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2 (checkpoints: 0)
+2026-08-11T21:11:36.937Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:11:36.937Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:11:36.937Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:11:36.937Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:11:36.937Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:11:36.966Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:11:36.966Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:11:37.181Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:11:37.181Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:11:37.181Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:11:37.181Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:11:37.182Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:11:37.219Z [INFO] Created session: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T21:11:37.757Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T21:11:37.774Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:11:37.780Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:11:38.099Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:11:39.420Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:11:40.372Z [INFO]  
+2026-08-11T21:11:40.372Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:11:40.373Z [INFO] --- End of group ---
+2026-08-11T21:11:40.581Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T21:11:40.584Z [INFO] --- End of group ---
+2026-08-11T21:11:40.644Z [INFO]  
+2026-08-11T21:11:40.644Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:11:40.644Z [INFO] --- End of group ---
+2026-08-11T21:11:41.119Z [ERROR] [rust:rmcp::transport::common::client_side_sse] sse stream error: Client error: HTTP status client error (400 Bad Request) for url (http://localhost:63028/stream), max retry times reached
+2026-08-11T21:11:41.119Z [WARNING] [rust:rmcp::transport::streamable_http_client] sse client event stream terminated with error: Err(Client(Reqwest(reqwest::Error { kind: Status(400, None), url: "http://localhost:63028/stream" })))
+2026-08-11T21:18:25.506Z [INFO] Closing session 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T21:18:25.588Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T21:18:25.952Z [INFO] [rust:rmcp::transport::streamable_http_client] delete session success
+2026-08-11T21:18:25.952Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T21:18:25.963Z [INFO] [rust:rmcp::service] input stream terminated
+2026-08-11T21:18:25.963Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Closed"}
+2026-08-11T21:18:25.975Z [INFO] Destroyed session: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T21:18:25.994Z [INFO] Workspace initialized: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2 (checkpoints: 0)
+2026-08-11T21:18:26.004Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:18:26.005Z [INFO] [managedSettings] self-fetch starting for account device-only
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] server policy fetch skipped: no authenticated GitHub host available
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:18:26.006Z [INFO] [managedSettings] self-fetch result for device-only discarded: account changed while the fetch was in flight
+2026-08-11T21:18:26.435Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:18:26.435Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:18:26.435Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:18:26.435Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:18:26.436Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:18:26.497Z [INFO] Resumed session: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T21:18:26.898Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T21:18:26.903Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:18:26.915Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:18:27.222Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:18:27.738Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:18:28.354Z [INFO]  
+2026-08-11T21:18:28.355Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:18:28.355Z [INFO] --- End of group ---
+2026-08-11T21:18:28.523Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T21:18:28.526Z [INFO] --- End of group ---
+2026-08-11T21:18:28.621Z [INFO]  
+2026-08-11T21:18:28.622Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:18:28.622Z [INFO] --- End of group ---
+2026-08-11T21:23:13.044Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:23:13.044Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:23:13.068Z [INFO] Workspace initialized: b947d08a-f37b-475e-8e65-56cbd5e67e51 (checkpoints: 0)
+2026-08-11T21:23:13.476Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:23:13.476Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:23:13.476Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:23:13.477Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:23:13.477Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:23:13.503Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T21:23:13.503Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T21:23:13.746Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T21:23:13.746Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T21:23:13.746Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T21:23:13.746Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T21:23:13.746Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T21:23:13.768Z [INFO] Created session: b947d08a-f37b-475e-8e65-56cbd5e67e51
+2026-08-11T21:23:14.232Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T21:23:14.241Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:23:14.258Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T21:23:14.568Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:23:15.378Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T21:23:16.208Z [INFO]  
+2026-08-11T21:23:16.208Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:23:16.210Z [INFO] --- End of group ---
+2026-08-11T21:23:16.393Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T21:23:16.395Z [INFO] --- End of group ---
+2026-08-11T21:23:16.469Z [INFO]  
+2026-08-11T21:23:16.469Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T21:23:16.469Z [INFO] --- End of group ---
+2026-08-11T21:23:17.585Z [ERROR] [rust:rmcp::transport::common::client_side_sse] sse stream error: Client error: HTTP status client error (400 Bad Request) for url (http://localhost:63028/stream), max retry times reached
+2026-08-11T21:23:17.585Z [WARNING] [rust:rmcp::transport::streamable_http_client] sse client event stream terminated with error: Err(Client(Reqwest(reqwest::Error { kind: Status(400, None), url: "http://localhost:63028/stream" })))
+2026-08-11T22:06:17.549Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:06:17.766Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:06:17.766Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:06:17.766Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:06:17.769Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:06:17.772Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:18:26.010Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:18:26.252Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:18:26.252Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:18:26.252Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:18:26.254Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:18:26.257Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:23:13.517Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:23:13.856Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:23:13.856Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:23:13.856Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:23:13.858Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:23:13.861Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:26:36.330Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T22:26:36.331Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:26:36.340Z [INFO] Workspace initialized: 3742885c-95f5-4413-9f3a-0ef7bddd5e29 (checkpoints: 0)
+2026-08-11T22:26:36.834Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:26:36.834Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:26:36.834Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:26:36.835Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:26:36.835Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:26:36.862Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T22:26:36.862Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:26:37.096Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:26:37.096Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:26:37.096Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:26:37.096Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:26:37.096Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:26:37.119Z [INFO] Created session: 3742885c-95f5-4413-9f3a-0ef7bddd5e29
+2026-08-11T22:26:37.678Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T22:26:37.681Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T22:26:37.700Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T22:26:37.992Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T22:26:39.202Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T22:26:40.651Z [INFO]  
+2026-08-11T22:26:40.652Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T22:26:40.653Z [INFO] --- End of group ---
+2026-08-11T22:26:40.879Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T22:26:40.882Z [INFO] --- End of group ---
+2026-08-11T22:26:40.981Z [INFO]  
+2026-08-11T22:26:40.981Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T22:26:40.981Z [INFO] --- End of group ---
+2026-08-11T22:26:40.998Z [ERROR] [rust:rmcp::transport::common::client_side_sse] sse stream error: Client error: HTTP status client error (400 Bad Request) for url (http://localhost:63028/stream), max retry times reached
+2026-08-11T22:26:40.999Z [WARNING] [rust:rmcp::transport::streamable_http_client] sse client event stream terminated with error: Err(Client(Reqwest(reqwest::Error { kind: Status(400, None), url: "http://localhost:63028/stream" })))
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:09.454Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:28:13.366Z [WARNING] [rust:log] node with weird namespace Atom('' type=static) {"log.target":"html5ever::serialize","log.module_path":"html5ever::serialize","log.file":"C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\html5ever-0.26.0\\src\\serialize\\mod.rs","log.line":70}
+2026-08-11T22:40:54.233Z [WARNING] [rust:rmcp::transport::common::client_side_sse] sse stream error: body error: error decoding response body
+2026-08-11T22:41:00.929Z [ERROR] [rust:rmcp::transport::common::client_side_sse] sse stream error: Client error: error sending request for url (http://localhost:63028/stream), max retry times reached
+2026-08-11T22:41:00.929Z [WARNING] [rust:rmcp::transport::streamable_http_client] sse client event stream terminated with error: Err(Client(Reqwest(reqwest::Error { kind: Request, url: "http://localhost:63028/stream", source: hyper_util::client::legacy::Error(Connect, ConnectError("tcp connect error", 127.0.0.1:63028, Os { code: 10061, kind: ConnectionRefused, message: "No connection could be made because the target machine actively refused it." })) })))
+2026-08-11T22:41:24.446Z [INFO] Closing session 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T22:41:24.452Z [INFO] Closing session b947d08a-f37b-475e-8e65-56cbd5e67e51
+2026-08-11T22:41:24.459Z [INFO] Closing session 7301b439-5d90-4fdc-a99d-6cbfbab0f4ac
+2026-08-11T22:41:24.465Z [INFO] Closing session 3742885c-95f5-4413-9f3a-0ef7bddd5e29
+2026-08-11T22:41:24.695Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T22:41:24.698Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T22:41:24.700Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T22:41:24.700Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T22:41:25.107Z [INFO] [rust:rmcp::service] input stream terminated
+2026-08-11T22:41:25.107Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Closed"}
+2026-08-11T22:41:25.107Z [INFO] [rust:rmcp::service] input stream terminated
+2026-08-11T22:41:25.108Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Closed"}
+2026-08-11T22:41:25.130Z [INFO] [rust:rmcp::service] input stream terminated
+2026-08-11T22:41:25.130Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Closed"}
+2026-08-11T22:41:25.141Z [INFO] [rust:rmcp::service] input stream terminated
+2026-08-11T22:41:25.141Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Closed"}
+2026-08-11T22:41:27.056Z [ERROR] [rust:rmcp::transport::streamable_http_client] fail to delete session: Client error: error sending request for url (http://localhost:63028/stream)
+2026-08-11T22:41:27.056Z [ERROR] [rust:rmcp::transport::streamable_http_client] fail to delete session: Client error: error sending request for url (http://localhost:63028/stream)
+2026-08-11T22:41:27.056Z [ERROR] [rust:rmcp::transport::streamable_http_client] fail to delete session: Client error: error sending request for url (http://localhost:63028/stream)
+2026-08-11T22:41:27.056Z [ERROR] [rust:rmcp::transport::streamable_http_client] fail to delete session: Client error: error sending request for url (http://localhost:63028/stream)
+2026-08-11T22:41:27.056Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T22:41:27.056Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T22:41:27.056Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T22:41:27.056Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T22:41:27.065Z [INFO] Destroyed session: 3742885c-95f5-4413-9f3a-0ef7bddd5e29
+2026-08-11T22:41:27.068Z [INFO] Destroyed session: b947d08a-f37b-475e-8e65-56cbd5e67e51
+2026-08-11T22:41:27.074Z [INFO] Destroyed session: 7301b439-5d90-4fdc-a99d-6cbfbab0f4ac
+2026-08-11T22:41:27.077Z [INFO] Destroyed session: 266e8d9c-9d05-4e8c-8621-ebbd8d58b5f2
+2026-08-11T22:58:13.127Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T22:58:13.128Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:58:13.136Z [INFO] Workspace initialized: 2209dc46-7a4a-457d-9a92-69e978fa0176 (checkpoints: 0)
+2026-08-11T22:58:13.543Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:58:13.543Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:58:13.543Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:58:13.544Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:58:13.544Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:58:13.569Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T22:58:13.570Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T22:58:13.739Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T22:58:13.739Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T22:58:13.739Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T22:58:13.739Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T22:58:13.739Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T22:58:13.952Z [INFO] Created session: 2209dc46-7a4a-457d-9a92-69e978fa0176
+2026-08-11T22:58:14.347Z [ERROR] Failed to start MCP client for blender: Error: failed to connect to MCP server "blender": failed to spawn MCP server process: The system cannot find the path specified. (os error 3): The system cannot find the path specified. (os error 3)
+2026-08-11T22:58:14.359Z [ERROR] Failed to start MCP client for memory: Error: failed to connect to MCP server "memory": failed to spawn MCP server process: program not found: program not found
+2026-08-11T22:58:14.374Z [ERROR] Failed to start MCP client for microsoft/markitdown: Error: failed to connect to MCP server "microsoft/markitdown": failed to spawn MCP server process: program not found: program not found
+2026-08-11T22:58:14.708Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: Some({}), completions: None, prompts: None, resources: None, tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"Pylance MCP Server\", title: Some(\"Pylance MCP Server\"), version: \"0.0.1\", description: Some(\"Provides tools through MCP for Pylance and Python-related information.\"), icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T22:58:15.280Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(InitializeResult { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: None, prompts: Some(PromptsCapability { list_changed: Some(true) }), resources: Some(ResourcesCapability { subscribe: Some(true), list_changed: Some(true) }), tools: Some(ToolsCapability { list_changed: Some(true) }) }, server_info: Implementation { name: \"GitKraken CLI\", title: None, version: \"3.1.72\", description: None, icons: None, website_url: None }, instructions: None, meta: None })"}
+2026-08-11T22:58:16.744Z [ERROR] Failed to start MCP client for logix-kb: Error: failed to connect to MCP server "logix-kb": failed to initialize MCP client: connection closed: initialize response
+2026-08-11T22:58:18.196Z [INFO]  
+2026-08-11T22:58:18.197Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T22:58:18.198Z [INFO] --- End of group ---
+2026-08-11T22:58:18.367Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T22:58:18.371Z [INFO] --- End of group ---
+2026-08-11T22:58:18.447Z [INFO]  
+2026-08-11T22:58:18.447Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T22:58:18.448Z [INFO] --- End of group ---
+2026-08-11T23:02:00.724Z [INFO]  
+2026-08-11T23:02:00.724Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:02:00.725Z [INFO] --- End of group ---
+2026-08-11T23:02:00.892Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:02:00.894Z [INFO] --- End of group ---
+2026-08-11T23:02:00.986Z [INFO]  
+2026-08-11T23:02:00.986Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:02:00.988Z [INFO] --- End of group ---
+2026-08-11T23:03:39.450Z [INFO]  
+2026-08-11T23:03:39.451Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:03:39.451Z [INFO] --- End of group ---
+2026-08-11T23:03:39.596Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:03:39.599Z [INFO] --- End of group ---
+2026-08-11T23:03:39.708Z [INFO]  
+2026-08-11T23:03:39.709Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:03:39.709Z [INFO] --- End of group ---
+2026-08-11T23:09:01.410Z [INFO]  
+2026-08-11T23:09:01.411Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:09:01.411Z [INFO] --- End of group ---
+2026-08-11T23:09:01.569Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:09:01.572Z [INFO] --- End of group ---
+2026-08-11T23:09:01.710Z [INFO]  
+2026-08-11T23:09:01.710Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:09:01.710Z [INFO] --- End of group ---
+2026-08-11T23:11:46.835Z [INFO]  
+2026-08-11T23:11:46.836Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:11:46.836Z [INFO] --- End of group ---
+2026-08-11T23:11:46.983Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:11:46.986Z [INFO] --- End of group ---
+2026-08-11T23:11:47.109Z [INFO]  
+2026-08-11T23:11:47.109Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:11:47.109Z [INFO] --- End of group ---
+2026-08-11T23:12:31.471Z [INFO]  
+2026-08-11T23:12:31.472Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:12:31.472Z [INFO] --- End of group ---
+2026-08-11T23:12:31.623Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:12:31.626Z [INFO] --- End of group ---
+2026-08-11T23:12:31.780Z [INFO]  
+2026-08-11T23:12:31.780Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:12:31.780Z [INFO] --- End of group ---
+2026-08-11T23:24:51.429Z [INFO]  
+2026-08-11T23:24:51.429Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:24:51.431Z [INFO] --- End of group ---
+2026-08-11T23:24:51.591Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:24:51.593Z [INFO] --- End of group ---
+2026-08-11T23:24:51.735Z [INFO]  
+2026-08-11T23:24:51.735Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:24:51.735Z [INFO] --- End of group ---
+2026-08-11T23:34:01.745Z [INFO]  
+2026-08-11T23:34:01.746Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:34:01.746Z [INFO] --- End of group ---
+2026-08-11T23:34:01.961Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:34:01.963Z [INFO] --- End of group ---
+2026-08-11T23:34:02.122Z [INFO]  
+2026-08-11T23:34:02.123Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:34:02.123Z [INFO] --- End of group ---
+2026-08-11T23:38:50.725Z [INFO] Closing session untitled-52150ac6-24c6-47f8-b07f-35cf8b56c4e1
+2026-08-11T23:38:50.725Z [ERROR] Failed to delete session untitled-52150ac6-24c6-47f8-b07f-35cf8b56c4e1: Error: Session file not found for untitled-52150ac6-24c6-47f8-b07f-35cf8b56c4e1
+2026-08-11T23:39:42.620Z [INFO]  
+2026-08-11T23:39:42.621Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:39:42.623Z [INFO] --- End of group ---
+2026-08-11T23:39:42.797Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:39:42.799Z [INFO] --- End of group ---
+2026-08-11T23:39:42.947Z [INFO]  
+2026-08-11T23:39:42.947Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:39:42.947Z [INFO] --- End of group ---
+2026-08-11T23:45:02.210Z [INFO]  
+2026-08-11T23:45:02.211Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:45:02.211Z [INFO] --- End of group ---
+2026-08-11T23:45:02.366Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:45:02.368Z [INFO] --- End of group ---
+2026-08-11T23:45:02.534Z [INFO]  
+2026-08-11T23:45:02.534Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:45:02.534Z [INFO] --- End of group ---
+2026-08-11T23:46:56.957Z [INFO]  
+2026-08-11T23:46:56.957Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:46:56.959Z [INFO] --- End of group ---
+2026-08-11T23:46:57.102Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:46:57.105Z [INFO] --- End of group ---
+2026-08-11T23:46:57.256Z [INFO]  
+2026-08-11T23:46:57.256Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:46:57.256Z [INFO] --- End of group ---
+2026-08-11T23:53:35.946Z [INFO]  
+2026-08-11T23:53:35.946Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:53:35.947Z [INFO] --- End of group ---
+2026-08-11T23:53:36.102Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:53:36.105Z [INFO] --- End of group ---
+2026-08-11T23:53:36.289Z [INFO]  
+2026-08-11T23:53:36.289Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:53:36.293Z [INFO] --- End of group ---
+2026-08-11T23:56:02.203Z [INFO]  
+2026-08-11T23:56:02.203Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:56:02.204Z [INFO] --- End of group ---
+2026-08-11T23:56:02.355Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:56:02.357Z [INFO] --- End of group ---
+2026-08-11T23:56:02.562Z [INFO]  
+2026-08-11T23:56:02.563Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:56:02.563Z [INFO] --- End of group ---
+2026-08-11T23:58:13.583Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T23:58:13.842Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T23:58:13.842Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T23:58:13.842Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T23:58:13.845Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T23:58:13.854Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-11T23:58:56.730Z [INFO]  
+2026-08-11T23:58:56.731Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:58:56.731Z [INFO] --- End of group ---
+2026-08-11T23:58:56.904Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T23:58:56.907Z [INFO] --- End of group ---
+2026-08-11T23:58:57.215Z [INFO]  
+2026-08-11T23:58:57.216Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T23:58:57.216Z [INFO] --- End of group ---
+2026-08-12T00:00:19.501Z [INFO]  
+2026-08-12T00:00:19.502Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:00:19.502Z [INFO] --- End of group ---
+2026-08-12T00:00:19.666Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-12T00:00:19.669Z [INFO] --- End of group ---
+2026-08-12T00:00:19.867Z [INFO]  
+2026-08-12T00:00:19.867Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:00:19.867Z [INFO] --- End of group ---
+2026-08-12T00:00:51.708Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-12T00:00:51.710Z [INFO] --- End of group ---
+2026-08-12T00:01:20.602Z [INFO] CompactionProcessor: Background compaction completed successfully
+2026-08-12T00:01:20.620Z [INFO] Persisted checkpoint #1: Carefree Comms Supervisor Refactor
+2026-08-12T00:02:14.516Z [INFO]  
+2026-08-12T00:02:14.516Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:02:14.517Z [INFO] --- End of group ---
+2026-08-12T00:02:14.658Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-12T00:02:14.661Z [INFO] --- End of group ---
+2026-08-12T00:02:14.720Z [INFO]  
+2026-08-12T00:02:14.720Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:02:14.721Z [INFO] --- End of group ---
+2026-08-12T00:06:15.728Z [INFO]  
+2026-08-12T00:06:15.730Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:06:15.730Z [INFO] --- End of group ---
+2026-08-12T00:06:15.869Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-12T00:06:15.872Z [INFO] --- End of group ---
+2026-08-12T00:06:15.957Z [INFO]  
+2026-08-12T00:06:15.957Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:06:15.957Z [INFO] --- End of group ---
+2026-08-12T00:13:54.554Z [INFO]  
+2026-08-12T00:13:54.554Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:13:54.555Z [INFO] --- End of group ---
+2026-08-12T00:13:54.706Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-12T00:13:54.708Z [INFO] --- End of group ---
+2026-08-12T00:13:54.809Z [INFO]  
+2026-08-12T00:13:54.809Z [INFO] --- Start of group: configured settings: ---
+2026-08-12T00:13:54.809Z [INFO] --- End of group ---
+2026-08-12T00:58:13.598Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T00:58:13.870Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T00:58:13.870Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T00:58:13.870Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T00:58:13.873Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T00:58:13.875Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T01:58:13.604Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T01:58:13.851Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T01:58:13.851Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T01:58:13.851Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T01:58:13.853Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T01:58:13.856Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T02:58:13.617Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T02:58:13.868Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T02:58:13.869Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T02:58:13.869Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T02:58:13.870Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T02:58:13.873Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T03:58:13.619Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T03:58:14.013Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T03:58:14.013Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T03:58:14.013Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T03:58:14.015Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T03:58:14.017Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T04:58:13.624Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T04:58:14.001Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T04:58:14.001Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T04:58:14.001Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T04:58:14.002Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T04:58:14.005Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T05:58:13.631Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T05:58:14.194Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T05:58:14.194Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T05:58:14.194Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T05:58:14.195Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T05:58:14.198Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T06:58:13.643Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T06:58:14.143Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T06:58:14.143Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T06:58:14.143Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T06:58:14.145Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T06:58:14.147Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T07:58:13.644Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T07:58:14.367Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T07:58:14.367Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T07:58:14.367Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T07:58:14.368Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T07:58:14.371Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T08:58:13.645Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T08:58:14.062Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T08:58:14.062Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T08:58:14.062Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T08:58:14.063Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T08:58:14.066Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T09:58:13.651Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T09:58:13.995Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T09:58:13.995Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T09:58:13.995Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T09:58:13.997Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T09:58:13.999Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T10:58:13.665Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T10:58:13.910Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T10:58:13.910Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T10:58:13.910Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T10:58:13.912Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T10:58:13.914Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T11:58:13.670Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T11:58:13.902Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T11:58:13.902Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T11:58:13.902Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T11:58:13.904Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T11:58:13.907Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T12:58:13.674Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T12:58:13.992Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T12:58:13.992Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T12:58:13.992Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T12:58:13.995Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T12:58:13.998Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T13:58:13.688Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T13:58:13.951Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T13:58:13.951Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T13:58:13.951Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T13:58:13.952Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T13:58:13.955Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T14:58:13.696Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T14:58:14.076Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T14:58:14.076Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T14:58:14.076Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T14:58:14.079Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T14:58:14.081Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T15:58:13.698Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T15:58:14.317Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T15:58:14.317Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T15:58:14.317Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T15:58:14.319Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T15:58:14.321Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T16:58:13.713Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T16:58:14.165Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T16:58:14.165Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T16:58:14.165Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T16:58:14.168Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T16:58:14.172Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T17:58:13.729Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T17:58:14.148Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T17:58:14.148Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T17:58:14.148Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T17:58:14.150Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T17:58:14.153Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T18:58:13.730Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T18:58:14.169Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T18:58:14.169Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T18:58:14.169Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T18:58:14.171Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T18:58:14.174Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false
+2026-08-12T19:58:13.733Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-12T19:58:14.273Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-12T19:58:14.274Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-12T19:58:14.274Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-12T19:58:14.275Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-12T19:58:14.279Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, deviceLoadFailed=false

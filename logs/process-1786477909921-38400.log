@@ -1,0 +1,54 @@
+2026-08-11T19:51:49.923Z [INFO] Shell completions: no supported shell detected, skipping
+2026-08-11T19:51:49.924Z [INFO] Starting CLI in server mode (stdio)
+2026-08-11T19:51:49.925Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-08-11T19:51:49.928Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-08-11T19:51:49.928Z [INFO] Server started, waiting for requests
+2026-08-11T19:51:58.108Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:51:58.114Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:51:58.114Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:51:58.150Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:51:58.150Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 1399634ms) from https://github.com
+2026-08-11T19:51:58.150Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:51:58.152Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:51:58.153Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:51:58.154Z [INFO] Workspace initialized: 4228f1d3-63b4-4b5e-a341-83bf7e87744a (checkpoints: 0)
+2026-08-11T19:51:58.297Z [INFO] Registering extension tools on session 4228f1d3-63b4-4b5e-a341-83bf7e87744a
+2026-08-11T19:51:58.297Z [INFO] Created session: 4228f1d3-63b4-4b5e-a341-83bf7e87744a
+2026-08-11T19:51:58.301Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 1399818ms) from https://github.com
+2026-08-11T19:51:58.301Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:51:58.303Z [INFO] Remote session export enabled: https://api.business.githubcopilot.com/agents
+2026-08-11T19:51:58.322Z [INFO] Loaded 0 extension(s) for session 4228f1d3-63b4-4b5e-a341-83bf7e87744a
+2026-08-11T19:51:58.755Z [INFO] RemoteSessionExporter: deferring MC session creation until first user.message
+2026-08-11T19:51:58.755Z [INFO] Remote session export deferred until first user message
+2026-08-11T19:51:59.076Z [WARNING] .github\agents\security-vulnerability-manager.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:51:59.076Z [WARNING] .github\agents\skeptical-implementation-reviewer.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:51:59.076Z [WARNING] .github\agents\software-wiki.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:51:59.870Z [INFO] [rust:rmcp::service] Service initialized as client {"peer_info":"Some(ServerPeerInfo { protocol_version: ProtocolVersion(\"2025-11-25\"), capabilities: ServerCapabilities { experimental: None, extensions: None, logging: None, completions: Some({}), prompts: Some(PromptsCapability { list_changed: None }), resources: Some(ResourcesCapability { subscribe: None, list_changed: None }), tools: Some(ToolsCapability { list_changed: None }) }, server_info: Some(Implementation { name: \"github-mcp-server\", title: Some(\"GitHub MCP Server\"), version: \"github-mcp-server/remote-2fc25cb8d8f7abb5a6a78a9298d46ecf028fd71e\", description: None, icons: Some([Icon { src: \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADK0lEQVRIibWVQWhcVRSGv3Pfy0zGdBIMRWk7iziMTpORptpqiNSNG1dNizaFFlxIoYuCC7NwJdiVlhYprtwpighCF9GtuhCRtuCoaWdqGF7HkE4aWm1CpklmJpl3j4vMS99M2k4G9N+8d8659/8u9553H/zPkscVM5lMf03do6iOKbJXIAGgUBJ0GpHvolKfzOfzCx0BEonRWDRemRD0PaC3zSKXED1fLfdcLJUuV9oC0ukXdluxkyq81Ma4VX9Y4x4p5rOzjwSkUvsSdMkVYE+H5oHmjM9IoTA1FyRM8JJIjMbokm83zUW/Vvi5raXwC8rnjWiPdXRyYGCgOyi7wUs0XpkAXmyEa/XV8qmZmZnqc0P7XrXKW2BuKDovgorqLoWMFb4p3rj2I4w7qcHCMSAOctDt7n0X+GiDT6NbrPsXDw50xftzKg7odvcmtXf4DsJTjXBpzbXPzF6/vmgAauoepblbnGTyQLvu2VQmk4kgxEKpvui6cwSCM1Ada5qheq5YzC5tF5DP59dQzjYlZcOzccgyGK65mC+2ax7IWPfLcGxhKARgV7i4vBy70ymgUMj+A9SDWGB3GOCEB/f0VJ/sFJBKjfQS6srAOwD8HR7su/7BTgE2Umn98u9uAgR+ayqpnOkUIK1zZMPTACjyQzOA11ND+z+E8aate4TMs4PD7wu80ezP940nJJMH+ky0XgKeAHkH1TcRXgNywFeoueJN//5T2CCZGT7kWBlV9CSwvwV6n/XuhOddLRuAYjG7hMjHgEH1tEb0BEgWeB44J8aebF2243Nc0fMPMUfgguddLUOoe/r7dlwWJzqGMCxq6q5Wz/jSVQZ+Nb795N69u4thk/6dT7uInNiyYcoU9ZW3FxYWfAjdpp7n1XzjHAbmUJ3wTXQ8gvOZb+oXV1d3zLf6WEcWW3MoJXX9w57n1YKUCdeL+eysOv4oyrQqn65Tv+1adz4WrxzaskXWNs0V5Jq6/is3c7lb4byhRTdzuVvUV0ZQPgDuA6jqlj+fqhvkllE9q+vLL7eab4Afo1RqpJdI9Rhr3ZeCQwuUTqfjvoket7WuS51cjP+5/gWC8y5uIkrtDQAAAABJRU5ErkJggg==\", mime_type: Some(\"image/png\"), sizes: None, theme: Some(Light) }, Icon { src: \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAB8ElEQVRIibWVu09UQRSHv9k1IgW7AY0RBWKsTGx9ND4qS5F/wEYLDb0xAY0UxkdrZ2NHYWfsaYyVT4iJwZpNjJooLBQEYz6LvZsdxmH3LtFfN3PO+X5zzzwu/GeFbkF1BJgCJoHjwFgRagDLwAvgeQjhR1+u6qA6q67ZW6vqjDpYFn5YfV0CnOqDOtELPqY2dgFvq6Ee6daWd1HyvPqyBPSV+jQav1H3tbkhMpgF7hXDLaAeQthUzwFXgE/AF0BgFDgBPAshLKhV4CcwVNTPhBAexKsfcfuGbqhdT1imA1+j+lV1GKBSxKeAWpRfTca94HuB+BTVgcuxwWRS8zCEsFbWIISwBcwl0x2m+jnZuKNl4RHjQMJYjoPNJFju0vxt8itiNKHTomqSO7wLeA3YE01VYoPvSf7Jfg2AU8n4W2zwPglO78Igrekw1enMDb1fXKCuUivq7Uz99Tiprq6rvwuzhSLpo3pLvZABn1Vv2nrkUjWLPdlWMFcEF9WD6tuo4EnG4HEG3Nad3KcOqEtRe/bb+ic8Uo9l8i/tAF9UB3bq54StJ3dTvaGOqofM3IuiRalW1PH8bnUKx4tVxLqYyTuf5Czl4JV0IoSwApwB7gLr7enMWtpzG7TeodNFbXmpNfWq6YloxYbUa2q9L+i/1h8/EAGdUrF9ZQAAAABJRU5ErkJggg==\", mime_type: Some(\"image/png\"), sizes: None, theme: Some(Dark) }]), website_url: None }), instructions: Some(\"The GitHub MCP Server provides tools to interact with GitHub platform.\\n\\nTool selection guidance:\\n\\t1. Use 'list_*' tools for broad, simple retrieval and pagination of all items of a type (e.g., all issues, all PRs, all branches) with basic filtering.\\n\\t2. Use 'search_*' tools for targeted queries with specific criteria, keywords, or complex filters (e.g., issues with certain text, PRs by author, code containing functions).\\n\\nContext management:\\n\\t1. Use pagination whenever possible with batches of 5-10 items.\\n\\t2. Use minimal_output parameter set to true if the full information is not needed to accomplish a task.\\n\\nTool usage guidance:\\n\\t1. For 'search_*' tools: Use separate 'sort' and 'order' parameters if available for sorting results - do not include 'sort:' syntax in query strings. Query strings should contain only search criteria (e.g., 'org:google language:python'), not sorting instructions.\"), meta: None })"}
+2026-08-11T19:52:03.647Z [WARNING] Allowed model policy requested without a cwd; no models will be allowed.
+2026-08-11T19:52:03.648Z [INFO]  
+2026-08-11T19:52:03.650Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T19:52:03.650Z [INFO] --- End of group ---
+2026-08-11T19:52:03.967Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T19:52:03.972Z [INFO] --- End of group ---
+2026-08-11T19:52:04.052Z [INFO]  
+2026-08-11T19:52:04.052Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T19:52:04.053Z [INFO] --- End of group ---
+2026-08-11T19:52:05.347Z [INFO] RemoteSessionExporter: active with session 2357c26e-5b77-49ad-bdd7-e2ff0bdde2ac
+2026-08-11T19:56:45.140Z [INFO]  
+2026-08-11T19:56:45.140Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T19:56:45.141Z [INFO] --- End of group ---
+2026-08-11T19:56:45.312Z [INFO] --- Start of group: Completion request configuration:  ---
+2026-08-11T19:56:45.315Z [INFO] --- End of group ---
+2026-08-11T19:56:45.392Z [INFO]  
+2026-08-11T19:56:45.393Z [INFO] --- Start of group: configured settings: ---
+2026-08-11T19:56:45.393Z [INFO] --- End of group ---
+2026-08-11T20:06:53.614Z [INFO] Closing session 4228f1d3-63b4-4b5e-a341-83bf7e87744a
+2026-08-11T20:06:53.686Z [INFO] [rust:rmcp::service] task cancelled
+2026-08-11T20:06:54.285Z [INFO] [rust:rmcp::transport::streamable_http_client] delete session success
+2026-08-11T20:06:54.285Z [INFO] [rust:rmcp::service] serve finished {"quit_reason":"Cancelled"}
+2026-08-11T20:06:54.291Z [INFO] Cleaning up session 4228f1d3-63b4-4b5e-a341-83bf7e87744a: Session destroyed
+2026-08-11T20:06:55.795Z [INFO] Destroyed session 4228f1d3-63b4-4b5e-a341-83bf7e87744a after last owner stdio-49bbbf81-bc5e-42ea-998e-1a94134421b0 detached
+2026-08-11T20:06:55.796Z [INFO] Preparing runtime for graceful shutdown
+2026-08-11T20:06:55.796Z [INFO] Starting graceful shutdown of CLI server
+2026-08-11T20:06:55.796Z [INFO] Destroying 0 active sessions
+2026-08-11T20:06:55.798Z [INFO] CLI server prepared for shutdown; transport remains open for RPC response

@@ -1,0 +1,13 @@
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\ABLogixGitManager.csproj.AssemblyReference.cache
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\CloneRepositoryWindow.baml
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\GitRepositoryActionWindow.baml
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\App.baml
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\AddEditRepoWindow.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\CloneRepositoryWindow.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\GitRepositoryActionWindow.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\Views\SettingsWindow.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\App.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\ABLogixGitManager_MarkupCompile.cache
+C:\Users\MitchellLandreth\.copilot\session-state\c0f7fc71-9d08-4c26-8787-775c14d7dc92\objtest\Debug\net10.0-windows\ABLogixGitManager_MarkupCompile.lref

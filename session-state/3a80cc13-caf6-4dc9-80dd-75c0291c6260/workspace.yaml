@@ -1,0 +1,12 @@
+id: 3a80cc13-caf6-4dc9-80dd-75c0291c6260
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-Git
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-Git
+repository: advancedcontrolsystems/AB-Logix-Git
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: Review implementation, run the application and test its features and make sure we can use it. From our current system we should be able to meet all requirements besides the studio 5000 install, this is by design to make sure it shows proper notification, we should be able to trigger the .net sdk install and the rockwell vcs tools install and compile from the application, only ask for the path to the exe for the vcs tools if the user already has it compiled somewhere
+user_named: false
+summary_count: 3
+created_at: 2026-07-24T18:54:47.177Z
+updated_at: 2026-08-12T22:32:22.299Z

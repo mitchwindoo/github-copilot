@@ -1,0 +1,12 @@
+id: 0eaab618-7725-4d09-bbe8-76be5662f515
+cwd: c:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+git_root: C:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+repository: NXEdge/SHD-Ignition-BOI1
+host_type: github
+branch: feature/plc-resident-production-queue
+client_name: vscode-agent-host
+name: a new page for the manual loading operation; We need to create a new page for doing the manual kit operations, duplicate the manualLoadStationWorkspace view into the Testbed project and set it up to fit into our new workflow, where the loading process is loading the part into the cubby, and it doesn't interact with the PLC. We proof the part and validate with unipoint, and then once its placed into a cubby, it will be sent with the other available parts to the PLC queue the next morning at 8AM.
+user_named: false
+summary_count: 1
+created_at: 2026-08-12T21:15:16.337Z
+updated_at: 2026-08-17T21:47:38.530Z

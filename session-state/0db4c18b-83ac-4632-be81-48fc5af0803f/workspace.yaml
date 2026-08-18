@@ -1,0 +1,12 @@
+id: 0db4c18b-83ac-4632-be81-48fc5af0803f
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD\src\controllers\SHD_BOI_Line
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD\src\controllers\SHD_BOI_Line
+repository: NXEdge/SHD-BOI-Line
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: I want to push the code to the remote overwritting what is in the remote
+user_named: false
+summary_count: 0
+created_at: 2026-08-18T16:15:25.380Z
+updated_at: 2026-08-18T16:15:30.596Z

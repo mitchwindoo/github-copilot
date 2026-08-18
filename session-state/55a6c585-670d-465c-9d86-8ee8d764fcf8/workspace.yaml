@@ -1,0 +1,12 @@
+id: 55a6c585-670d-465c-9d86-8ee8d764fcf8
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+repository: advancedcontrolsystems/AB-Logix-CI-CD
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: Set up all extra tools in this repo and make sure we have everything setup and ready to develop PLC programs and initiate automated tests
+user_named: false
+summary_count: 3
+created_at: 2026-08-04T16:38:29.687Z
+updated_at: 2026-08-04T22:48:00.216Z

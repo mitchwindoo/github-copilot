@@ -1,0 +1,12 @@
+id: 2209dc46-7a4a-457d-9a92-69e978fa0176
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+repository: advancedcontrolsystems/AB-Logix-CI-CD
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: "Lets start some new example work with this file, \"C:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Documents\\Studio 5000\\Projects\\Carefree_Standard.ACD\"\nI want to start with creating a function for handling communication sync between SCADA, which is powered by Ignition, and part of ACS's Carefree Services IaaS offering. \nWe need to build these as modular as possible so they can be pulled in and plugged into various programs, try and maximise backwards compatibility with our function..."
+user_named: false
+summary_count: 1
+created_at: 2026-08-11T22:58:13.129Z
+updated_at: 2026-08-12T21:08:53.572Z

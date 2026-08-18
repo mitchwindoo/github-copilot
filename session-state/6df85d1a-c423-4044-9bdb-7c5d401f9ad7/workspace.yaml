@@ -1,0 +1,12 @@
+id: 6df85d1a-c423-4044-9bdb-7c5d401f9ad7
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-Git
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-Git
+repository: advancedcontrolsystems/AB-Logix-Git
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: "I added the Logix Designer SDK into the repo, look through it and see if there are any dependancies we can package directly into the app so we don't need studio 5000 installed to make it work \r\n`Logix Designer SDK`"
+user_named: false
+summary_count: 0
+created_at: 2026-07-24T21:57:37.863Z
+updated_at: 2026-08-12T22:32:33.220Z

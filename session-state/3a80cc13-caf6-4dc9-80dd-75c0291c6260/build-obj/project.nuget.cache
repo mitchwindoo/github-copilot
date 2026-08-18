@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "4gqz2nOzOkA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git\\src\\ABLogixGitManager\\ABLogixGitManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MitchellLandreth\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\MitchellLandreth\\.nuget\\packages\\sharpvectors.wpf\\1.8.5\\sharpvectors.wpf.1.8.5.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,12 @@
+id: b50217b6-afa7-4cbf-8e8a-3a3f80d56ac0
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+repository: advancedcontrolsystems/AB-Logix-CI-CD
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: "Add some guardrails to our echo setup, if echo is already configured with a PLC on an IP, we will not be able to use that, I have setup an echo device currently, scan its configuration, then identify the NIC its using, and use the next available IP address on that NIC. \nIf we are unable to get the IP address assigned to a device in the Echo SDK, the fix I have found its to restart the FactoryTalk Logix Echo Services and Message Broker and try again"
+user_named: false
+summary_count: 1
+created_at: 2026-08-06T23:37:17.741Z
+updated_at: 2026-08-06T23:53:58.195Z

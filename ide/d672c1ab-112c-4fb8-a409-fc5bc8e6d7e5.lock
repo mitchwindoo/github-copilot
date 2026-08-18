@@ -1,0 +1,14 @@
+{
+  "socketPath": "\\\\.\\pipe\\mcp-db218ca2-2564-49cd-b9ba-8574d8a67b51.sock",
+  "scheme": "pipe",
+  "headers": {
+    "Authorization": "Nonce c9f5457d-3362-41e4-9500-c8e85c5cc6df"
+  },
+  "pid": 33844,
+  "ideName": "Visual Studio Code",
+  "timestamp": 1787070085081,
+  "workspaceFolders": [
+    "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+  ],
+  "isTrusted": true
+}

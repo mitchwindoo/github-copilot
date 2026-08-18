@@ -1,0 +1,12 @@
+id: 7301b439-5d90-4fdc-a99d-6cbfbab0f4ac
+cwd: c:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+git_root: C:\Users\MitchellLandreth\Git-Local\SHD-Ignition-BOI1
+repository: NXEdge/SHD-Ignition-BOI1
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: Setup the ignition local enviroment in docker and verify everything is working
+user_named: false
+summary_count: 0
+created_at: 2026-08-11T20:06:16.567Z
+updated_at: 2026-08-11T20:06:26.463Z

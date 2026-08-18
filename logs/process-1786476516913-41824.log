@@ -1,0 +1,35 @@
+2026-08-11T19:28:36.921Z [INFO] Shell completions: no supported shell detected, skipping
+2026-08-11T19:28:36.925Z [INFO] Starting CLI in server mode (stdio)
+2026-08-11T19:28:36.928Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-08-11T19:28:36.956Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-08-11T19:28:36.959Z [INFO] Server started, waiting for requests
+2026-08-11T19:28:38.151Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:28:38.156Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:28:38.226Z [INFO] Workspace initialized: 4908f741-dc19-45f9-babd-a415efd68904 (checkpoints: 0)
+2026-08-11T19:28:38.487Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:28:38.487Z [INFO] [managedSettings] server policy: none for this account (404/empty) from https://github.com
+2026-08-11T19:28:38.487Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:38.488Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:28:38.489Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:28:38.621Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:28:38.621Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:28:38.623Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:28:38.623Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 140ms) from https://github.com
+2026-08-11T19:28:38.623Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:38.624Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:28:38.624Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:28:38.678Z [INFO] Registering extension tools on session 4908f741-dc19-45f9-babd-a415efd68904
+2026-08-11T19:28:38.679Z [INFO] Created session: 4908f741-dc19-45f9-babd-a415efd68904
+2026-08-11T19:28:38.682Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 199ms) from https://github.com
+2026-08-11T19:28:38.682Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:38.685Z [INFO] Remote session export enabled: https://api.business.githubcopilot.com/agents
+2026-08-11T19:28:38.706Z [INFO] Loaded 0 extension(s) for session 4908f741-dc19-45f9-babd-a415efd68904
+2026-08-11T19:28:38.707Z [INFO] No GitHub repository detected — creating repo-less remote session
+2026-08-11T19:28:38.710Z [INFO] RemoteSessionExporter: deferring MC session creation until first user.message
+2026-08-11T19:28:38.710Z [INFO] Remote session export deferred until first user message
+2026-08-11T19:28:41.717Z [INFO] Closing session 4908f741-dc19-45f9-babd-a415efd68904
+2026-08-11T19:28:41.766Z [INFO] Destroyed session: 4908f741-dc19-45f9-babd-a415efd68904
+2026-08-11T19:28:41.767Z [INFO] Preparing runtime for graceful shutdown
+2026-08-11T19:28:41.768Z [INFO] Starting graceful shutdown of CLI server
+2026-08-11T19:28:41.768Z [INFO] Destroying 0 active sessions
+2026-08-11T19:28:41.770Z [INFO] CLI server prepared for shutdown; transport remains open for RPC response

@@ -1,0 +1,12 @@
+id: bce7143e-99a1-47e1-8f48-ededb51eac08
+cwd: c:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+git_root: C:\Users\MitchellLandreth\Git-Local\AB-Logix-CI-CD
+repository: advancedcontrolsystems/AB-Logix-CI-CD
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: "Remember to use 127.0.0.1 for the Echo device IP address for local, single node testing. \nRe-evaluate what we are doing against Rockwell official documentation here \"C:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Desktop\\RA Docs\" and find where our implementation plan is falling flat, and get it resolved. \nCreating a device manually I get the error \"# Warning\n\nThe operation could not be performed because controller 'ProductionLinePRGV01' in slot 0 in chassis 'Chassis' has not yet..."
+user_named: false
+summary_count: 0
+created_at: 2026-08-04T23:17:47.884Z
+updated_at: 2026-08-04T23:17:51.836Z

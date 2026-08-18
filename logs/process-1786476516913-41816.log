@@ -1,0 +1,40 @@
+2026-08-11T19:28:36.922Z [INFO] Shell completions: no supported shell detected, skipping
+2026-08-11T19:28:36.923Z [INFO] Starting CLI in server mode (stdio)
+2026-08-11T19:28:36.929Z [INFO] Starting CLI in stdio mode (Rust JSON-RPC engine)
+2026-08-11T19:28:36.954Z [INFO] CLI server ready (stdio mode, Rust JSON-RPC engine)
+2026-08-11T19:28:36.954Z [INFO] Server started, waiting for requests
+2026-08-11T19:28:39.291Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:28:39.293Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:28:39.309Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:28:39.309Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 815ms) from https://github.com
+2026-08-11T19:28:39.309Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:39.310Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:28:39.311Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:28:39.447Z [INFO] Workspace initialized: 8de60e81-2a84-4119-ab51-034efc6749e5 (checkpoints: 0)
+2026-08-11T19:28:39.532Z [INFO] [managedSettings] applied: bypass-permissions mode DISABLED by enterprise policy (fail-closed: policy could not be determined) — /allow-all and permission escalation are now blocked
+2026-08-11T19:28:39.533Z [INFO] [managedSettings] self-fetch starting for account https://github.com/mitchwindoo
+2026-08-11T19:28:39.537Z [INFO] [managedSettings] device MDM: no policy present on this device
+2026-08-11T19:28:39.537Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 1052ms) from https://github.com
+2026-08-11T19:28:39.537Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:39.540Z [INFO] [managedSettings] applied: no bypass restriction in force (managed policy absent)
+2026-08-11T19:28:39.547Z [INFO] [managedSettings] self-fetch complete for https://github.com/mitchwindoo: bypassDisabled=false, serverFetchFailed=false, serverCacheFallback=false, deviceLoadFailed=false
+2026-08-11T19:28:39.612Z [INFO] Registering extension tools on session 8de60e81-2a84-4119-ab51-034efc6749e5
+2026-08-11T19:28:39.613Z [INFO] Created session: 8de60e81-2a84-4119-ab51-034efc6749e5
+2026-08-11T19:28:39.616Z [INFO] [managedSettings] server policy: none for this account served from fresh cache (age 1134ms) from https://github.com
+2026-08-11T19:28:39.616Z [INFO] [managedSettings] effective policy resolved: source=none, bypassDisabled=false, serverFetchFailed=false
+2026-08-11T19:28:39.620Z [INFO] Remote session export enabled: https://api.business.githubcopilot.com/agents
+2026-08-11T19:28:39.652Z [INFO] Loaded 0 extension(s) for session 8de60e81-2a84-4119-ab51-034efc6749e5
+2026-08-11T19:28:40.067Z [INFO] RemoteSessionExporter: deferring MC session creation until first user.message
+2026-08-11T19:28:40.067Z [INFO] Remote session export deferred until first user message
+2026-08-11T19:28:40.517Z [WARNING] .github\agents\security-vulnerability-manager.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:40.517Z [WARNING] .github\agents\skeptical-implementation-reviewer.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:40.517Z [WARNING] .github\agents\software-wiki.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:40.521Z [WARNING] .github\agents\security-vulnerability-manager.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:40.521Z [WARNING] .github\agents\skeptical-implementation-reviewer.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:40.521Z [WARNING] .github\agents\software-wiki.agent.md: unknown field ignored: argument-hint
+2026-08-11T19:28:42.629Z [INFO] Closing session 8de60e81-2a84-4119-ab51-034efc6749e5
+2026-08-11T19:28:42.671Z [INFO] Destroyed session: 8de60e81-2a84-4119-ab51-034efc6749e5
+2026-08-11T19:28:42.673Z [INFO] Preparing runtime for graceful shutdown
+2026-08-11T19:28:42.673Z [INFO] Starting graceful shutdown of CLI server
+2026-08-11T19:28:42.673Z [INFO] Destroying 0 active sessions
+2026-08-11T19:28:42.675Z [INFO] CLI server prepared for shutdown; transport remains open for RPC response

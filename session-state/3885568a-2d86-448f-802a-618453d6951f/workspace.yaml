@@ -1,0 +1,25 @@
+id: 3885568a-2d86-448f-802a-618453d6951f
+cwd: c:\Users\MitchellLandreth\Git-Local\carefree-systems
+git_root: C:\Users\MitchellLandreth\Git-Local\carefree-systems
+repository: advancedcontrolsystems/carefree-systems
+host_type: github
+branch: main
+client_name: vscode-agent-host
+name: |-
+  /fix-customization-evaluation-diagnostics
+
+  Target file: c:\Users\MitchellLandreth\Git-Local\carefree-systems\.github\skills\postgres-netbird-query\SKILL.md
+
+  Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+  Field meanings:
+
+  - line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+  - lineText: exact text currently present at the diagnostic start line in the target file.
+
+  - message: diagnostic description expla...
+user_named: false
+summary_count: 0
+created_at: 2026-08-12T22:44:02.325Z
+updated_at: 2026-08-12T22:44:07.142Z
