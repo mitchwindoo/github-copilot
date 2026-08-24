@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Alarm Pipeline Orchestrator"
+  short_description: "Diagnose Ignition alarm pipeline routing."
+  default_prompt: "Use ignition-alarm-pipeline-orchestrator to diagnose an Ignition alarm notification pipeline, escalation, acknowledgement, shelving, or delivery issue."

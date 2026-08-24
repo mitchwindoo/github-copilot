@@ -1,0 +1,13 @@
+{"mcpServers": {"GitKraken": {
+	"args": [
+		"mcp",
+		"--host=copilot",
+		"--source=gitlens",
+		"--scheme=vscode"
+	],
+	"command": "/Users/mitch/Library/Application Support/Code/User/globalStorage/eamodio.gitlens/gk",
+	"tools": [
+		"*"
+	],
+	"type": "local"
+}}}

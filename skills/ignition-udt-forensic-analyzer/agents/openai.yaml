@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition UDT Forensic Analyzer"
+  short_description: "Audit Ignition UDT health and risk."
+  default_prompt: "Use $ignition-udt-forensic-analyzer to audit Ignition UDT definitions, instances, exported tag JSON, and reachable Gateway evidence for configuration risk."

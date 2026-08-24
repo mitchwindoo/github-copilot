@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Jython Script Builder"
+  short_description: "Build safe Ignition 8.1 Jython scripts."
+  default_prompt: "Use $ignition-jython-script-builder to create or review an Ignition 8.1 Jython script, load only the relevant bundled references, and provide scoped validation and readback steps."

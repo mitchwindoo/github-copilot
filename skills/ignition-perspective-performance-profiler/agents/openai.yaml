@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Perspective Performance Profiler"
+  short_description: "Profile slow Perspective views and sessions."
+  default_prompt: "Use $ignition-perspective-performance-profiler to profile a slow Ignition Perspective view, session, or project and produce an evidence-backed remediation plan."

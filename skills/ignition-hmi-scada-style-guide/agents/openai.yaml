@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition HMI/SCADA Style Guide"
+  short_description: "Style industrial HMI and SCADA screens."
+  default_prompt: "Use $ignition-hmi-scada-style-guide to style Ignition Perspective, HMI, SCADA, MES, and production visualization screens with industrial high-performance HMI principles."

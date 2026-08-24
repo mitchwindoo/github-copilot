@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Historian Forensics"
+  short_description: "Diagnose Ignition historian data gaps."
+  default_prompt: "Use $ignition-historian-forensics to explain why a tag history trend has gaps or unexpected values."

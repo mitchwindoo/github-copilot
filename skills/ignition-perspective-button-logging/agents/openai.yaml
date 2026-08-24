@@ -1,0 +1,4 @@
+interface:
+  display_name: "Perspective Button Logging"
+  short_description: "Log and verify Perspective button presses."
+  default_prompt: "Use $ignition-perspective-button-logging to design, implement, and verify an Ignition 8.1 Perspective button-press logging workflow with audit, logger, SQL, tag outcome, and browser/API readback evidence."

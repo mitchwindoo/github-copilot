@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Vision Jython"
+  short_description: "Write and troubleshoot safe Ignition Vision Jython scripts"
+  default_prompt: "Use $ignition-vision-jython to write or review an Ignition Vision Jython script with correct scope, threading, component, messaging, and diagnostic boundaries."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition AI Log Assistant"
+  short_description: "Diagnose Ignition logs with evidence."
+  default_prompt: "Use $ignition-ai-log-assistant to triage Ignition Gateway logs, runner diagnostics, module/version evidence, and likely root causes with source-backed next steps."

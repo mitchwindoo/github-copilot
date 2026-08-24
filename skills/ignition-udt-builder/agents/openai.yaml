@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition UDT Builder"
+  short_description: "Build reliable Ignition 8.1 UDTs"
+  default_prompt: "Use $ignition-udt-builder to model UDTs, parameters, expressions, instances, and validation in Ignition 8.1."

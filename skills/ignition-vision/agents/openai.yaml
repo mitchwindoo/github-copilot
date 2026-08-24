@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Vision Builder"
+  short_description: "Build and troubleshoot Ignition Vision HMIs"
+  default_prompt: "Use $ignition-vision to build or troubleshoot an Ignition Vision screen through the approved runner API."

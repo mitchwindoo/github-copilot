@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Expressions"
+  short_description: "Write and test Ignition expressions."
+  default_prompt: "Use $ignition-8-1-expression-language to write, review, debug, and test Ignition 8.1 expression tags, bindings, transforms, UDT expression members, and expression-language recipes against the target Gateway."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Perspective Import Zip"
+  short_description: "Build correct Perspective import zips."
+  default_prompt: "Use $ignition-perspective-import-zip to author a correct Ignition 8.1 Perspective view/page and package it as a portable import zip with separated dependencies, install notes, and validation steps."

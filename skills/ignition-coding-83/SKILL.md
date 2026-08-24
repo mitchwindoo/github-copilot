@@ -67,6 +67,10 @@ rowsAffected = system.db.execUpdate("MyProject/UpdateName", params)
 
 > **`system.db.runNamedQuery` is deprecated in Ignition 8.3** — it has broken overload resolution in Jython. Always use `execQuery` for SELECT and `execUpdate` for INSERT/UPDATE/DELETE. Named queries in inheritable parent projects (e.g. NxSigma_Core) resolve automatically from any child project context.
 
+> **Named-query `resource.json` `type` must match how it is called.** Enum values: `"Query"` (dataset — call with `execQuery` or a Perspective query binding), `"ScalarQuery"` (single value — call with `execScalar` or a scalar-returning query binding), `"UpdateQuery"` (call with `execUpdate`). A single-value lookup used by `execScalar` or bound to an int/string param **must** be `"ScalarQuery"` (no space). A mismatch throws `IllegalArgumentException: Query type mismatch: Expected 'Scalar Query' but got 'Query'`. In Perspective query bindings there is **no** `"returnFormat": "scalar"` — bind a `ScalarQuery` and omit `returnFormat`; an invalid `returnFormat` yields `Error_Configuration` on the binding even though the query runs fine standalone.
+
+> **Perspective query-binding parameters are EXPRESSIONS, not literals.** `system.db.execScalar/execQuery` take a **literal** parameter dict (`{'GroupCode': '41-CATA'}` works directly), but a Perspective **query binding** expression-parses each parameter value. A string literal must be wrapped in single quotes inside the JSON: `"GroupCode": "'41-CATA'"` (empty string = `"''"`); numbers work bare (`"100"`); property refs use `"{view.params.x}"`. A bare `"41-CATA"` throws `RuntimeException: Syntax Error on Token: 'End of Expression'` and puts the binding in `Error_Configuration` — while the identical named query still passes in the Script Console. Console tests therefore do NOT validate binding-parameter encoding; verify the binding in a running session.
+
 ## Platform Constraints
 
 ### Gateway Tag-Change Scripts

@@ -15,6 +15,17 @@ Produce a clean, human-readable summary of recent changes in the repository base
 - Creating a changelog for a time period
 - Reviewing work before a meeting or handoff
 
+## Project-Specific Context
+
+When the active repository is `SHD-Ignition-BOI1`, review `tasks/plan.md` before summarizing git history.
+
+- Treat each dated section in `tasks/plan.md` as the primary workstream anchor for that day.
+- Map commit subjects and touched files back to the matching planned items whenever the dates overlap.
+- Use commit messages as evidence, but do not let terse commit wording override a clearer plan item description.
+- If commits do not match any dated checklist item, place them in an `Other Changes` bucket for that day.
+- If a planned item is still unchecked and there is no commit evidence for it, call it out as pending rather than implying it shipped.
+- If there is no relevant dated plan entry for the requested range, fall back to pure git-history summarization.
+
 ## Procedure
 
 ### 1. Determine Time Range
@@ -26,6 +37,8 @@ Ask the user what period to cover. Offer these common options:
 - Between two commits or branches
 
 If the user doesn't specify, ask before proceeding.
+
+For `SHD-Ignition-BOI1`, also check whether the requested range overlaps a dated section in `tasks/plan.md`. If it does, use that dated section title in the summary heading and keep the bullets organized around the plan items first, then unmatched commits.
 
 ### 2. Gather Git Data
 
@@ -44,6 +57,8 @@ If the user specifies a commit range instead of dates:
 git log <start>..<end> --pretty=format:"%h|%ad|%an|%s" --date=short --name-status
 ```
 
+For `SHD-Ignition-BOI1`, read `tasks/plan.md` alongside the git log before drafting the summary. Use the plan's checked vs unchecked items to distinguish completed work from in-progress or pending work.
+
 ### 3. Classify Changes
 
 Group the raw changes into these human-friendly categories:
@@ -56,6 +71,12 @@ Group the raw changes into these human-friendly categories:
 | **Configuration** | Project settings, session props, global props, permissions |
 | **Documentation** | README files, instructions, comments, task notes |
 | **Infrastructure** | Docker, CI/CD, git config, build tooling |
+
+For `SHD-Ignition-BOI1`, perform one more pass before writing:
+
+- Collapse multiple commits under the plan item they advanced.
+- Rewrite cryptic commit subjects using the corresponding plan-item language when that makes the outcome clearer.
+- Preserve meaningful divergences: if the commit clearly exceeded or differed from the plan, mention that explicitly.
 
 ### 4. Format the Summary
 
@@ -76,9 +97,15 @@ Use this structure:
 
 [other categories as applicable — skip empty ones]
 
+**Plan Alignment**
+- Completed: [checked plan items supported by commits]
+- Pending: [unchecked plan items with no supporting commits, only when relevant]
+
 ---
 [Repeat for other dates if multi-day range]
 ```
+
+For `SHD-Ignition-BOI1`, prefer a date-first layout that mirrors `tasks/plan.md`, then summarize the commit-backed outcomes beneath each date.
 
 ### 5. Tone & Language Rules
 

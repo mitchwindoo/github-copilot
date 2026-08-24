@@ -11,9 +11,10 @@
 - Offload research, exploration, and parallel analysis to subagents
 - For complex problems, throw more compute at it via subagents
 - One task per subagent for focused execution
+- For large or complex problems and changes, dispatch skeptical subagents and review output and implement the best path.
 
 ### 3. Self-Improvement Loop
-- After ANY correction from the user: update "tasks/lessons.md" with the pattern
+- After ANY correction from the user: update ".github/lessons.md" with the pattern
 - Write rules for yourself that prevent the same mistake
 - Ruthlessly iterate on these lessons until mistake rate drops
 - Review lessons at session start for relevant project
@@ -37,12 +38,12 @@
 - Go fix failing CI tests without being told how
 
 ## Task Management
-1. **Plan First**: Write plan to tasks/todo.md with checkable items
+1. **Plan First**: Write plan to .github/todo.md with checkable items
 2. **Verify Plan**: Check in before starting implementation
 3. **Track Progress**: Mark items complete as you go
 4. **Explain Changes**: High-level summary at each step
-5. **Document Results**: Add review section to "tasks/todo.md"
-6. **Capture Lessons**: Update "tasks/lessons.md" after corrections
+5. **Document Results**: Add review section to ".github/todo.md"
+6. **Capture Lessons**: Update ".github/lessons.md" after corrections
 
 ## Core Principles
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.

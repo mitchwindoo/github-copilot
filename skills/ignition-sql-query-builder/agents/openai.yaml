@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition SQL"
+  short_description: "Build safe Ignition SQL and runner-assisted queries."
+  default_prompt: "Use $ignition-sql-query-builder to design or review Ignition 8.1 SQL, Named Queries, Tag Historian/PostgreSQL queries, Perspective bindings, and live runner-assisted previews when Gateway API access is available."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Perspective Host Builder"
+  short_description: "Apply and validate live Perspective resources"
+  default_prompt: "Use $ignition-perspective-host-builder to dry-run, apply, read back, and validate this Ignition 8.1 Perspective package on the approved host."

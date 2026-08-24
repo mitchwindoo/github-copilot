@@ -1,0 +1,27 @@
+# Runner Capabilities
+
+Runner API: `0.3.148+` recommended for the current read-only diagnostics surface; `0.3.137+` remains recommended for good-sample tag-history availability terminology, `0.3.93+` remains recommended for sample-backed tag-history availability, and `0.3.79+` is the minimum for synchronized Gateway metrics, Perspective session sampling, JVM snapshots, and bounded thread evidence.
+
+## Runner Actions To Prefer
+
+- `metricsList`: discover target metric tokens with bounded filters. Avoid raw names unless target-local evidence requires them.
+- `metricsSnapshot`: sample explicit metric tokens/names. Missing metrics are normal per-item evidence, not a fatal profiling failure.
+- `gatewayPerformanceSnapshot`: capture CPU, heap, non-heap, thread states, uptime, and timestamp even when metric registry names differ.
+- `perspectiveSessionsQuery`: correlate active sessions/pages, communication age, bytes, and uptime for the target project. With runner `0.3.92+`, require `perspectiveSessionsQueryMatchedCount` before interpreting filtered `truncated` responses; `matchedCount` is the session filter match count before `maxResults`.
+- `threadDumpQuery`: bounded, filtered, redacted thread evidence during active freezes or queue/CPU spikes only.
+
+If these actions are absent from `health.supportedActions`, fall back to static analysis, browser evidence, `gatewayInfo`, `logQuery`, and existing discovery actions. Clearly mark Gateway metric/session/thread evidence as missing.
+
+Use `scripts/collect_profile.py` for the first synchronized read-only bundle before writing fixtures or remediation variants. With `--browser-url`, it launches `scripts/browser_route_probe.mjs` during Gateway sampling and records redacted browser URL aliases, console, network, long-task, LCP, DOM, heap, and WebSocket frame/byte evidence. It does not capture thread dumps; trigger `threadDumpQuery` only when incident evidence justifies it.
+
+Use `scripts/verify_evidence_bundle.py` as the final local integrity gate for full profile bundles, lifecycle helper bundles, and older summary-style helper outputs. It is read-only unless `--out-dir` is supplied for integrity reports.
+
+Use `scripts/run_idle_dwell_profile.py` for read-only R-07 idle dwell/soak checks. Require enough samples for the declared duration, keep the browser timeline enabled when browser leak/render suspicion matters, and report JVM heap, Perspective session/page retention, and browser heap/DOM/long-task trends separately. A rising JVM heap or moving global counter alone is a follow-up signal, not a leak conclusion.
+
+   Use `scripts/run_long_script_incident.py` only when a controlled dev/staging I-03/I-01 mechanics fixture is appropriate. It writes disposable route/view resources, captures browser screenshot/timing, same-route second-context readiness, metric, log, and focused thread evidence during a bounded active script window, then verifies rollback.
+
+Use `scripts/run_queue_backlog_incident.py` only when a controlled dev/staging I-02 queue-backlog mechanics fixture is appropriate. It writes disposable bounded button-action variants, profiles click-to-done timing with synchronized Gateway/session/browser evidence, and verifies rollback. Consider I-02 proven only when the backlog variant shows sustained `queue-length` samples, recovers before the final sample, and has a correlated interaction-delay increase versus the smaller baseline. Do not substitute queue-task, script, or property-change counters for queue-length proof. Calibrate repeated-click cadence with explicit `--browser-click-repeat-interval-ms` values and require the visible expected/started/accepted/completed/last counters to match before interpreting queue metrics; treat burst-click or counter-mismatch variants as fixture calibration evidence only. For browser/backpressure sensitivity, use `--browser-network-throttle-scope backlog` when the baseline should remain unthrottled and only the largest/backlog variant should receive the configured network throttle. Run `scripts/verify_queue_backlog_claims.py` before reporting proof or rejection boundaries. Use `--allow-negative-i02` only when deliberately recording fixture/sensitivity evidence after strict proof is expected to remain false; report `mechanicsOk`, `strictI02Ok`, and `negativeI02Accepted` separately. If `health`, `dryRun`, or apply/readback returns a non-JSON Gateway/server page instead of a runner envelope, stop heavy fixture work and re-check lightweight `health` before continuing.
+
+Use `scripts/run_datasource_delay_incident.py` only when a controlled dev/staging I-06 mechanics fixture is appropriate. It writes disposable route/view/Named Query resources against an approved test database, compares fast versus delayed query timing through preview and browser refresh proof, checks browser/Gateway safety signals, then verifies rollback.
+
+Use `scripts/run_memory_growth_suspicion.py` only when a controlled I-04 repeated open/close fixture is appropriate. It writes a disposable static route/view, records per-cycle pre/during/post API samples plus browser evidence, separates JVM heap, browser JS heap, raw Perspective session/page counts, and fixture-new retained tokens, then verifies rollback. Treat a short post-close window as retention timing evidence only; leak language needs retained fixture-new sessions/pages after the declared timeout or stronger customer-specific proof.

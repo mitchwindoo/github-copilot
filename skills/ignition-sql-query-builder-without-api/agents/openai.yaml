@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition SQL Query Builder without API"
+  short_description: "Build Ignition SQL and Named Queries without Gateway access."
+  default_prompt: "Use $ignition-sql-query-builder-without-api to design or review Ignition SQL, Named Queries, historian queries, and Perspective query bindings when the LLM cannot reach the Gateway."
