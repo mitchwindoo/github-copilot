@@ -16,7 +16,7 @@ LOG_FILE = Path("logs/copilot/secrets/scan.log")
 PATTERNS = [
     ("AWS_ACCESS_KEY", "critical", r"AKIA[0-9A-Z]{16}"),
     ("AWS_SECRET_KEY", "critical", r"aws_secret_access_key\s*[:=]\s*['\"]?[A-Za-z0-9/+=]{40}"),
-    ("GCP_SERVICE_ACCOUNT", "critical", r"\"type\"[[:space:]]*:[[:space:]]*\"service_account\""),
+    ("GCP_SERVICE_ACCOUNT", "critical", r"\"type\"\s*:\s*\"service_account\""),
     ("GCP_API_KEY", "high", r"AIza[0-9A-Za-z_-]{35}"),
     ("AZURE_CLIENT_SECRET", "critical", r"azure[_-]?client[_-]?secret\s*[:=]\s*['\"]?[A-Za-z0-9_~.-]{34,}"),
     ("GITHUB_PAT", "critical", r"ghp_[0-9A-Za-z]{36}"),
@@ -28,7 +28,7 @@ PATTERNS = [
     ("PGP_PRIVATE_BLOCK", "critical", r"-----BEGIN PGP PRIVATE KEY BLOCK-----"),
     ("GENERIC_SECRET", "high", r"(secret|token|password|passwd|pwd|api[_-]?key|apikey|access[_-]?key|auth[_-]?token|client[_-]?secret)\s*[:=]\s*['\"]?[A-Za-z0-9_/+=~.-]{8,}"),
     ("CONNECTION_STRING", "high", r"(mongodb(\+srv)?|postgres(ql)?|mysql|redis|amqp|mssql)://[^\s'\"]{10,}"),
-    ("BEARER_TOKEN", "medium", r"[Bb]earer[[:space:]]+[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}"),
+    ("BEARER_TOKEN", "medium", r"[Bb]earer\s+[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}"),
     ("SLACK_TOKEN", "high", r"xox[baprs]-[0-9]{10,}-[0-9A-Za-z-]+"),
     ("SLACK_WEBHOOK", "high", r"https://hooks\.slack\.com/services/T[0-9A-Z]{8,}/B[0-9A-Z]{8,}/[0-9A-Za-z]{24}"),
     ("DISCORD_TOKEN", "high", r"[MN][A-Za-z0-9]{23,}\.[A-Za-z0-9_-]{6}\.[A-Za-z0-9_-]{27,}"),
