@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Vision 8.3 Jython"
+  short_description: "Write safe Vision 8.3 Jython scripts"
+  default_prompt: "Use $ignition-vision-jython-83 to write or review Jython that executes inside Ignition Vision 8.3.8."
