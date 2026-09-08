@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition llmImport API"
+  short_description: "Test and maintain the bounded Ignition API"
+  default_prompt: "Use $use-ignition-llm-import to synchronize the live API sources and Web Dev copies, rebuild and verify the import ZIP, and run only bounded authorized checks."

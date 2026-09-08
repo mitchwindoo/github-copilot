@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition 8.3 Perspective"
+  short_description: "Build and validate Ignition 8.3 Perspective"
+  default_prompt: "Use $ignition-8-3-perspective for API-only Perspective authoring and evidence-backed runtime or screenshot validation on Ignition 8.3."
