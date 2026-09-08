@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition 8.3 UDT Builder"
+  short_description: "Build and verify Ignition UDTs through APIs"
+  default_prompt: "Build or modify Ignition 8.3 UDTs and tags through the live Gateway OpenAPI, then verify configuration and runtime quality without UI automation."
