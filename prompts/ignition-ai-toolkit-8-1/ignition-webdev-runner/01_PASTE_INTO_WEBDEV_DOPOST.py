@@ -12,7 +12,7 @@ from java.util.zip import GZIPInputStream
 from jarray import zeros
 
 
-# Optional static-token fallback. Prefer IGNITION_LLM_RUNNER_TOKEN.
+# Authentication requires the Gateway process environment.
 TOKEN = "my-local-llm-token-123"
 EMBEDDED_RUNNER_SHA256 = "2EBE1BEF92F2AFFADDF4D26BA5A60A8A09706F5B8730C23202057C54A3CC7608"
 EMBEDDED_RUNNER_GZIP_SHA256 = "E1D4FC42208A6FE23551BAB328767C9F066EA07975FF73CC5D85F70A9B349462"
@@ -3710,5 +3710,5 @@ _runner_globals = {
     "system": system,
 }
 exec _runner_source in _runner_globals
-_runner_globals["STATIC_TOKEN"] = TOKEN
+_runner_globals["STATIC_TOKEN"] = ""
 return _runner_globals["handle_post"](request, session)
