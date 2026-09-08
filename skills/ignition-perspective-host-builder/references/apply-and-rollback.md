@@ -110,7 +110,7 @@ After apply:
 1. Read every intentionally changed view and record its new hash.
 2. Validate the route and all declared view/script/Named Query dependencies with `pageValidate` when available.
 3. Confirm shared dock structure through bounded page-config/resource readback.
-4. Query a narrow recent log window for apply/reload errors.
+4. When diagnostics are needed, query a narrow recent log window for apply/reload errors; a successful ordinary apply does not require a separate log investigation.
 5. Open the concrete Perspective route and prove runtime rendering and interactions in the browser.
 
 Structural validation does not execute bindings or prove component behavior. Browser proof does not replace resource readback or hash validation.
