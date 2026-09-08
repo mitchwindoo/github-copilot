@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition Vision 8.3"
+  short_description: "Build and troubleshoot Ignition Vision 8.3"
+  default_prompt: "Use $ignition-vision-83 to orient and safely perform an Ignition Vision 8.3.8 Gateway or project task."
