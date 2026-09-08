@@ -20,6 +20,8 @@ Use Ignition 8.1 docs unless the user requests another version.
 
 ## Components
 
+- Perspective Numeric Entry Field: https://www.docs.inductiveautomation.com/docs/8.1/appendix/components/perspective-components/perspective-input-palette/perspective-numeric-entry-field
+
 - Flex Container: https://www.docs.inductiveautomation.com/docs/8.1/appendix/components/perspective-components/perspective-container-palette/perspective-flex-container
 - Perspective View Canvas: https://www.docs.inductiveautomation.com/docs/8.1/appendix/components/perspective-components/perspective-embedding-palette/perspective-view-canvas
 - Perspective Embedded View: https://www.docs.inductiveautomation.com/docs/8.1/appendix/components/perspective-components/perspective-embedding-palette/perspective-embedded-view
