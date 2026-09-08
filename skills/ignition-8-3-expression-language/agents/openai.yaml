@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ignition 8.3 Expression Language"
+  short_description: "Build and debug Ignition 8.3 expressions"
+  default_prompt: "Use $ignition-8-3-expression-language to design or troubleshoot an Ignition 8.3 expression and explain its surface-specific behavior."
