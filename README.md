@@ -5,11 +5,13 @@ This repository is a portable source of truth for the Copilot runtime experience
 ## What lives here
 
 - [agents/](agents) — reusable agent definitions
-- [instructions/](instructions) — repository-specific customization and operational guardrails
+- [instructions/](instructions) — reusable guidance and operational guardrails
 - [skills/](skills) — reusable skill packs for common workflows
+- [prompts/](prompts) — reusable prompt definitions
 - [hooks/](hooks) — session lifecycle checks and safety automation
 - [bin/](bin) — installation and bootstrap scripts for portable setup
 - [copilot-instructions.md](copilot-instructions.md) — repo-level default Copilot instructions
+- [CUSTOMIZATIONS.md](CUSTOMIZATIONS.md) — generated inventory and placement review
 
 See [instructions/awesome-copilot-addons.md](instructions/awesome-copilot-addons.md) for the curated addon map and the broader Copilot ecosystem references.
 
@@ -107,6 +109,24 @@ ls -ld ~/.copilot
 
 # or on Windows
 Get-Item $HOME/.copilot | Format-List FullName,LinkType,Target
+```
+
+## Review installed customizations
+
+Generate a single catalog of all user-level skills, instructions, prompts, and agents:
+
+```powershell
+pwsh ./bin/review-customizations.ps1
+```
+
+Open [CUSTOMIZATIONS.md](CUSTOMIZATIONS.md) to review names, descriptions, source paths, and placement flags. The report uses [instructions/customization-placement.instructions.md](instructions/customization-placement.instructions.md) and [customization-scope.json](customization-scope.json) to distinguish portable user-level guidance from content that should move into a repository.
+
+Use the `review-user-customizations` prompt for a guided review. Record deliberate placement decisions in `customization-scope.json`; the generator never moves or deletes a customization.
+
+Verify the checked-in catalog is current:
+
+```powershell
+pwsh ./bin/review-customizations.ps1 -Check
 ```
 
 ## Safety and standards
