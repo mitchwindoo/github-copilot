@@ -1,13 +1,201 @@
-{"mcpServers": {"GitKraken": {
-	"args": [
-		"mcp",
-		"--host=copilot",
-		"--source=gitlens",
-		"--scheme=vscode"
-	],
-	"command": "/Users/mitch/Library/Application Support/Code/User/globalStorage/eamodio.gitlens/gk",
-	"tools": [
-		"*"
-	],
-	"type": "local"
-}}}
+{
+	"mcpServers": {
+		"GitKraken": {
+			"args": [
+				"mcp",
+				"--host=copilot",
+				"--session=kepler"
+			],
+			"command": "/Users/mitch/Library/Application Support/GitKrakenCLI/gk-alpha",
+			"tools": [
+				"*"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-alarmjournal": {
+			"args": [
+				"carefree_alarmjournal"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-am": {
+			"args": [
+				"carefree_am"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-audit": {
+			"args": [
+				"carefree_audit"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-auth": {
+			"args": [
+				"carefree_auth"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-legacy": {
+			"args": [
+				"carefree_legacy"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-tracknow": {
+			"args": [
+				"carefree_tracknow"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"carefree-core-web-postgres-feedlot": {
+			"args": [
+				"feedlot_manager"
+			],
+			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"type": "local"
+		},
+		"unifi-network": {
+			"type":    "local",
+			"command": "/Users/mitch/.local/bin/uvx",
+			"args": [
+				"--python-preference",
+				"system",
+				"unifi-network-mcp@latest"
+			],
+			"deferTools": "auto",
+			"tools": [
+				"*"
+			],
+			"env": {
+				"UNIFI_NETWORK_HOST":       "192.168.192.2",
+				"UNIFI_NETWORK_PORT":       "8443",
+				"UNIFI_NETWORK_USERNAME":   "ubnt",
+				"UNIFI_NETWORK_PASSWORD":   "LUFF-tittle9patch",
+				"UNIFI_NETWORK_VERIFY_SSL": "false"
+			}
+		},
+		"unifi-protect": {
+			"type":    "local",
+			"command": "/Users/mitch/.local/bin/uvx",
+			"args": [
+				"--python-preference",
+				"system",
+				"unifi-protect-mcp@latest"
+			],
+			"deferTools": "auto",
+			"tools": [
+				"*"
+			],
+			"env": {
+				"UNIFI_PROTECT_HOST":       "192.168.195.2",
+				"UNIFI_PROTECT_PORT":       "443",
+				"UNIFI_PROTECT_USERNAME":   "unvr@advancedcontrol.com",
+				"UNIFI_PROTECT_PASSWORD":   "kamal@VICIOUS1gaming7needs",
+				"UNIFI_PROTECT_VERIFY_SSL": "false"
+			}
+		},
+		"unifi-access": {
+			"type":    "local",
+			"command": "/Users/mitch/.local/bin/uvx",
+			"args": [
+				"--python-preference",
+				"system",
+				"unifi-access-mcp@latest"
+			],
+			"deferTools": "auto",
+			"tools": [
+				"*"
+			],
+			"env": {
+				"UNIFI_ACCESS_HOST":       "192.168.195.2",
+				"UNIFI_ACCESS_PORT":       "12445",
+				"UNIFI_ACCESS_VERIFY_SSL": "false",
+				"UNIFI_ACCESS_API_KEY":    "k9b7LgdVtmQFiVClhS9Xjw"
+			}
+		}
+	}
+}
