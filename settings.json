@@ -1,5 +1,11 @@
 {
-  "extraKnownMarketplaces": {
-  },
-  "renderMarkdown": true
+  "extraKnownMarketplaces": {},
+  "renderMarkdown": true,
+  "enabledPlugins": {
+    "power-automate@copilot-plugins": true,
+    "workiq@copilot-plugins": true,
+    "microsoft-365-agents-toolkit@copilot-plugins": true,
+    "workiq-productivity@copilot-plugins": true,
+    "fabric-skills@copilot-plugins": true
+  }
 }
