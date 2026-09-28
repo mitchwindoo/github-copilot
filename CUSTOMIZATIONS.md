@@ -6,13 +6,13 @@
 
 | Type | Count |
 | --- | ---: |
-| Skill | 103 |
-| Instruction | 23 |
+| Skill | 106 |
+| Instruction | 24 |
 | Prompt | 3 |
 | Agent | 19 |
-| **Total** | **148** |
+| **Total** | **152** |
 
-- User-space candidates: 147
+- User-space candidates: 151
 - Placement review required: 0
 - Repository-specific overrides: 1
 
@@ -39,6 +39,7 @@
 | change-type-commit-sync | USER | Commit and sync repository changes in a focused thread. Use when: user asks to commit modified files by change type, split work into logical commits, write detailed commit messa... | [skills/change-type-commit-sync/SKILL.md](./skills/change-type-commit-sync/SKILL.md) |
 | critique | USER | Run a 5-dimension expert design review on any HTML artifact in the project — Philosophy / Visual hierarchy / Detail / Functionality / Innovation, each scored 0–10. Outputs a sin... | [skills/critique/SKILL.md](./skills/critique/SKILL.md) |
 | dashboard | USER | Admin / analytics dashboard in a single HTML file. Fixed left sidebar, top bar with user/search, main grid of KPI cards and one or two charts. Use when the brief asks for a "das... | [skills/dashboard/SKILL.md](./skills/dashboard/SKILL.md) |
+| deep-research | USER | Perform multi-source, cited research and distinguish verified facts, conflicting claims, inference, and evidence gaps. | [skills/deep-research/SKILL.md](./skills/deep-research/SKILL.md) |
 | defuddle | USER | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or... | [skills/defuddle/SKILL.md](./skills/defuddle/SKILL.md) |
 | design-brief | USER | Parse a structured design brief written in I-Lang protocol format into a concrete design spec. Eliminates ambiguity from vague requests like "make it professional" by requiring... | [skills/design-brief/SKILL.md](./skills/design-brief/SKILL.md) |
 | design-taste-frontend | USER | Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templa... | [skills/taste-skill/SKILL.md](./skills/taste-skill/SKILL.md) |
@@ -116,12 +117,14 @@
 | replit-deck | USER | Single-file horizontal-swipe HTML deck in the style of Replit Slides's landing-page template gallery. Eight distinct themes (helix, holm, vance, bevel, world-dark, world-mint, a... | [skills/replit-deck/SKILL.md](./skills/replit-deck/SKILL.md) |
 | repo-summary | USER | Summarize recent work performed on the repository. Use when: user asks for a changelog, work summary, progress update, standup notes, what changed, recent activity, or commit hi... | [skills/repo-summary/SKILL.md](./skills/repo-summary/SKILL.md) |
 | saas-landing | USER | Single-page SaaS landing with hero, features, social proof, pricing, and CTA. Respects the active DESIGN.md color/typography/layout tokens. Trigger keywords: "saas landing", "ma... | [skills/saas-landing/SKILL.md](./skills/saas-landing/SKILL.md) |
+| search-first | USER | Research existing tools, libraries, patterns, and repository conventions before writing new code or adding dependencies. | [skills/search-first/SKILL.md](./skills/search-first/SKILL.md) |
 | simple-deck | USER | Single-file horizontal-swipe HTML deck. Built by copying the seed `assets/template.html` (which carries the proven 5-rule iframe nav script) and pasting slide layouts from `refe... | [skills/simple-deck/SKILL.md](./skills/simple-deck/SKILL.md) |
 | social-carousel | USER | A three-card social-media carousel laid out as 1080×1080 squares — three cinematic, on-brand panels with display headlines that connect across the series ("onwards." → "to the n... | [skills/social-carousel/SKILL.md](./skills/social-carousel/SKILL.md) |
 | sprite-animation | USER | A pixel / sprite-style animated explainer slide — full-bleed cream stage, bold display year, animated pixel-art mascot (e.g. Hanafuda card, mushroom, or 8-bit console), kinetic... | [skills/sprite-animation/SKILL.md](./skills/sprite-animation/SKILL.md) |
 | stitch-design-taste | USER | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, a... | [skills/stitch-skill/SKILL.md](./skills/stitch-skill/SKILL.md) |
 | team-okrs | USER | OKR tracker page — quarter banner, three objectives with their key results as progress bars, owner avatars, status pills, and a "this quarter at a glance" sidebar. Use when the... | [skills/team-okrs/SKILL.md](./skills/team-okrs/SKILL.md) |
 | tweaks | USER | Wrap any HTML artifact with a side panel of live, parameterized controls — accent color, type scale, density, motion, theme — that rewrite CSS custom properties in real time and... | [skills/tweaks/SKILL.md](./skills/tweaks/SKILL.md) |
+| verification-loop | USER | Verify completed code changes with the repository's build, type, lint, test, security, and diff checks before claiming readiness. | [skills/verification-loop/SKILL.md](./skills/verification-loop/SKILL.md) |
 | video-shortform | USER | Short-form video generation skill — 3-10 second clips for product reveals, motion teasers, ambient loops. Defaults to Seedance 2 but works the same with Kling 3 / 4, Veo 3 or So... | [skills/video-shortform/SKILL.md](./skills/video-shortform/SKILL.md) |
 | web-prototype | USER | General-purpose desktop web prototype. Single self-contained HTML file built by copying the seed `assets/template.html` and pasting section layouts from `references/layouts.md`.... | [skills/web-prototype/SKILL.md](./skills/web-prototype/SKILL.md) |
 | web-prototype-taste-brutalist | USER | Swiss industrial-print web prototype. Newsprint canvas, monolithic black grotesque, viewport-bleeding numerals, hairline grid dividers, hazard-red accent, ASCII syntax decoratio... | [skills/web-prototype-taste-brutalist/SKILL.md](./skills/web-prototype-taste-brutalist/SKILL.md) |
@@ -140,6 +143,7 @@
 | AI Prompt Engineering & Safety Best Practices | USER | Comprehensive best practices for AI prompt engineering, safety frameworks, bias mitigation, and responsible AI usage for Copilot and LLMs. | [instructions/ai-prompt-engineering-safety-best-practices.instructions.md](./instructions/ai-prompt-engineering-safety-best-practices.instructions.md) |
 | Context Engineering | USER | Guidelines for structuring code and projects to maximize GitHub Copilot effectiveness through better context management | [instructions/context-engineering.instructions.md](./instructions/context-engineering.instructions.md) |
 | Context7-aware development | USER | Use Context7 for authoritative external docs and API references when local context is insufficient | [instructions/context7.instructions.md](./instructions/context7.instructions.md) |
+| Copilot AI Credits usage ledger | USER | Best-effort per-session ledger of GitHub AI Credits usage (reported or estimated from token/model usage) with workspace and repository origin, appended to a versionable JSONL file | [instructions/copilot-credit-usage-ledger.instructions.md](./instructions/copilot-credit-usage-ledger.instructions.md) |
 | Copilot customization placement | USER | Rules for deciding whether Copilot skills, instructions, prompts, and agents belong in user space or a repository | [instructions/customization-placement.instructions.md](./instructions/customization-placement.instructions.md) |
 | Copilot Instructions: Taste Standard | USER |  | [copilot-instructions.md](./copilot-instructions.md) |
 | Custom Agent File Guidelines | USER | Guidelines for creating custom agent files for GitHub Copilot | [instructions/agents.instructions.md](./instructions/agents.instructions.md) |
