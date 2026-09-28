@@ -89,6 +89,14 @@ $record | ConvertTo-Json -Compress -Depth 5 | Add-Content -LiteralPath $ledger -
 
 When asked for session usage, sum `actual_ai_credits` and `estimated_ai_credits` separately for records sharing the `session_id`, and state how many records had unknown usage.
 
+## Rollups and billing codes
+
+Run `python bin/copilot-credit-rollup.py` to regenerate `local-data/copilot-credit-usage-summary.json`. It buckets records by ISO week and by ACS billing period (the 21st through the next 21st, named by the billing date), and breaks every bucket down by repository and then by branch, each sorted by name.
+
+`local-data/acs-billing-projects.json` maps `repo_name` (or `workspace_path`) to the ACS billing project code. Edit it by hand when a new repository appears; the rollup stamps `billing_code`, `project_name`, and `client` onto each repository grouping and lists anything unmatched under `unmapped_repositories`. Use that file as the source of billing codes for any report generated from the ledger.
+
+Use `--check` to verify the committed summary matches the ledger without rewriting it, and `bin/copilot-credit-rollup-selftest.py` after changing the rollup.
+
 ## Repository workflow preference: ledger changes on main (no worktrees)
 Ledger maintenance (backfills, rollups, and one-off ledger fixes) should operate on this repository's main checkout (no worktrees). When performing ledger changes, fetch origin, verify local main is up-to-date with origin/main, stage only the ledger/summary/scripts/instructions changes, commit, and push to origin/main. Do not bypass branch protection; if push is rejected, stop and report rather than force-pushing or merging a PR. This guidance applies specifically to ledger work and does not mean every assistant turn creates a commit; only commit/push ledger changes when explicitly requested by the user.
 

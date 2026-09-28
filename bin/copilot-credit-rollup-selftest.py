@@ -31,9 +31,13 @@ def record(key: str, created: str, credits: float | None = 1.0, **overrides) -> 
 
 
 def summarize(lines: list[str], tmp: Path) -> dict:
+    return rollup.build_summary(write_ledger(lines, tmp), {})
+
+
+def write_ledger(lines: list[str], tmp: Path) -> Path:
     ledger = tmp / "ledger.jsonl"
     ledger.write_text("".join(line + "\n" for line in lines), encoding="utf-8")
-    return rollup.build_summary(ledger)
+    return ledger
 
 
 def by_period(summary: dict) -> dict[str, dict]:
@@ -94,6 +98,39 @@ def main() -> int:
             [json.dumps(record("e", "2026-09-21T00:00:00Z", 1.0, session_created_at_utc="unknown"))], tmp
         )
         assert fallback["records_counted"] == 1 and fallback["records_bucketed_by_fallback_timestamp"] == 1
+
+        # Repository/branch grouping: codes are stamped, branches sort, and sub-totals reconcile.
+        projects = {"org/alpha": {"billing_code": "11384", "project_name": "Alpha", "client": "ACS"}}
+        grouped = rollup.build_summary(
+            write_ledger(
+                [
+                    json.dumps(record("g1", "2026-09-22T00:00:00Z", 3.0, repo_name="org/alpha", branch="main",
+                                      workspace_path="C:/alpha")),
+                    json.dumps(record("g2", "2026-09-23T00:00:00Z", 4.0, repo_name="org/alpha", branch="feature/x",
+                                      workspace_path="C:/alpha")),
+                    json.dumps(record("g3", "2026-09-24T00:00:00Z", 5.0, repo_name="org/beta", branch="main",
+                                      workspace_path="C:/beta")),
+                    json.dumps(record("g4", "2026-09-25T00:00:00Z", 6.0, workspace_path="C:/loose")),  # no repo
+                ],
+                tmp,
+            ),
+            projects,
+        )
+        repos = {r["repo_name"]: r for r in grouped["totals"]["repositories"]}
+        assert set(repos) == {"org/alpha", "org/beta", "unknown"}, repos.keys()
+        assert repos["org/alpha"]["billing_code"] == "11384"
+        assert repos["org/beta"]["billing_code"] is None
+        assert grouped["unmapped_repositories"] == ["org/beta", "workspace:C:/loose"], grouped["unmapped_repositories"]
+        assert repos["org/alpha"]["estimated_ai_credits"] == 7.0
+        assert [b["branch"] for b in repos["org/alpha"]["branches"]] == ["feature/x", "main"]
+        assert repos["unknown"]["workspace_paths"] == ["C:/loose"]
+        assert repos["unknown"]["branches"][0]["branch"] == "unknown"
+        # Repository sub-totals must reconcile with the bucket they sit in, everywhere.
+        for bucket in [grouped["totals"], *grouped["weekly"], *grouped["billing_periods"]]:
+            assert sum(r["records"] for r in bucket["repositories"]) == bucket["records"]
+            assert round(sum(r["estimated_ai_credits"] for r in bucket["repositories"]), 4) == bucket["estimated_ai_credits"]
+            for repo in bucket["repositories"]:
+                assert sum(b["records"] for b in repo["branches"]) == repo["records"]
 
         # Rendering is deterministic, so regeneration is idempotent.
         assert rollup.render(summary) == rollup.render(summarize(lines, tmp))
