@@ -1,0 +1,603 @@
+# Production Line — Ignition ↔ PLC Integration Contract (V01)
+
+| | |
+|---|---|
+| **For** | Ignition / SCADA team, controls (Erick), Operations |
+| **PLC program** | `ProductionLine`, 1756-L81E, `MainTask` periodic 5 ms. All tags in this document are **program scope** |
+| **Built against** | PLC program export **V05** (2026-09-24). Every tag, UDT field and taught frame in this document was checked against V05 |
+| **Status legend** | **LIVE** in V05 · **DERIVE** Ignition computes it from V05 tags · **V02** planned PLC work, not in V05 · **OPS** decision owed by Operations or the team |
+| **Date** | 2026-09-24 |
+
+This document is the integration specification. Sections 1–11 are the interface: responsibilities, how to connect, every tag, every handshake and every code. Section 12 answers the SCADA team's review of the PFMEA deck point by point. Section 13 is the roadmap for V02, Section 14 is the acceptance test, and Section 15 lists the open decisions.
+
+---
+
+## 1. Who owns what
+
+| The PLC owns (the authority) | Ignition owns (requests, records, plan) |
+|---|---|
+| Modes and every mode transition (`modeFSM`) | Requesting modes and commands; showing the result |
+| Controlled Stop, IMSTP, interlocks, automatic fault response | Displaying status, faults, why something is blocked |
+| Robot motion, stations, CNC handshakes | The **queue plan**: which jobs, which route, which CNC, which cubby |
+| Part tracking (`partLocationType/Index`) and job lifecycle | Job identity, SQL records, UniPoint data (frames, maintenance) |
+| Resource availability (`processingResources`) | Taking an asset out of service (`maintenanceMode`) |
+| Physical stack lights | Mirroring the lights on screen; login, roles, audit trail |
+
+**Safety never passes through Ignition.** Ignition has no IMSTP and no E-stop command. The E-stops, light curtains and door interlocks act in the PLC. A checklist that an operator ticks in Ignition is a **record**. Where the PFMEA makes an Ignition action a permissive (the SCADA resume command, slide 10), the PLC enforces it (§13, V02-2).
+
+**The PLC is the authority on in-flight jobs.** SQL and UniPoint mirror the PLC's job status (§7.4). They never override it.
+
+---
+
+## 2. Connecting
+
+| Item | Value |
+|---|---|
+| Driver | Ignition **Allen-Bradley Logix** driver (EtherNet/IP) to the L81E |
+| Tag path | `Program:ProductionLine.<tag>` e.g. `Program:ProductionLine.modeFSM`, `Program:ProductionLine.stagingQueue[3].operations[0].userFrameNumber` |
+| Types | BOOL, DINT (Int4), REAL (Float4), LINT (Int8: µs since 1970-01-01 UTC), STRING (Logix STRING, 82 chars max) |
+| Suggested Ignition UDTs | Mirror `productionQueueEntryUdt`, `jobOperationUdt` and `resourceStatusUdt` field for field (§6.2) |
+| Scan rates | Handshake and mode tags: **100 ms**. Status and resources: 250–500 ms. Queue arrays: leased or on demand, only for the slots on screen |
+| Write security | Ignition may write **only** the tags in §3.1. Make every other tag read-only in the Ignition tag provider. The PLC doesn't lock them |
+| Test Clear | `testClearRequest` wipes the production queue. Restrict it to one commissioning role and keep it off production screens |
+
+**Writes aren't atomic.** A multi-tag write reaches the PLC as several CIP packets, and the PLC scans every 5 ms, so it can see half of a write. Every handshake below therefore runs as: write the data → read it back → raise the request in a **separate** write. Mitchell's FAT (2026-09-16) caught the PLC acting on a request before its data had arrived.
+
+---
+
+## 3. Signal inventory
+
+### 3.1 Ignition writes
+
+| Tag | Type | Style | Meaning | § |
+|---|---|---|---|---|
+| `stagingQueue[0..255]` | productionQueueEntryUdt | data | The queue plan | 6 |
+| `stagingQueueCount` | DINT | data | Number of slots in the plan, 1–256 | 6 |
+| `queueUpdateRequest` | BOOL | 4-phase | Publish the plan | 6 |
+| `resultReportAck` | BOOL | 4-phase | Result read | 7 |
+| `autoModeRequest` | BOOL | maintained | Want Auto | 4 |
+| `stopModeRequest` | BOOL | momentary | Controlled Stop | 4 |
+| `manualRecoveryModeRequest` | BOOL | maintained | Want Manual Recovery | 4 |
+| `engineeringModeRequest` | BOOL | maintained | Want Engineering | 4 |
+| `maintenanceModeRequest` | BOOL | maintained | Want Maintenance | 4 |
+| `cellPauseRequest` | BOOL | set, PLC clears | Pause | 4 |
+| `cellResumeRequest` | BOOL | set, PLC clears | Resume from Pause | 4 |
+| `testClearRequest` | BOOL | maintained ≥ 5 s | Commissioning reset | 4 |
+| `systemReset` | BOOL | one pulse per press | Fault reset | 5 |
+| `faultHistoryReset` | BOOL | hold ≥ 5 s | Clear the fault log | 5 |
+| `processingResources[i].maintenanceMode` | BOOL | maintained | Asset out of service | 8 |
+| `manualRecoveryRewindRequest`, `…RewindJobIndex`, `…RewindToOperation` | BOOL, DINT, DINT | 4-phase | Repeat from an operation | 9 |
+| `manualRecoveryScrapRequest`, `…ScrapJobIndex` | BOOL, DINT | 4-phase | Abort / scrap a job | 9 |
+| `manualRecoveryOverrideRequest`, `…OverrideJobIndex`, `…OverrideLocationType`, `…OverrideLocationIndex` | BOOL, DINT ×3 | 4-phase | Correct where the part is | 9 |
+
+### 3.2 Ignition reads
+
+| Group | Tag | Type | Meaning |
+|---|---|---|---|
+| **Mode** | `modeFSM` | DINT | 0 Stopped · 10 Auto · 20 Manual Recovery · 30 Engineering · 40 Paused · 60 Maintenance · 900 Test Clear. Show this number on every screen |
+| | `cellPaused` | BOOL | Paused is active |
+| | `cellPausePending` | BOOL | Pause requested; waiting for Rikku's transfer to finish and the doors to close |
+| | `testClearActive` | BOOL | Test Clear in progress |
+| | `autoAuthorityGranted`, `manualAuthorityGranted`, `engineeringAuthorityGranted`, `maintenanceAuthorityGranted` | BOOL | Which mode currently has authority |
+| | `r1000AuthorityGranted` | BOOL | Rikku is allowed to take new commands |
+| | `resumePermissivesOk` | BOOL | Doors closed and light curtain clear (Resume permissive) |
+| **Safety status** | `lineEStopActive` | BOOL | Line E-stop pressed |
+| | `cellEStopActive[0..14]` | BOOL | Cell E-stop per resource |
+| | `anyCellEStopActive` | BOOL | Any cell E-stop |
+| | `lightCurtainBroken` | BOOL | Light curtain broken |
+| | `anyDoorOpen` | BOOL | Any enabled station door open |
+| | `gateOpenPermissive` | BOOL | Cell gates may open (doors closed and Rikku home) |
+| **Robot** | `rikkuUserFrameDatabase[0..999]` | rikkuUserFrameUdt | Taught frames: `valid`, `xCoords` … `rCoords`, `railPosition`. The reference for Ignition's frame tolerance check (§6.6) |
+| | `rikkuWithinHomeMargin` | BOOL | Rikku at home (the PFMEA "near home" flag) |
+| | `rikkuOperationActive` | BOOL | Rikku is executing a pick/place/rail move |
+| | `rikkuFSM` | DINT | 0 IMSTP · 10 controlled stop (parked) · 20 fault reset · 30 cycle start · 40 idle · 50–90 command in progress · 110 Engineering |
+| | `rikkuFault` | BOOL | Robot controller faulted |
+| **Faults** | `systemFaulted`, `systemAlarmed`, `faultIsCritical` | BOOL | Line faulted / alarmed (unused today) / IMSTP-class |
+| | `faultResetInProgress`, `faultResetCount`, `faultResetCountRequired`, `faultResetComplete` | BOOL/DINT | Reset progress ("press reset 1 of 2") |
+| | `fault1TimeoutFlag` … `fault5TimeoutFlag` | BOOL | Per-fault indicator (§5.2) |
+| | `faultMessageBuffer[0..249]`, `faultBufferIndex` | STRING, DINT | Ring log of fault texts; index = next write position |
+| **Queue sync** | `queueUpdateAck`, `queueSyncFSM`, `queueSyncErrorCode` | BOOL, DINT, DINT | §6 |
+| | `scadaAcceptAuthorityGranted` | BOOL | The PLC is accepting queue updates (Auto only) |
+| | `productionQueueCount` | DINT | Slots the PLC is running |
+| | `productionQueuePendingSync[0..255]` | BOOL | This slot's new entry was deferred; resend after its result reports |
+| **Jobs** | `productionQueue[i]` | productionQueueEntryUdt | PLC copy of each job, with lifecycle fields (§7) |
+| | `partLocationType[i]`, `partLocationIndex[i]` | DINT | Where the part physically is (§7.3) |
+| | `resultReported[i]` | BOOL | This slot's result has been handed to Ignition |
+| **Result mailbox** | `resultReportPending`, `resultJobId`, `resultJobNumber`, `resultResourceAssetId`, `resultCode`, `resultStatus` | | §7.5 |
+| **Resources** | `processingResources[0..14]` | resourceStatusUdt | `enabled`, `available`, `occupied`, `reserved`, `faulted`, `maintenanceMode`, `activeJobId` |
+| | `physicalAssetConfig[0..14]` | physicalAssetConfigUdt | `assetId`, `assetType`, `resourceName`, `enabled`, `plcDispatchAllowed` |
+| **Lights** | `stackLightGreenCmd`, `…AmberCmd`, `…RedCmd`, `…BlueCmd`, `…PinkCmd`, `…WhiteCmd`, `…FlashCmd` | BOOL | The pattern the PLC is driving (§10) |
+| **Manual Recovery** | `manualRecoveryRewindAccepted` / `…ErrorCode`, `…ScrapAccepted` / `…ErrorCode`, `…OverrideAccepted` / `…ErrorCode` | BOOL / DINT | §9 |
+
+---
+
+## 4. Modes
+
+### 4.1 How each request behaves — LIVE
+
+| Request | Ignition must |
+|---|---|
+| `autoModeRequest` | Hold it high for as long as Auto is wanted; dropping it leaves Auto. **The PLC clears it on any fault**, so after a reset the operator requests Auto again |
+| `stopModeRequest` | Raise it, wait for `modeFSM` = 0, then drop it. The PLC never clears it, and while it's held every Auto request is cancelled |
+| `manualRecoveryModeRequest`, `engineeringModeRequest`, `maintenanceModeRequest` | Hold for as long as the mode is wanted. Drop one before requesting the next |
+| `cellPauseRequest` | Set once; the PLC clears it when Paused is reached |
+| `cellResumeRequest` | Set once; the PLC clears it when Auto is reached. It needs `resumePermissivesOk` and `autoModeRequest` still high. **It stays latched until then**, so the line resumes by itself once the doors close. Clear it from Ignition if the operator gives up (§15-1) |
+| `testClearRequest` | Hold ≥ 5 s. Afterwards send a full queue sync, because the production queue is empty |
+
+**Every mode change goes through Stopped (0).** A fault forces Stopped from any mode, because the PLC clears every mode request while `systemFaulted`. No mode can be entered until the fault is reset.
+
+### 4.2 Transitions and what the operator sees
+
+| From → To | PLC condition | Operator sees during the transition (DERIVE) |
+|---|---|---|
+| Stopped → Auto | `autoModeRequest`, not faulted | — |
+| Auto → Stopped (Controlled Stop) | `stopModeRequest`, a fault, or the Auto request dropped | `modeFSM` = 0 at once, but **"Stopping — Rikku finishing its move"** while `rikkuOperationActive` = 1. Stopped and parked when `rikkuFSM` = 10 and `rikkuWithinHomeMargin` = 1 |
+| Auto → Paused | `cellPauseRequest`, Rikku not reserved, no door open | **"Pausing"** while `cellPausePending` = 1 (flashing amber on the HMI). Paused when `cellPaused` = 1 |
+| Paused → Auto | `cellResumeRequest`, `resumePermissivesOk`, Auto still requested | "Resume blocked: door open / light curtain" from `anyDoorOpen` and `lightCurtainBroken` |
+| Stopped → Manual Recovery / Maintenance / Engineering | Request held, not faulted | — |
+| Any → Stopped on IMSTP | Critical fault (E-stop, light curtain, unclamp failures) | `faultIsCritical` = 1; Rikku stops where it stands (`rikkuFSM` = 0). The interrupted job is **held with error 80** |
+
+### 4.3 Rejection reasons — DERIVE now, V02 from the PLC
+
+The PLC doesn't answer a refused mode request; it just stays where it is. Until the PLC reports a reason (§13, V02-1), show the first matching line:
+
+| Request | Blocked because (first true) |
+|---|---|
+| Any mode | `systemFaulted` → "Reset faults first (`faultResetCount`/`faultResetCountRequired`)" · `stopModeRequest` still high → "Release Stop" · `modeFSM` ≠ 0 and the target isn't reachable directly → "Go to Stopped first" |
+| Auto from Paused | `NOT resumePermissivesOk` → "Close doors / clear light curtain" · `NOT autoModeRequest` → "Auto not requested" |
+| Pause | `cellPausePending` = 1 → "Pausing: waiting for Rikku to finish and doors to close" |
+| Queue update | `NOT scadaAcceptAuthorityGranted` → "Queue changes only in Auto" |
+
+### 4.4 Auto readiness checklist (slide 10)
+
+| Checklist item | Ignition shows (DERIVE) | PLC enforces today |
+|---|---|---|
+| Doors closed | `NOT anyDoorOpen` | For Resume only |
+| Light curtain clear | `NOT lightCurtainBroken` | For Resume only |
+| E-stops reset | `NOT lineEStopActive`, `NOT anyCellEStopActive` | Line E-stop via the fault |
+| Alarms/faults reset | `NOT systemFaulted` | Yes |
+| Robot at a known location | `rikkuWithinHomeMargin` | No |
+| SCADA resume / job validation | Ignition's own checks | No |
+
+The full checklist as a PLC permissive for Auto is V02-2.
+
+---
+
+## 5. Faults and reset
+
+### 5.1 Reset — LIVE
+
+- Pulse `systemReset` once per press. The PLC counts rising edges. **Critical faults need 2 presses, non-critical 1** (`faultResetCountRequired`). Release between presses. The reset completes on release (`faultResetComplete`).
+- A critical fault whose cause is still present re-trips. For example, a line E-stop still pressed keeps `systemFaulted` = 1.
+- HMI reset and physical reset are the same thing to the PLC: one tag, `systemReset`. Slide 10 allows either.
+
+### 5.2 Fault catalogue — LIVE (V05)
+
+| Indicator | Log text | Class | Presses | Enabled | Debounce |
+|---|---|---|---|---|---|
+| `fault1TimeoutFlag` | `FAULT-01: RIKKU UNCLAMPING FAILED` | Critical (IMSTP) | 2 | All modes except Engineering | 10 s |
+| `fault2TimeoutFlag` | `FAULT-02: E-STOP PRESSED` | Critical | 2 | Always | 10 ms |
+| `fault3TimeoutFlag` | `FAULT-03: LIGHT CURTAIN BROKEN` | Critical | 2 | Not in Engineering, Maintenance or Paused (curtains disabled there) | 10 ms |
+| `fault4TimeoutFlag` | `FAULT-04: ASSET UNCLAMPING FAILED` | Critical | 2 | All modes except Engineering | 10 s |
+| `fault5TimeoutFlag` | `FAULT-05: RIKKU FAULTED` | Fault | 1 | Not in Engineering, and not while Rikku is in IMSTP or fault reset | 10 ms |
+
+- **What the flag means:** `faultNTimeoutFlag` is high while that fault's cause is present (after the debounce) and drops when the cause clears. The line stays faulted (`systemFaulted`) until it is reset, even after every flag has dropped.
+- **Alarm summary:** raise an alarm on each flag's rising edge (or on a new log entry, below), keep it until the reset completes (`faultResetComplete`), and show "cause still present" while the flag is high. Ignition timestamps it and records acknowledgement and the user.
+- **History:** when `faultBufferIndex` changes, read `faultMessageBuffer[faultBufferIndex − 1]` (it's a ring of 250) and store it with Ignition's timestamp. The PLC buffer has no timestamps. `faultHistoryReset` clears only the PLC ring.
+- **Alarms (`systemAlarmed`) aren't used yet.** Alarm escalation and the 65 fault-matrix rows still to build come with the fault expansion (V02-3). Escalations that act on equipment, such as single-blocking the CNCs on waste water, chip bin or hopper, will live in the PLC. Ignition shows them and sends the emails.
+
+---
+
+## 6. The queue plan
+
+### 6.1 Principle
+
+Ignition owns the plan and publishes it whole. The PLC accepts the plan only in Auto, validates every entry, then copies it into `productionQueue`. A publish **may replace future work and never interrupts work already started.** Changes such as inserting, re-ordering or re-assigning a CNC all go through the same step: edit the plan, then publish it again.
+
+### 6.2 A staging entry
+
+Header, `stagingQueue[i]`:
+
+| Field | Type | Rule (checked by the PLC, error 20 unless noted) |
+|---|---|---|
+| `valid` | BOOL | 1 for every slot `0 .. stagingQueueCount−1`, with no gaps |
+| `jobId` | DINT | > 0; **unique** in the plan (duplicate → error 30). The PLC tracks reservations by it |
+| `jobNumber`, `partNumber`, `serialNumber` | STRING | Traceability; returned in the result |
+| `loadCubbyIndex` | DINT | 1–5. **The part is already in this cubby** when the job is published |
+| `unloadCubbyIndex` | DINT | 1–5. Must be empty (the PLC has no part-present check on it) |
+| `operationCount` | DINT | 2–50 |
+| `assignedCncAssetId` | DINT | Vertical CNC for the **whole job**: CATA_01–04 = asset 2–5; 0 if the route has none |
+| `fixtureType`, `assignedCncType` | DINT | Carried, not used by the PLC |
+
+Leave the lifecycle fields alone (`status`, `errorCode`, `currentOperation`, `requestedResourceType`, `activeResourceIndex`, `nextResource*`). The PLC doesn't copy them.
+
+Operation, `stagingQueue[i].operations[n]`, n = 0 .. `operationCount−1`:
+
+| Field | Type | Rule |
+|---|---|---|
+| `valid` | BOOL | 1 |
+| `operationCode` | DINT | op 0 = **10 MKIT**, last = **130 UNLOAD**, every op in between 20–120 (§11.1) |
+| `assignedCncAssetId` | DINT | Horizontal CNC ops only: CATH_01 = asset 6; 0 otherwise |
+| `programNumber` | DINT | CNC ops: the work number the CNC must report before cycle start |
+| `fixtureOrientation` | DINT | Carried |
+| `userFrameNumber` | DINT | Expected frame for this op (§6.6) |
+| `userFrameValid` | BOOL | 1 once the coordinates are written |
+| `userFrameXcoords` … `userFrameRcoords` | REAL ×6 | From UniPoint, for this part's fixture: mm and degrees. **This is where Rikku goes** (§6.6) |
+
+Operations beyond `operationCount` are ignored. Ignition need not write them.
+
+### 6.3 Publish handshake — LIVE
+
+```
+Ignition                                     PLC (_04)
+1  write stagingQueue[0..count-1], stagingQueueCount
+2  read back, compare
+3  queueUpdateRequest := 1  ──────────────▶  only in Auto (scadaAcceptAuthorityGranted)
+                                             10 validate each slot        1 slot / 5 ms
+                                             12 check slots above count
+                                             20 copy each slot            1 slot / 5 ms
+                             ◀──────────────  queueUpdateAck := 1          (accepted)
+   or                        ◀──────────────  queueSyncFSM = 90, queueSyncErrorCode ≠ 0 (rejected, nothing changed)
+4  queueUpdateRequest := 0  ──────────────▶  Ack := 0, error cleared, back to idle
+```
+
+- Don't touch staging from step 3 until the Ack or reject. Allow **5 s**; 256 slots take about 2.6 s.
+- A request raised outside Auto gets no answer; it runs when Auto is entered.
+
+| `queueSyncErrorCode` | Meaning | What the operator does |
+|---|---|---|
+| 10 | Count ≤ 0 or > 256, or a smaller count would drop a job that has started or hasn't reported | Keep the count until those jobs finish and report |
+| 20 | An entry fails §6.2 | Fix the entry named in Ignition's own pre-check |
+| 30 | Two entries share a `jobId` | Fix the plan |
+
+**Validate in Ignition first**, with the same rules, and name the slot and field. The PLC's code only says which rule failed, not which slot.
+
+### 6.4 What a publish does to jobs already running — LIVE
+
+A job has **started** once it is In Process (50), or once it is Held, Waiting or Ready (20/30/40) and any of these is true: `currentOperation` > 0, its part has left the load cubby, or its next resource is already secured.
+
+| Slot at publish time | Result |
+|---|---|
+| Empty, not started, or finished and reported | Replaced by the new entry |
+| Started, **same `jobId`** | Data refreshed (frames, program numbers, later ops); status and progress kept |
+| Started with a **different** `jobId`, or In Process | **Deferred:** `productionQueuePendingSync[i]` = 1; the running job is untouched |
+| Finished but result not reported | Deferred |
+
+- **A deferred entry isn't applied by itself.** Once that slot's result has been reported, publish again. The flag clears when the slot is copied.
+- **Slots are stable.** A job keeps its slot from publish until its result is reported. Never move a job to another slot, because the PLC would treat it as a new job.
+- **Removing a job that hasn't started:** publish without it. Either shrink the count, if it was the last slot, or put another job in its slot.
+- **Changing a started job's CNC isn't possible.** A vertical CNC is held for the whole job once the job reaches it.
+
+### 6.5 Planning rules Ignition must follow
+
+- The **load cubby stays dedicated** to its job until the job's result is reported. It's the park buffer: after 30 s without a next station, Rikku parks the part back in its own load cubby. Don't stage a new part in it early.
+- Only publish a job whose part the operator has confirmed in the load cubby.
+- Keep **one unload cubby per job** until the operator empties it.
+
+---
+
+### 6.6 User frames: how to populate them in every job
+
+**What the numbers do.** For each robot move, the PLC hands Rikku the operation's X Y Z W P R, and Rikku writes it into **PR[1:plcDynamicUF]**. The TP program sets `UFRAME[1:dynamicFrame] = PR[1]` and runs its taught pick/place points **relative to that frame**. **The coordinates Ignition writes are the frame Rikku moves in.** The frame **number** is a label that the PLC checks. The PLC then takes the rail position and the side (left/right) from its own taught table `rikkuUserFrameDatabase[number]`.
+
+**What X Y Z W P R are.** They define the user frame of **this part's fixture at this asset and side**: origin X Y Z in **mm** and orientation W P R in **degrees**. They use the same reference and conventions as the taught frames in `rikkuUserFrameDatabase[n].xCoords … rCoords`, which Ignition can read. For the nominal fixture, the job's values equal the taught frame. UniPoint supplies the per-fixture values.
+
+**What the PLC checks, and what it doesn't.**
+
+| Check | Who | Failure |
+|---|---|---|
+| `userFrameNumber` = the expected frame for this asset and side (table below) | PLC | Held 20 / error 50, before any pick |
+| `userFrameValid` = 1 | PLC | Held 20 / 50 |
+| The asset frame is taught (`rikkuUserFrameDatabase[n].valid`) | PLC | Held 20 / 50 |
+| **X Y Z W P R are plausible** | **Ignition, before publishing** | **The PLC does not check coordinates.** A wrong value sends Rikku to a wrong place |
+
+**Ignition must check every operation's coordinates against the taught frame** `rikkuUserFrameDatabase[userFrameNumber]` and refuse to publish if any axis differs by more than the agreed tolerance (§15-7). Also refuse a zero or missing coordinate set.
+
+**Which frame number, per operation:**
+
+| Operation | `userFrameNumber` | X Y Z W P R from UniPoint for… |
+|---|---|---|
+| 10 MKIT (op 0) | 100 + `loadCubbyIndex` | the part's fixture in its **load cubby**. Also used to **park** the part back in that cubby |
+| 20, 30 (CATA A-side) | 200 + CATA number, where CATA number = `assignedCncAssetId` − 1 (asset 2 → CATA_01 → 201) | the fixture on that CATA, A-side |
+| 40, 50 (CATA Opp-A) | 250 + CATA number | the fixture on that CATA, Opp-A |
+| 60 / 70 (CATH) | 301 / 351 | the fixture on CATH_01, A / Opp-A |
+| 80, 90 (wash) | 451 | the fixture in Washer_01 |
+| 100 (flow) | 651 | the fixture in Flow_01 (disabled) |
+| 110 / 120 (RSP) | 501 / 551 | the fixture in RSP_01, A / Opp-A |
+| 130 UNLOAD (last op) | 150 + `unloadCubbyIndex` | the part's fixture in its **unload cubby**. Frames 151–155 are copies of 101–105 until Erick teaches them |
+
+**Worked example.** Route MKIT → CATA A-side → CATA Opp-A → quick wash → UNLOAD. Load cubby 2, unload cubby 2, CATA_02 (`assignedCncAssetId` = 3), nominal fixture. The values are V05's taught frames:
+
+| op | `operationCode` | `userFrameNumber` | X | Y | Z | W | P | R |
+|---|---|---|---|---|---|---|---|---|
+| 0 | 10 | 102 | 812.284 | 700.000 | 389.781 | 0.270 | −6.862 | 1.819 |
+| 1 | 20 | 202 | 811.642 | −700.000 | 291.482 | 0.668 | −6.874 | 177.665 |
+| 2 | 40 | 252 | 811.642 | −700.000 | 191.482 | 0.668 | −6.874 | 177.665 |
+| 3 | 80 | 451 | 812.642 | −700.000 | 186.482 | 0.668 | −6.874 | 177.665 |
+| 4 | 130 | 152 | 812.284 | 700.000 | 389.781 | 0.270 | −6.862 | 1.819 |
+
+`userFrameValid` = 1 on every row, `operationCount` = 5. For a different fixture, UniPoint's values replace these, within tolerance of the taught frame.
+
+**Rules:**
+- Write the frames **before** publishing (§6.3). A job with a missing frame is held at the first move that needs it.
+- **Correcting a frame** on a job that has started: re-publish the slot with the **same `jobId`** and the new values, then Rewind in Manual Recovery if the job is already held with error 50 (§9).
+- If Erick re-teaches an asset frame, `rikkuUserFrameDatabase` changes. Ignition re-reads it for its tolerance check, and UniPoint's values must be updated to match.
+- **Limit:** for washer and RSP the PLC chooses the unit. With one unit of each the frame is predictable; a second unit needs a decision (§15-2).
+
+## 7. Jobs
+
+### 7.1 Status (`productionQueue[i].status`)
+
+| Code | Status | Meaning |
+|---|---|---|
+| 0 | Empty | No job |
+| 10 | Queued | Accepted, not yet evaluated |
+| 20 | **Held** | Stopped by a PLC check; see `errorCode`. **Needs Manual Recovery** |
+| 30 | Waiting for resource | Its next resource is busy; `errorCode` says which kind |
+| 40 | Ready for dispatch | Its next operation is ready to be dispatched |
+| 50 | In process | A resource is working on it |
+| 100 | Complete | Finished, part in the unload cubby |
+| 110 | Aborted | Scrapped through Manual Recovery |
+
+### 7.2 Error codes (`productionQueue[i].errorCode`, also `resultCode`)
+
+| Code | Meaning | Operator action |
+|---|---|---|
+| 0 | None | — |
+| 10 | Invalid entry | Fix the plan |
+| 20 | Resource blocked (washer/RSP/flow/robot busy); with status 30 it just means waiting | None, or check the asset |
+| 30 | Cubby blocked | Clear the cubby |
+| 40 | Assigned CNC unavailable or invalid (with status 30: CNC busy; with status 20: invalid assignment) | Wait, or re-plan the job to another CNC if it hasn't started |
+| 50 | Frame number doesn't match the asset/side, or the asset frame isn't taught | Correct the frame (§6.4, same `jobId`), then Rewind |
+| 60 | Rikku rejected the command frame | Check the frame data |
+| 70 | Door didn't open or close within 10 s | Check the door, then Rewind |
+| 75 | Door didn't read closed before opening | Check the sensor |
+| 80 | Rikku's move was interrupted (IMSTP, robot fault or comm loss) | Manual Recovery: Rewind, Override or Scrap |
+| 90 | Station didn't report ready within 15 s | Check the station |
+| 95 | Station faulted while processing | Check the station, then decide |
+
+### 7.3 Part location (`partLocationType[i]` / `partLocationIndex[i]`)
+
+| Type | Where | Index |
+|---|---|---|
+| 0 | On Rikku | — |
+| 1 / 2 | Vertical / horizontal CNC | resource index |
+| 3 / 4 / 5 | Washer / RSP / Flow | resource index |
+| 10 | Load cubby | cubby 1–5 |
+| 11 | Unload cubby | cubby 1–5 |
+| 12 | None | — |
+| 13 | Scrap | — |
+
+Operation progress: `operations[n].operationStatus` = 0 not started · 10 ready · 20 in process · 100 complete. The times are `operationStartTime` / `operationEndTime` (LINT, µs UTC).
+
+### 7.4 Keeping SQL and UniPoint consistent with the PLC
+
+| PFMEA / SQL action | PLC mechanism | PLC status afterwards |
+|---|---|---|
+| **Repeat** an operation | Manual Recovery **Rewind** to that op | 40, then continues |
+| **Abort** a job | Manual Recovery **Scrap** | 110; result reported with `resultStatus` 110 |
+| **Correct location** | Manual Recovery **Override** | 20 (held) until Rewind or Scrap |
+| **Skip forward** ("skip wash", slide 13) | Not available | **V02-6** |
+| Complete | Normal flow | 100; result reported |
+
+SQL takes a job's final state **only from the result mailbox**, and in-flight state from `productionQueue[i].status`. Ignition never writes a status.
+
+### 7.5 Result mailbox — LIVE
+
+```
+PLC (_10)                                         Ignition
+loads resultJobId, resultJobNumber,
+resultResourceAssetId, resultCode, resultStatus
+resultReportPending := 1  ───────────────────▶   read all five fields, write to SQL
+                          ◀───────────────────   resultReportAck := 1
+resultReportPending := 0  ───────────────────▶   resultReportAck := 0
+(the next result loads only once the Ack is low)
+```
+
+- `resultStatus` = 100 Complete or 110 Aborted. Use it, not `resultCode`: a scrapped job can carry code 0.
+- `resultResourceAssetId` = the asset the job was last on.
+- One result at a time. Results aren't reported in Engineering; they queue and flow afterwards.
+- Test Clear empties the mailbox, and an unacknowledged result is lost. Reconcile SQL after a Test Clear.
+
+---
+
+## 8. Assets, maintenance and holds
+
+| Need | How |
+|---|---|
+| Asset status screen | `processingResources[i]`: `enabled`, `available`, `occupied`, `reserved` (+ `activeJobId`), `faulted` (fault or cell E-stop), `maintenanceMode` |
+| Take an asset out of service (UniPoint overdue, planned maintenance) | Ignition writes `processingResources[i].maintenanceMode` = 1. New work stops going to it; a job already holding it finishes first. Don't set it on a `reserved` asset without warning the operator |
+| Return to service | Write 0 |
+| What happens to the work | **CNCs are never re-routed by the PLC.** A job assigned to a held CNC waits (status 30, error 40). Ignition re-plans: re-publish the job with another `assignedCncAssetId`, which is allowed if it hasn't started. Washer, RSP and Flow go to the first free unit of the type; there's one of each today |
+| Maintenance mode (60) | Line-level mode for working on the cell. Entering it needs no asset condition today. Slides 18–19's "assets in maintenance status first" is V02-2 |
+| 24 h overdue rule | Ignition's rule (OPS). It acts by writing `maintenanceMode` |
+
+Resource map:
+
+| Index | Asset | ID | Type |
+|---|---|---|---|
+| 0 | Rikku | 1 | Robot |
+| 1–4 | CATA_01–04 | 2–5 | Vertical CNC |
+| 5 | CATH_01 | 6 | Horizontal CNC |
+| 6 | Washer_01 | 7 | Washer |
+| 7 | RSP_01 | 8 | RSP |
+| 8 | Flow_01 | 9 | Flow (disabled) |
+| 9–14 | CATA_05/06, CATH_02, Washer_02, RSP_02, Flow_02 | 10–15 | Future, disabled |
+
+---
+
+## 9. Manual Recovery console
+
+These commands are accepted **only in Manual Recovery (20)** and only while Rikku is idle (`rikkuOperationActive` = 0). Each is four-phase: write the fields → raise `…Request` → wait for `…Accepted` = 1 (applied) or `…ErrorCode` = 10 (invalid job, index out of range, or wrong state) → drop the request. Don't change the fields while the request is up.
+
+| Command | Fields | Accepted when status is | Effect |
+|---|---|---|---|
+| **Rewind** (repeat) | `JobIndex` = slot 0–255, `ToOperation` = 0 … `currentOperation` | 50, 20, 100 | Undo progress back to that op, release what the job holds, reset the station sequence, hand it back to dispatch |
+| **Scrap** (abort) | `JobIndex` | Anything but 0 and 110 | Release everything; status 110, location 13; result reported |
+| **Override** (location) | `JobIndex`, `LocationType`, `LocationIndex` (§7.3) | 50, 20 | Records where the part really is; job held (20) |
+
+- **After an IMSTP** (error 80), Rikku never restarts a half-done program by itself. The operator looks at the cell, uses `rikkuWithinHomeMargin` (slide 11's "near home" flag), and chooses Rewind (repeat the move), Override then Rewind (the part is elsewhere), or Scrap.
+- To fix a held job's data (e.g. error 50): re-publish the slot with the **same `jobId`** in Auto, then Stop → Manual Recovery → Rewind → Stop → Auto.
+- Robot moves in Manual Recovery are the dispatched job's own moves. Jogging Rikku from the HMI step by step (slide 13) is V02-6.
+
+---
+
+## 10. Lights
+
+The HMI mirrors the stack-light command bits. It doesn't calculate the pattern itself.
+
+| `modeFSM` | Pattern today (`_13`) |
+|---|---|
+| 10 Auto | Green solid |
+| 40 Paused | Amber solid |
+| 0 Stopped, faulted | Red flashing |
+| 0 Stopped, not faulted | Blue solid |
+| 60 Maintenance | Pink flashing |
+| 30 Engineering | White solid |
+| 20 Manual Recovery | All colours flashing |
+
+**Differences from the PFMEA (slides 6, 17, 22), all V02-5:** solid red (Controlled Stop) vs flashing red (IMSTP), flashing amber during the pause transition (show `cellPausePending` on the HMI until then), CNC-level green/amber patterns, Engineering "ant lights", and the cubby light legend. The physical tower has red, amber, green and blue only; pink and white are OPS (§15-3).
+
+---
+
+## 11. Reference
+
+### 11.1 Operation codes
+
+| Code | Operation | Resource | Side | Frame (§6.6) |
+|---|---|---|---|---|
+| 10 | MKIT (load) | Rikku, from load cubby | — | 100 + load cubby |
+| 20 / 30 | CATA A-side / A-side debur | Job's vertical CNC | A | 200 + CATA n° |
+| 40 / 50 | CATA Opp-A / Opp-A debur | Job's vertical CNC | Opp-A | 250 + CATA n° |
+| 60 / 70 | CATH A-side / Opp-A | Op's horizontal CNC | A / Opp-A | 301 / 351 |
+| 80 / 90 | Quick / full wash | Washer (PLC picks) | Opp-A | 451 |
+| 100 | Flow | Flow (PLC picks, disabled) | Opp-A | 651 |
+| 110 / 120 | RSP A-side / Opp-A | RSP (PLC picks) | A / Opp-A | 501 / 551 |
+| 130 | UNLOAD | Rikku, to unload cubby | — | 150 + unload cubby |
+
+### 11.2 Frames
+
+See §6.6: what the coordinates do, which frame number goes on each operation, a worked example, and the tolerance check Ignition must run.
+
+### 11.3 Timing
+
+| Item | Value |
+|---|---|
+| PLC scan | 5 ms |
+| Publish, 256 slots | ≈ 2.6 s (allow 5 s) |
+| Park timeout (part waiting in a station for its next resource) | 30 s |
+| Door open/close timeout | 10 s → held 70 |
+| Station ready timeout | 15 s → held 90 |
+| Test Clear hold | ≥ 5 s |
+| Fault log reset hold | ≥ 5 s |
+
+---
+
+## 12. Answers to the SCADA review of the PFMEA deck
+
+### 12.1 His ten work packages
+
+| # | Package | PLC support |
+|---|---|---|
+| 1 | Mode screens + requests, mode number on screen, Test Clear kept out of production | **LIVE**: §4, §2 |
+| 2 | Transition status | **DERIVE**: §4.2 (stopping, pausing, parked). PLC-reported reasons: V02-1 |
+| 3 | Alarm summary, detail, history, acknowledgement, escalation, email | **LIVE** for the 5 faults (§5.2); acknowledgement, history, email in Ignition. More faults, alarms and escalation: V02-3 |
+| 4 | Stack and cubby lights mirrored | **LIVE** for the stack (§10); full PFMEA patterns and cubby lights: V02-5 |
+| 5 | Controlled Stop and Pause/Resume, login | **LIVE**: §4.1–4.2. Login is Ignition's |
+| 6 | Auto readiness checklist + SCADA resume | **DERIVE** for display (§4.4); PLC enforcement: V02-2 |
+| 7 | Manual Recovery console with the near-home flag | **LIVE**: §9, `rikkuWithinHomeMargin`. Skip-forward and HMI-commanded moves: V02-6 |
+| 8 | Maintenance: UniPoint feed, drag into the queue, 24 h rule, completion | **LIVE** mechanism: `maintenanceMode` (§8) and publish (§6). Rules: OPS |
+| 9 | Cubby loading | **LIVE** rules (§6.5); cubby sensors, door and lights: V02-7 |
+| 10 | Login and audit trail | Ignition |
+
+### 12.2 His clarifications
+
+| He said | Answer |
+|---|---|
+| The HMI mirrors the PLC's light pattern | **Agreed.** Mirror the `stackLight…Cmd` bits (§10) |
+| Queue changes are published as a new approved plan | **Agreed. That's exactly the publish handshake** (§6). Maintenance insertion is a publish too |
+| "Asset unavailable" is a scheduling hold that won't silently reroute | **Agreed for CNCs**: the PLC never moves a CNC job; it waits (§8). Washer/RSP/Flow take the first free unit by design. Re-planning a CNC job is Ignition's move |
+| Escalations that act on equipment live in the PLC | **Agreed.** It matches the team's answer on waste water, chip bin and hopper: an escalated alarm that single-blocks the CNCs, built in the PLC (V02-3) |
+| Checklist confirmations are records, not interlocks | **Mostly.** The SCADA resume command and SCADA job validation on slide 10 become **PLC permissives** (V02-2); the rest are records |
+
+### 12.3 The items he'd add
+
+| Item | Answer |
+|---|---|
+| PLC-to-SCADA interface definition | **This document.** Mode status §4, permissives §4.4, rejection reasons §4.3 (PLC codes in V02-1), request/ack for every command §4, §6, §7.5, §9, robot home §3.2, faults §5, lights §10, asset status §8 |
+| Job-status consistency across SQL, UniPoint and the PLC for repeat/skip/abort | §7.4. Repeat and abort exist; skip is V02-6 |
+| Cubby unload, scrap and alarms | Unload cubby per job (§6.5); scrap = status 110 + location 13, and the operator takes the part. Cubby sensors and alarms: V02-7 |
+| Asset hold visibility | §8 |
+| Maintenance details | §8, rules OPS |
+| Signal inventory | §3. New tags are added to it as the fault matrix grows |
+
+### 12.4 The decisions he asked for
+
+| Decision | Answer | Source |
+|---|---|---|
+| Light curtain, slide 24 vs 31 | Curtains are **disabled** in Paused, Maintenance and Engineering and **critical wherever active** (Auto, Manual Recovery). Built: FAULT-03 | Team, 2026-09-23 |
+| Engineering assets, slide 4 vs 15 | Assets **may continue** in Engineering; slide 4 corrected | Team, 2026-09-23 |
+| Fault and stop behaviour outside Auto | Any fault → Stopped from every mode (§4.1). Stop request → Stopped from every mode. IMSTP-class faults stop Rikku where it stands in any mode except Engineering, which needs the pendant to recover | Built |
+| HMI reset vs physical reset | Both allowed; same tag, `systemReset` (§5.1) | Slide 10 |
+| Light legend, priority, pink and ant lights | Current legend §10. The tower hardware has no pink or white segments: **OPS** (§15-3) | Open |
+| Home vs near home for complete/abort | Controlled Stop finishes the current move, ends at home, and parks. An IMSTP holds the job (error 80) and the operator decides using `rikkuWithinHomeMargin`. Rikku never auto-completes a half-done move | Erick, 2026-09-24 |
+| Second-robot handoff (slide 24) | **Not in scope.** The line has one robot; it's a deck note | — |
+| Roles, email policy, maintenance rules | **OPS** | Open |
+| Aborted-part destination | Today the operator removes a scrapped part (location 13). "Rikku carries it to an empty cubby" (slide 11) is V02-6 and needs the destination decided: **OPS** (§15-4) | Open |
+| Deck clean-up | Slide 8 cross-references (31, not 32; slide 11, not 12); tower colours vs legend (slide 6) | Team |
+
+---
+
+## 13. V02: planned PLC work, in order
+
+| # | Item | Routine | Gives Ignition |
+|---|---|---|---|
+| V02-1 | **Mode request feedback**: requested vs current mode, reject reason code, stop type and cause | `_03` | Real rejection reasons instead of §4.3 derivation |
+| V02-2 | **Auto readiness as a PLC permissive**, including the SCADA resume and job-validation bits and Maintenance-entry preconditions | `_03` | Slide 10, 18–19 enforced |
+| V02-3 | **Fault/alarm code interface**: active code per fault/alarm, alarm level, escalation, the fault-matrix rows | `_02` | Summary, acknowledgement and escalation on codes, not strings |
+| V02-4 | **Heartbeat**: `scadaHeartbeat` toggled by Ignition, `scadaCommOk` from the PLC | `_04` | Comm-loss detection both ways |
+| V02-5 | **Full light patterns + cubby lights** exposed as bits | `_13` | Slides 6, 17, 22 |
+| V02-6 | **Manual Recovery actions**: skip forward, reroute, HMI-commanded moves, carry an aborted part to a cubby | `_11` `_09` `_08` | Slides 11 and 13 |
+| V02-7 | **Cubby I/O**: open command, door, part present, alarms | new | Cubby screens and alarms |
+
+The CNC-level items (single-block, cycle-start guard, work-number timeout) wait for the frozen Mazak I/O map.
+
+---
+
+## 14. Integration acceptance tests
+
+Run against Logix Echo first, then on the line. Controls has already run the PLC side of tests 3–6, 8 and 12 in simulation on V05; all passed.
+
+| # | Test | Pass |
+|---|---|---|
+| 1 | Publish 5 valid jobs in Auto | Ack; `productionQueueCount` = 5; jobs run to unload; 5 results with `resultStatus` 100 |
+| 2 | Publish outside Auto | No answer until Auto; then Ack |
+| 3 | Entry with cubby 12 / op count 60 / route not starting at MKIT | Reject 20; nothing changed; PLC stays in Run |
+| 4 | Two entries with the same `jobId` | Reject 30 |
+| 5 | Shrink the count below a running job | Reject 10 |
+| 6 | Re-publish a mid-route slot with a new `jobId` | Deferred (`PendingSync` = 1); the running job finishes; the next publish applies the new job |
+| 7 | Re-publish a held job (50) with the corrected frame, same `jobId`, then Rewind | Job continues |
+| 8 | Hold the Ack high for 1 s after `resultReportPending` falls | No result lost |
+| 9 | Stop mid-transfer | `modeFSM` 0 at once; Rikku finishes, parks at home (`rikkuFSM` 10) |
+| 10 | Pause mid-transfer | `cellPausePending` until the transfer ends and doors close; then `cellPaused` |
+| 11 | E-stop mid-pick | Critical fault, 2 resets; job held 80; Scrap or Rewind clears it |
+| 12 | Manual Recovery Rewind with `JobIndex` 300 | `ErrorCode` 10; PLC stays in Run |
+| 13 | `maintenanceMode` on the CNC a waiting job is assigned to | Job waits (30/40); after re-publishing with another CNC it runs there |
+| 14 | Test Clear 5 s | Queue empty, mailbox empty; staging unchanged; re-publish restores |
+| 15 | Publish a job whose frame number is wrong on one op | Held 20/50 before any pick; no motion |
+| 16 | Ignition pre-check: an op whose coordinates are outside tolerance of the taught frame | Ignition refuses to publish (the PLC would move there) |
+
+---
+
+## 15. Open decisions
+
+| # | Decision | Owner |
+|---|---|---|
+| 1 | Should the PLC drop a Resume it can't honour instead of resuming later on its own? | Erick |
+| 2 | Frames when a second washer or RSP is enabled: per-unit frames from Ignition, or the PLC's frame plus fixture offsets from the job | Erick + SCADA |
+| 3 | Stack tower: pink and white segments, or a new legend; Engineering ant lights | OPS |
+| 4 | Aborted-part destination (load or unload cubby) | OPS |
+| 5 | Roles (who may Test Clear, Scrap, Override), email groups, maintenance rules incl. the 24 h overdue hold | OPS |
+| 6 | Controller memory is at 84%: shrinking `operations[50]` to 20 would change the staging UDT (and this contract's §6.2 limit) | Team |
+| 7 | Frame tolerance for Ignition's coordinate check (§6.6): how far a fixture's X Y Z (mm) and W P R (°) may differ from the taught frame. The PLC doesn't check coordinates, so this is the only guard against a bad UniPoint value | Erick + SCADA |
+
