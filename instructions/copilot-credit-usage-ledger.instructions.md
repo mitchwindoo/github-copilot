@@ -1,13 +1,13 @@
 ---
-description: 'Best-effort per-session ledger of GitHub AI Credits usage (reported or estimated from token/model usage) with workspace and repository origin, appended to a versionable JSONL file'
+description: 'Best-effort append-only ledger of GitHub AI Credits usage from local Copilot session telemetry, with normalized repository origin for cross-system matching'
 applyTo: '**'
 ---
 
 # Copilot AI Credits usage ledger
 
-Keep a running, per-session tally of GitHub AI Credits by appending one incremental record per completed turn to a local JSONL ledger.
+Keep a running, append-only ledger of Copilot usage from the local session store. The collector records one ledger entry per observed model-usage event, plus a non-billable marker for sessions without recorded usage events.
 
-This is **best-effort**. Instructions cannot read hidden billing telemetry, and no session-end callback is guaranteed. Record only values that are explicitly visible in the current context (for example a usage summary, tool result, or client status output). Do not infer, recall, or approximate hidden counters. The authoritative source is always the GitHub billing usage report.
+This is **best-effort**, not a billing export. The local session store provides token and model telemetry, not an authoritative billed-credit amount. Keep actual credits `null` unless GitHub explicitly exposes the exact amount. The authoritative source is always the GitHub billing usage report.
 
 ## Ledger location
 
@@ -17,16 +17,19 @@ This is **best-effort**. Instructions cannot read hidden billing telemetry, and 
 | PowerShell | `$(if ($env:COPILOT_HOME) { $env:COPILOT_HOME } else { Join-Path $HOME '.copilot' })\copilot-usage\copilot-credit-usage.jsonl` |
 
 - Create the `copilot-usage` directory and the file on first write.
-- The ledger is intentionally versionable so it can be committed and synced across systems with these instructions. Treat every line as shareable: write only the fields below, never sensitive data.
-- When merging copies from multiple systems, keep all lines and drop exact duplicate `record_key` values other than `unknown`.
+- The ledger is intentionally versionable so it can be synced across systems. Treat every line as shareable: write only the fields below, never sensitive data.
+- Append; never replace the source ledger. Rebuild the summary and HTML report from it after collection.
+- When merging copies from multiple systems, retain all lines. `record_key` includes the session, local usage-event ID, and a fingerprint of its immutable telemetry fields, so same-ID events with different usage do not collide; rollup drops exact duplicates.
+- Repository grouping is by normalized, credential-free `repo_remote` origin, not workspace path or display name. HTTPS, SSH, and scp-style remotes for the same host/path normalize to the same canonical HTTPS origin. A missing origin stays isolated by workspace/session identity; never merge it by repo name alone.
 - Append only. Never rewrite, reorder, or delete existing lines, except to remove a line that contains sensitive data.
 
 ## When to record
 
-- Append exactly one record at the end of each completed turn, after the turn's work is done.
-- Record **incremental** usage for that turn only. Never write a cumulative session total as a usage value; the running tally is the sum of the session's records.
-- Build `record_key` as `<session_id>:<turn_id>` when both are exposed. Before appending, skip the write if that key already exists in the ledger. When either part is `unknown`, append without dedupe and set `record_key` to `unknown`.
-- If the client only exposes cumulative session counters, store the difference from the previous record for the same session. If no previous value exists for that session, set token fields to `null` with a reason instead of writing the cumulative value.
+- After each completed Copilot turn/session, run `python bin/copilot-credit-collect.py` inside the repository workspace to discover its current remote and collect from `${COPILOT_HOME:-$HOME/.copilot}/session-store.db`. Pass `--repo-origin <remote>` outside that repository; `--session-db` and `--ledger` allow explicit local paths.
+- The collector opens the session database read-only, reads only session metadata and `assistant_usage_events`, and never reads prompts, responses, or transcript content.
+- It writes one **incremental** entry per usage event, never a cumulative session total. The key is `<session_id>:usage:<local_event_id>:<fingerprint>`; turn index is recorded separately. Older `<session_id>:usage:<local_event_id>` keys are recognized during migration. Existing legacy session aggregates are not combined with event rows when that could double count.
+- Sessions with no usage events receive one `record_kind: "session_marker"` row with null usage values. This means **unknown**, not zero. If usage telemetry later appears, the report treats event entries as authoritative and suppresses the old marker for coverage.
+- Re-running collection is safe: already-recorded usage-event and session-marker keys are skipped. Each computer collects its own local session store; merge the resulting append-only ledger copies for cross-system coverage.
 
 ## Record fields
 
@@ -37,13 +40,14 @@ Use `"unknown"` for missing text fields and `null` for missing numeric fields. N
 | `schema_version` | `1` |
 | `recorded_at_utc` | ISO 8601 UTC timestamp, for example `2026-01-31T18:04:05Z` |
 | `session_id`, `turn_id`, `record_key` | Identifiers exposed by the client, else `"unknown"` |
+| `record_kind` | `"usage_event"` for a source event; `"session_marker"` when a session has no usage event |
 | `client` | `"vscode"`, `"copilot-cli"`, `"copilot-app"`, or another explicitly known client, else `"unknown"` |
 | `workspace_path` | Current working directory or workspace root |
-| `repo_remote` | `git remote get-url origin` with any `user:token@` credentials removed |
+| `repo_remote` | Canonical, credential-free repository origin, or `"unknown"` |
 | `repo_name` | `owner/repo` parsed from the remote |
 | `branch` | `git branch --show-current`, else `"unknown"` |
 | `model` | Model identifier exposed for the turn |
-| `input_tokens`, `cached_input_tokens`, `cache_write_tokens`, `output_tokens` | Turn deltas when exposed; `input_tokens` excludes cached tokens |
+| `input_tokens`, `cached_input_tokens`, `cache_write_tokens`, `output_tokens` | Usage-event deltas; `input_tokens` excludes cached and cache-write tokens |
 | `actual_ai_credits` | Credits explicitly reported for this turn in visible client output, else `null`; never derived from token counts |
 | `estimated_ai_credits` | Estimate from the method below, else `null` |
 | `estimate_basis` | `{ "pricing_source_url", "pricing_retrieved_utc", "tier", "usd_per_1m": { "input", "cached_input", "cache_write", "output" }, "usd_per_ai_credit" }`, else `null` |
@@ -54,15 +58,13 @@ Use `"unknown"` for missing text fields and `null` for missing numeric fields. N
 
 ## Estimating AI credits
 
-Estimate only when the model and token deltas for the turn are exposed and exact credits are not.
+Estimate only when the model and all required token deltas for the usage event are present and exact credits are not.
 
-1. Read current rates from the official GitHub page [Models and pricing for GitHub Copilot](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing). Do not use third-party rates, memory, or cached tables from another session.
-2. Confirm the USD-to-credit conversion from the same page or [GitHub Copilot billing](https://docs.github.com/en/billing/concepts/product-billing/github-copilot-billing). As of this writing it is `1 AI credit = $0.01 USD`.
-3. Select the row matching the model and tier. Use the long-context tier only when the turn's input tokens exceed the published threshold.
-4. Compute:
-   `usd = (input * rate_input + cached_input * rate_cached + cache_write * rate_cache_write + output * rate_output) / 1_000_000`
-   `estimated_ai_credits = usd / usd_per_ai_credit`
-5. Round to 4 decimal places and store the exact rates and source in `estimate_basis`.
+1. The collector fetches the current official [Models and pricing for GitHub Copilot](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing) page on every run. No third-party, memory, or stale rate table is used.
+2. Confirm `1 AI credit = $0.01 USD` on that page. If the page cannot be retrieved or its pricing table cannot be parsed, keep estimates `null` and report the collection as degraded.
+3. Select the row matching the model. Apply a long-context tier only when that event's total input tokens exceed the published threshold.
+4. Compute per event: `uncached_input = input_tokens_total - cached_input - cache_write`; then `usd = (uncached_input * rate_input + cached_input * rate_cached + cache_write * rate_cache_write + output * rate_output) / 1_000_000`; `estimated_ai_credits = usd / usd_per_ai_credit`.
+5. Round to 4 decimal places and store the exact rates, tier, retrieval date, and source in `estimate_basis`. The session store's `total_nano_aiu` and request multiplier are not used as actual credits.
 
 Set `estimated_ai_credits` to `null` and explain in `notes` when the model is not listed, the tier is ambiguous, the pricing page is unreachable, or any required token delta is missing.
 
@@ -87,17 +89,17 @@ $record | ConvertTo-Json -Compress -Depth 5 | Add-Content -LiteralPath $ledger -
 
 ## Reporting the tally
 
-When asked for session usage, sum `actual_ai_credits` and `estimated_ai_credits` separately for records sharing the `session_id`, and state how many records had unknown usage.
+When asked for session usage, sum `actual_ai_credits` and `estimated_ai_credits` separately for records sharing the `session_id`, and state how many records had unknown usage. Report session coverage separately; a no-telemetry marker is not evidence of zero spend.
 
 ## Rollups and billing codes
 
 Run `python bin/copilot-credit-rollup.py` to regenerate `copilot-usage/copilot-credit-usage-summary.json`. It buckets records by ISO week and by ACS billing period (the 21st through the next 21st, named by the billing date), and breaks every bucket down by repository and then by branch, each sorted by name.
 
-`copilot-usage/acs-billing-projects.json` maps `repo_name` (or `workspace_path`) to the ACS billing project code. Edit it by hand when a new repository appears; the rollup stamps `billing_code`, `project_name`, and `client` onto each repository grouping and lists anything unmatched under `unmapped_repositories`. Use that file as the source of billing codes for any report generated from the ledger.
+`copilot-usage/acs-billing-projects.json` maps normalized `repo_origin` first, then `repo_name` or `workspace_path`, to the ACS billing project code. Edit it by hand when a new repository appears; the rollup stamps `billing_code`, `project_name`, and `client` onto each origin grouping and lists anything unmatched under `unmapped_repositories`. Use that file as the source of billing codes for any report generated from the ledger.
 
 Use `--check` to verify the committed summary matches the ledger without rewriting it, and `bin/copilot-credit-rollup-selftest.py` after changing the rollup.
 
-Run `bin\build-copilot-usage-report.ps1` on Windows to regenerate both the summary and the self-contained `copilot-usage/copilot-credit-usage-report.html`, then open the report in the default browser. Pass `-NoOpen` to build without opening it; `python bin\copilot-credit-report.py --open` is the direct Python equivalent. The report embeds the ledger aggregates and supports ACS billing-cycle, manual date-range, repository, and branch filters without a server or internet connection.
+Collect first, then run `python bin/copilot-credit-report.py --open` to regenerate the summary and self-contained `copilot-usage/copilot-credit-usage-report.html` and open the report. The report embeds ledger aggregates and supports ACS billing-cycle, manual date-range, repository-origin, and branch filters without a server. It shows sessions with captured usage separately from sessions with unknown usage. Use the same Python commands from the Copilot configuration root on Windows.
 
 ## Repository workflow preference: ledger changes on main (no worktrees)
 Ledger maintenance (backfills, rollups, and one-off ledger fixes) should operate on this repository's main checkout (no worktrees). When performing ledger changes, fetch origin, verify local main is up-to-date with origin/main, stage only the ledger/summary/scripts/instructions changes, commit, and push to origin/main. Do not bypass branch protection; if push is rejected, stop and report rather than force-pushing or merging a PR. This guidance applies specifically to ledger work and does not mean every assistant turn creates a commit; only commit/push ledger changes when explicitly requested by the user.

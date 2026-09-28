@@ -43,8 +43,11 @@ def build_rows(parsed: dict) -> list[dict]:
             {
                 "date": row["date_utc"],
                 "repo": scope["repo_name"],
+                "repo_identity": scope["repo_key"],
+                "repo_origin": scope["repo_origin"],
                 "branch": scope["branch"],
                 "workspace": scope["workspace_path"],
+                "session_id": row["session_id"],
                 "billing_code": scope["billing_code"],
                 "project_name": scope["project_name"],
                 "client": scope["client"],
@@ -58,6 +61,38 @@ def build_rows(parsed: dict) -> list[dict]:
         )
     rows.sort(key=lambda item: (item["date"], item["repo"], item["branch"]))
     return rows
+
+
+def build_sessions(parsed: dict) -> list[dict]:
+    """Combine usage events and no-telemetry markers into one row per session."""
+    sessions: dict[str, dict] = {}
+    for marker in parsed["session_markers"]:
+        scope = marker["scope"]
+        sessions[marker["session_id"]] = {
+            "session_id": marker["session_id"],
+            "date": marker["date_utc"],
+            "repo": scope["repo_name"],
+            "repo_identity": scope["repo_key"],
+            "repo_origin": scope["repo_origin"],
+            "branch": scope["branch"],
+            "has_usage": False,
+        }
+
+    for row in parsed["rows"]:
+        session_id = row["session_id"]
+        if session_id == "unknown":
+            continue
+        scope = row["scope"]
+        sessions[session_id] = {
+            "session_id": session_id,
+            "date": row["date_utc"],
+            "repo": scope["repo_name"],
+            "repo_identity": scope["repo_key"],
+            "repo_origin": scope["repo_origin"],
+            "branch": scope["branch"],
+            "has_usage": True,
+        }
+    return sorted(sessions.values(), key=lambda item: (item["date"], item["repo_identity"], item["session_id"]))
 
 
 def build_periods(summary: dict) -> list[dict]:
@@ -84,7 +119,9 @@ def build_payload(summary: dict, parsed: dict, ledger_path: Path) -> dict:
         "invalid_records": summary["invalid_records"],
         "duplicate_record_keys_skipped": summary["duplicate_record_keys_skipped"],
         "records_bucketed_by_fallback_timestamp": summary["records_bucketed_by_fallback_timestamp"],
+        "session_coverage": summary["session_coverage"],
         "billing_periods": build_periods(summary),
+        "sessions": build_sessions(parsed),
         "rows": build_rows(parsed),
     }
 

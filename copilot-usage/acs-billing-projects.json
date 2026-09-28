@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "description": "Maps a repository (or a workspace path for non-repo folders) to the ACS billing project code used on invoices. Edit this file by hand; copilot-credit-rollup.py reads it and stamps billing_code onto every repository grouping in the generated summary. An entry with a null billing_code is known but not yet assigned a code.",
-  "matching": "repo_name is matched first, then workspace_path. Unmatched records are reported under unmapped_repositories in the summary.",
+  "description": "Maps a repository origin, repository name, or workspace path for non-repo folders to the ACS billing project code used on invoices. Edit this file by hand; copilot-credit-rollup.py reads it and stamps billing_code onto every repository grouping in the generated summary. An entry with a null billing_code is known but not yet assigned a code.",
+  "matching": "Normalized repo_origin is matched first, then repo_name, then workspace_path. HTTPS, SSH, and scp-style remotes for the same host and path normalize to one origin. Unmatched records are reported under unmapped_repositories in the summary.",
   "projects": [
     {
       "repo_name": "NXEdge/SHD-Ignition-BOI1",
+      "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
       "billing_code": "11384",
       "project_name": "SHD Ignition BOI1",
       "client": "NxEdge"

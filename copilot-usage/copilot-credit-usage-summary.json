@@ -4,14 +4,77 @@
   "billing_periods": [
     {
       "actual_ai_credits": 0.0,
-      "billed_on": "2026-09-21",
-      "end_utc_exclusive": "2026-09-21",
-      "estimated_ai_credits": 134231.9859,
-      "estimated_cost_usd": 1342.32,
-      "records": 55,
+      "billed_on": "2026-07-21",
+      "end_utc_exclusive": "2026-07-21",
+      "estimated_ai_credits": 3671.7152,
+      "estimated_cost_usd": 36.72,
+      "records": 717,
       "records_with_actual": 0,
-      "records_with_estimate": 54,
-      "records_without_estimate": 1,
+      "records_with_estimate": 717,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "acs-ml/feature/manual-load-station",
+              "estimated_ai_credits": 615.0039,
+              "estimated_cost_usd": 6.15,
+              "records": 130,
+              "records_with_actual": 0,
+              "records_with_estimate": 130,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 566.4926,
+              "estimated_cost_usd": 5.66,
+              "records": 115,
+              "records_with_actual": 0,
+              "records_with_estimate": 115,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 2490.2187,
+              "estimated_cost_usd": 24.9,
+              "records": 472,
+              "records_with_actual": 0,
+              "records_with_estimate": 472,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 3671.7152,
+          "estimated_cost_usd": 36.72,
+          "project_name": "SHD Ignition BOI1",
+          "records": 717,
+          "records_with_actual": 0,
+          "records_with_estimate": 717,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc_inclusive": "2026-06-21"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "billed_on": "2026-08-21",
+      "end_utc_exclusive": "2026-08-21",
+      "estimated_ai_credits": 437.0869,
+      "estimated_cost_usd": 4.37,
+      "records": 144,
+      "records_with_actual": 0,
+      "records_with_estimate": 144,
+      "records_without_estimate": 0,
       "repositories": [
         {
           "actual_ai_credits": 0.0,
@@ -20,27 +83,42 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 134223.3627,
-              "estimated_cost_usd": 1342.23,
-              "records": 53,
+              "estimated_ai_credits": 437.0869,
+              "estimated_cost_usd": 4.37,
+              "records": 144,
               "records_with_actual": 0,
-              "records_with_estimate": 52,
-              "records_without_estimate": 1
+              "records_with_estimate": 144,
+              "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 134223.3627,
-          "estimated_cost_usd": 1342.23,
+          "estimated_ai_credits": 437.0869,
+          "estimated_cost_usd": 4.37,
           "project_name": "SHD Ignition BOI1",
-          "records": 53,
+          "records": 144,
           "records_with_actual": 0,
-          "records_with_estimate": 52,
-          "records_without_estimate": 1,
+          "records_with_estimate": 144,
+          "records_without_estimate": 0,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
-            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
           ]
-        },
+        }
+      ],
+      "start_utc_inclusive": "2026-07-21"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "billed_on": "2026-09-21",
+      "end_utc_exclusive": "2026-09-21",
+      "estimated_ai_credits": 178890.6095,
+      "estimated_cost_usd": 1788.91,
+      "records": 5486,
+      "records_with_actual": 0,
+      "records_with_estimate": 5485,
+      "records_without_estimate": 1,
+      "repositories": [
         {
           "actual_ai_credits": 0.0,
           "billing_code": "1176",
@@ -65,8 +143,39 @@
           "records_with_estimate": 2,
           "records_without_estimate": 0,
           "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
           "workspace_paths": [
             "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 178881.9863,
+              "estimated_cost_usd": 1788.82,
+              "records": 5484,
+              "records_with_actual": 0,
+              "records_with_estimate": 5483,
+              "records_without_estimate": 1
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 178881.9863,
+          "estimated_cost_usd": 1788.82,
+          "project_name": "SHD Ignition BOI1",
+          "records": 5484,
+          "records_with_actual": 0,
+          "records_with_estimate": 5483,
+          "records_without_estimate": 1,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
       ],
@@ -76,11 +185,11 @@
       "actual_ai_credits": 0.0,
       "billed_on": "2026-10-21",
       "end_utc_exclusive": "2026-10-21",
-      "estimated_ai_credits": 581.9846,
-      "estimated_cost_usd": 5.82,
-      "records": 7,
+      "estimated_ai_credits": 9219.7582,
+      "estimated_cost_usd": 92.2,
+      "records": 1735,
       "records_with_actual": 0,
-      "records_with_estimate": 3,
+      "records_with_estimate": 1731,
       "records_without_estimate": 4,
       "repositories": [
         {
@@ -90,24 +199,48 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 581.9846,
-              "estimated_cost_usd": 5.82,
-              "records": 7,
+              "estimated_ai_credits": 8884.9537,
+              "estimated_cost_usd": 88.85,
+              "records": 1645,
               "records_with_actual": 0,
-              "records_with_estimate": 3,
+              "records_with_estimate": 1641,
               "records_without_estimate": 4
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-glowing-bassoon",
+              "estimated_ai_credits": 78.8595,
+              "estimated_cost_usd": 0.79,
+              "records": 27,
+              "records_with_actual": 0,
+              "records_with_estimate": 27,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-solid-disco",
+              "estimated_ai_credits": 255.945,
+              "estimated_cost_usd": 2.56,
+              "records": 63,
+              "records_with_actual": 0,
+              "records_with_estimate": 63,
+              "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 581.9846,
-          "estimated_cost_usd": 5.82,
+          "estimated_ai_credits": 9219.7582,
+          "estimated_cost_usd": 92.2,
           "project_name": "SHD Ignition BOI1",
-          "records": 7,
+          "records": 1735,
           "records_with_actual": 0,
-          "records_with_estimate": 3,
+          "records_with_estimate": 1731,
           "records_without_estimate": 4,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
+            "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-glowing-bassoon",
+            "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-solid-disco",
             "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
@@ -121,46 +254,24 @@
   "grouped_by": "repository, then branch, within totals and every week and billing period",
   "invalid_records": [],
   "records_bucketed_by_fallback_timestamp": 0,
-  "records_counted": 62,
+  "records_counted": 8082,
+  "repository_identity": "normalized credential-free remote origin; workspace/session fallback when unavailable",
   "schema_version": 1,
+  "session_coverage": {
+    "sessions_observed": 146,
+    "sessions_with_usage_records": 89,
+    "sessions_without_usage_records": 57
+  },
   "source_ledger": "copilot-credit-usage.jsonl",
   "totals": {
     "actual_ai_credits": 0.0,
-    "estimated_ai_credits": 134813.9705,
-    "estimated_cost_usd": 1348.14,
-    "records": 62,
+    "estimated_ai_credits": 192219.1698,
+    "estimated_cost_usd": 1922.19,
+    "records": 8082,
     "records_with_actual": 0,
-    "records_with_estimate": 57,
+    "records_with_estimate": 8077,
     "records_without_estimate": 5,
     "repositories": [
-      {
-        "actual_ai_credits": 0.0,
-        "billing_code": "11384",
-        "branches": [
-          {
-            "actual_ai_credits": 0.0,
-            "branch": "feature/plc-resident-production-queue",
-            "estimated_ai_credits": 134805.3473,
-            "estimated_cost_usd": 1348.05,
-            "records": 60,
-            "records_with_actual": 0,
-            "records_with_estimate": 55,
-            "records_without_estimate": 5
-          }
-        ],
-        "client": "NxEdge",
-        "estimated_ai_credits": 134805.3473,
-        "estimated_cost_usd": 1348.05,
-        "project_name": "SHD Ignition BOI1",
-        "records": 60,
-        "records_with_actual": 0,
-        "records_with_estimate": 55,
-        "records_without_estimate": 5,
-        "repo_name": "NXEdge/SHD-Ignition-BOI1",
-        "workspace_paths": [
-          "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
-        ]
-      },
       {
         "actual_ai_credits": 0.0,
         "billing_code": "1176",
@@ -185,8 +296,81 @@
         "records_with_estimate": 2,
         "records_without_estimate": 0,
         "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+        "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
         "workspace_paths": [
           "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "11384",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "acs-ml/feature/manual-load-station",
+            "estimated_ai_credits": 615.0039,
+            "estimated_cost_usd": 6.15,
+            "records": 130,
+            "records_with_actual": 0,
+            "records_with_estimate": 130,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "feature/plc-resident-production-queue",
+            "estimated_ai_credits": 188770.5195,
+            "estimated_cost_usd": 1887.71,
+            "records": 7388,
+            "records_with_actual": 0,
+            "records_with_estimate": 7383,
+            "records_without_estimate": 5
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 2490.2187,
+            "estimated_cost_usd": 24.9,
+            "records": 472,
+            "records_with_actual": 0,
+            "records_with_estimate": 472,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-glowing-bassoon",
+            "estimated_ai_credits": 78.8595,
+            "estimated_cost_usd": 0.79,
+            "records": 27,
+            "records_with_actual": 0,
+            "records_with_estimate": 27,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-solid-disco",
+            "estimated_ai_credits": 255.945,
+            "estimated_cost_usd": 2.56,
+            "records": 63,
+            "records_with_actual": 0,
+            "records_with_estimate": 63,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "NxEdge",
+        "estimated_ai_credits": 192210.5466,
+        "estimated_cost_usd": 1922.11,
+        "project_name": "SHD Ignition BOI1",
+        "records": 8080,
+        "records_with_actual": 0,
+        "records_with_estimate": 8075,
+        "records_without_estimate": 5,
+        "repo_name": "NXEdge/SHD-Ignition-BOI1",
+        "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+        "workspace_paths": [
+          "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
+          "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-glowing-bassoon",
+          "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-solid-disco",
+          "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
         ]
       }
     ]
@@ -197,13 +381,56 @@
   "weekly": [
     {
       "actual_ai_credits": 0.0,
-      "end_utc": "2026-09-13",
-      "estimated_ai_credits": 40088.527,
-      "estimated_cost_usd": 400.89,
-      "iso_week": "2026-W37",
-      "records": 23,
+      "end_utc": "2026-07-19",
+      "estimated_ai_credits": 615.0039,
+      "estimated_cost_usd": 6.15,
+      "iso_week": "2026-W29",
+      "records": 130,
       "records_with_actual": 0,
-      "records_with_estimate": 23,
+      "records_with_estimate": 130,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "acs-ml/feature/manual-load-station",
+              "estimated_ai_credits": 615.0039,
+              "estimated_cost_usd": 6.15,
+              "records": 130,
+              "records_with_actual": 0,
+              "records_with_estimate": 130,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 615.0039,
+          "estimated_cost_usd": 6.15,
+          "project_name": "SHD Ignition BOI1",
+          "records": 130,
+          "records_with_actual": 0,
+          "records_with_estimate": 130,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc": "2026-07-13"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-07-26",
+      "estimated_ai_credits": 3493.7982,
+      "estimated_cost_usd": 34.94,
+      "iso_week": "2026-W30",
+      "records": 731,
+      "records_with_actual": 0,
+      "records_with_estimate": 731,
       "records_without_estimate": 0,
       "repositories": [
         {
@@ -213,24 +440,122 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 40088.527,
-              "estimated_cost_usd": 400.89,
-              "records": 23,
+              "estimated_ai_credits": 1003.5795,
+              "estimated_cost_usd": 10.04,
+              "records": 259,
               "records_with_actual": 0,
-              "records_with_estimate": 23,
+              "records_with_estimate": 259,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 2490.2187,
+              "estimated_cost_usd": 24.9,
+              "records": 472,
+              "records_with_actual": 0,
+              "records_with_estimate": 472,
               "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 40088.527,
-          "estimated_cost_usd": 400.89,
+          "estimated_ai_credits": 3493.7982,
+          "estimated_cost_usd": 34.94,
           "project_name": "SHD Ignition BOI1",
-          "records": 23,
+          "records": 731,
           "records_with_actual": 0,
-          "records_with_estimate": 23,
+          "records_with_estimate": 731,
           "records_without_estimate": 0,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc": "2026-07-20"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-09-06",
+      "estimated_ai_credits": 44439.5428,
+      "estimated_cost_usd": 444.4,
+      "iso_week": "2026-W36",
+      "records": 5401,
+      "records_with_actual": 0,
+      "records_with_estimate": 5401,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 44439.5428,
+              "estimated_cost_usd": 444.4,
+              "records": 5401,
+              "records_with_actual": 0,
+              "records_with_estimate": 5401,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 44439.5428,
+          "estimated_cost_usd": 444.4,
+          "project_name": "SHD Ignition BOI1",
+          "records": 5401,
+          "records_with_actual": 0,
+          "records_with_estimate": 5401,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc": "2026-08-31"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-09-13",
+      "estimated_ai_credits": 40307.6078,
+      "estimated_cost_usd": 403.08,
+      "iso_week": "2026-W37",
+      "records": 53,
+      "records_with_actual": 0,
+      "records_with_estimate": 53,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 40307.6078,
+              "estimated_cost_usd": 403.08,
+              "records": 53,
+              "records_with_actual": 0,
+              "records_with_estimate": 53,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 40307.6078,
+          "estimated_cost_usd": 403.08,
+          "project_name": "SHD Ignition BOI1",
+          "records": 53,
+          "records_with_actual": 0,
+          "records_with_estimate": 53,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
             "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
@@ -248,34 +573,6 @@
       "records_with_estimate": 31,
       "records_without_estimate": 1,
       "repositories": [
-        {
-          "actual_ai_credits": 0.0,
-          "billing_code": "11384",
-          "branches": [
-            {
-              "actual_ai_credits": 0.0,
-              "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 94134.8357,
-              "estimated_cost_usd": 941.35,
-              "records": 30,
-              "records_with_actual": 0,
-              "records_with_estimate": 29,
-              "records_without_estimate": 1
-            }
-          ],
-          "client": "NxEdge",
-          "estimated_ai_credits": 94134.8357,
-          "estimated_cost_usd": 941.35,
-          "project_name": "SHD Ignition BOI1",
-          "records": 30,
-          "records_with_actual": 0,
-          "records_with_estimate": 29,
-          "records_without_estimate": 1,
-          "repo_name": "NXEdge/SHD-Ignition-BOI1",
-          "workspace_paths": [
-            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
-          ]
-        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "1176",
@@ -300,8 +597,38 @@
           "records_with_estimate": 2,
           "records_without_estimate": 0,
           "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
           "workspace_paths": [
             "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 94134.8357,
+              "estimated_cost_usd": 941.35,
+              "records": 30,
+              "records_with_actual": 0,
+              "records_with_estimate": 29,
+              "records_without_estimate": 1
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 94134.8357,
+          "estimated_cost_usd": 941.35,
+          "project_name": "SHD Ignition BOI1",
+          "records": 30,
+          "records_with_actual": 0,
+          "records_with_estimate": 29,
+          "records_without_estimate": 1,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
       ],
@@ -310,12 +637,12 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-09-27",
-      "estimated_ai_credits": 0.0,
-      "estimated_cost_usd": 0.0,
+      "estimated_ai_credits": 8229.036,
+      "estimated_cost_usd": 82.29,
       "iso_week": "2026-W39",
-      "records": 2,
+      "records": 1569,
       "records_with_actual": 0,
-      "records_with_estimate": 0,
+      "records_with_estimate": 1567,
       "records_without_estimate": 2,
       "repositories": [
         {
@@ -325,24 +652,26 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 0.0,
-              "estimated_cost_usd": 0.0,
-              "records": 2,
+              "estimated_ai_credits": 8229.036,
+              "estimated_cost_usd": 82.29,
+              "records": 1569,
               "records_with_actual": 0,
-              "records_with_estimate": 0,
+              "records_with_estimate": 1567,
               "records_without_estimate": 2
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 0.0,
-          "estimated_cost_usd": 0.0,
+          "estimated_ai_credits": 8229.036,
+          "estimated_cost_usd": 82.29,
           "project_name": "SHD Ignition BOI1",
-          "records": 2,
+          "records": 1569,
           "records_with_actual": 0,
-          "records_with_estimate": 0,
+          "records_with_estimate": 1567,
           "records_without_estimate": 2,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
             "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
@@ -352,12 +681,12 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-10-04",
-      "estimated_ai_credits": 581.9846,
-      "estimated_cost_usd": 5.82,
+      "estimated_ai_credits": 990.7222,
+      "estimated_cost_usd": 9.91,
       "iso_week": "2026-W40",
-      "records": 5,
+      "records": 166,
       "records_with_actual": 0,
-      "records_with_estimate": 3,
+      "records_with_estimate": 164,
       "records_without_estimate": 2,
       "repositories": [
         {
@@ -367,24 +696,48 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 581.9846,
-              "estimated_cost_usd": 5.82,
-              "records": 5,
+              "estimated_ai_credits": 655.9177,
+              "estimated_cost_usd": 6.56,
+              "records": 76,
               "records_with_actual": 0,
-              "records_with_estimate": 3,
+              "records_with_estimate": 74,
               "records_without_estimate": 2
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-glowing-bassoon",
+              "estimated_ai_credits": 78.8595,
+              "estimated_cost_usd": 0.79,
+              "records": 27,
+              "records_with_actual": 0,
+              "records_with_estimate": 27,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-solid-disco",
+              "estimated_ai_credits": 255.945,
+              "estimated_cost_usd": 2.56,
+              "records": 63,
+              "records_with_actual": 0,
+              "records_with_estimate": 63,
+              "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 581.9846,
-          "estimated_cost_usd": 5.82,
+          "estimated_ai_credits": 990.7222,
+          "estimated_cost_usd": 9.91,
           "project_name": "SHD Ignition BOI1",
-          "records": 5,
+          "records": 166,
           "records_with_actual": 0,
-          "records_with_estimate": 3,
+          "records_with_estimate": 164,
           "records_without_estimate": 2,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
+            "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-glowing-bassoon",
+            "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-solid-disco",
             "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }

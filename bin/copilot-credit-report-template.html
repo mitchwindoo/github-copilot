@@ -104,7 +104,7 @@
   <header class="masthead">
     <div class="eyebrow">ACS · Engineering Intelligence</div>
     <h1>Copilot credit usage</h1>
-    <div class="subtitle">Estimated AI-credit consumption and cost, attributed to billing projects, repositories, and branches.</div>
+    <div class="subtitle">Estimated AI-credit consumption and cost, attributed to normalized repository origins, billing projects, and branches.</div>
     <div class="meta">
       <span id="generated"></span><span id="source"></span><span>All dates UTC</span>
     </div>
@@ -127,7 +127,7 @@
       <label>End date
         <input id="end" type="date">
       </label>
-      <label>Repository
+      <label>Repository origin
         <select id="repo"><option value="">All repositories</option></select>
       </label>
       <label>Branch
@@ -141,7 +141,7 @@
       <article class="kpi"><span class="label">Estimated credits</span><strong id="credits">—</strong><small id="coverage"></small></article>
       <article class="kpi"><span class="label">Estimated cost</span><strong id="cost">—</strong><small>at each record's stored rate</small></article>
       <article class="kpi"><span class="label">Usage records</span><strong id="records">—</strong><small id="dateSpan"></small></article>
-      <article class="kpi"><span class="label">Active branches</span><strong id="branches">—</strong><small id="repos"></small></article>
+      <article class="kpi"><span class="label">Sessions in view</span><strong id="sessions">—</strong><small id="sessionCoverage"></small></article>
     </section>
 
     <section class="panel">
@@ -187,7 +187,17 @@
       for (const period of REPORT.billing_periods.slice().reverse()) {
         $("cycle").append(option(period.billed_on, `${period.start} – ${dayBefore(period.end_exclusive)} · bills ${period.billed_on}`));
       }
-      for (const repo of unique(REPORT.rows.map(row => row.repo))) $("repo").append(option(repo));
+      const repositoryChoices = new Map();
+      for (const session of REPORT.sessions) {
+        const identity = session.repo_identity;
+        if (!identity || repositoryChoices.has(identity)) continue;
+        const name = session.repo || session.repo_origin || "Unknown repository";
+        const origin = session.repo_origin || "origin unavailable";
+        repositoryChoices.set(identity, `${name} · ${origin}`);
+      }
+      for (const [identity, label] of [...repositoryChoices.entries()].sort((a, b) => a[1].localeCompare(b[1]))) {
+        $("repo").append(option(identity, label));
+      }
       reset(false);
       for (const id of ["timeMode", "cycle", "start", "end", "repo", "branch"]) $(id).addEventListener("change", handleFilterChange);
       $("reset").addEventListener("click", () => reset(true));
@@ -228,7 +238,7 @@
     function rebuildBranches() {
       const current = $("branch").value;
       const repo = $("repo").value;
-      const branches = unique(REPORT.rows.filter(row => !repo || row.repo === repo).map(row => row.branch));
+      const branches = unique(REPORT.sessions.filter(row => !repo || row.repo_identity === repo).map(row => row.branch));
       $("branch").replaceChildren(option("", "All branches"), ...branches.map(value => option(value)));
       $("branch").value = branches.includes(current) ? current : "";
     }
@@ -247,24 +257,40 @@
       const branch = $("branch").value;
       return REPORT.rows.filter(row =>
         (!start || row.date >= start) && (!end || row.date <= end) &&
-        (!repo || row.repo === repo) && (!branch || row.branch === branch)
+        (!repo || row.repo_identity === repo) && (!branch || row.branch === branch)
+      );
+    }
+
+    function filteredSessions() {
+      const mode = $("timeMode").value;
+      const start = mode === "all" ? "" : $("start").value;
+      const end = mode === "all" ? "" : $("end").value;
+      const repo = $("repo").value;
+      const branch = $("branch").value;
+      return REPORT.sessions.filter(session =>
+        (!start || session.date >= start) && (!end || session.date <= end) &&
+        (!repo || session.repo_identity === repo) && (!branch || session.branch === branch)
       );
     }
 
     function render() {
       const rows = filteredRows();
+      const sessions = filteredSessions();
       const known = rows.filter(row => row.credits !== null);
       const credits = known.reduce((sum, row) => sum + row.credits, 0);
       const cost = known.reduce((sum, row) => sum + row.cost_usd, 0);
-      const branches = unique(rows.map(row => `${row.repo}\\u0000${row.branch}`));
-      const repos = unique(rows.map(row => row.repo));
+      const sessionsWithUsage = sessions.filter(session => session.has_usage).length;
+      const sessionsWithoutUsage = sessions.length - sessionsWithUsage;
+      const branches = unique(sessions.map(row => `${row.repo_identity}\\u0000${row.branch}`));
+      const repos = unique(sessions.map(row => row.repo_identity));
       $("credits").textContent = creditsFmt.format(credits);
       $("cost").textContent = moneyFmt.format(cost);
       $("records").textContent = countFmt.format(rows.length);
-      $("branches").textContent = countFmt.format(branches.length);
+      $("sessions").textContent = countFmt.format(sessions.length);
+      $("sessionCoverage").textContent = `${sessionsWithUsage} with usage data · ${sessionsWithoutUsage} usage unknown`;
       $("coverage").textContent = `${known.length} of ${rows.length} records estimated · ${pct(known.length, rows.length)} coverage`;
       $("dateSpan").textContent = rows.length ? `${rows[0].date} through ${rows.at(-1).date}` : "No matching dates";
-      $("repos").textContent = `${repos.length} ${repos.length === 1 ? "repository" : "repositories"}`;
+      $("repos").textContent = `${branches.length} ${branches.length === 1 ? "branch" : "branches"} · ${repos.length} ${repos.length === 1 ? "origin" : "origins"}`;
       renderScope(rows);
       renderChart(rows);
       renderDetail(rows);
@@ -278,7 +304,7 @@
         ? `ACS cycle ${period.start} through ${dayBefore(period.end_exclusive)} (bills ${period.billed_on})`
         : mode === "custom" ? `${$("start").value || "beginning"} through ${$("end").value || "latest"}` : "All recorded usage";
       const parts = [time];
-      if ($("repo").value) parts.push($("repo").value);
+      if ($("repo").value) parts.push($("repo").selectedOptions[0].textContent);
       if ($("branch").value) parts.push($("branch").value);
       $("scope").textContent = `${parts.join(" · ")} · ${rows.length} matching records`;
     }
@@ -305,7 +331,7 @@
     function renderDetail(rows) {
       const groups = new Map();
       for (const row of rows) {
-        const key = `${row.repo}\\u0000${row.branch}`;
+        const key = `${row.repo_identity}\\u0000${row.branch}`;
         const group = groups.get(key) || { ...row, records: 0, known: 0, credits: 0, cost: 0 };
         group.records += 1;
         if (row.credits !== null) { group.known += 1; group.credits += row.credits; group.cost += row.cost_usd; }
@@ -318,7 +344,9 @@
       }
       for (const group of sorted) {
         const row = document.createElement("tr");
-        const title = group.project_name && group.project_name !== group.repo ? `<strong>${escapeText(group.project_name)}</strong><br><small>${escapeText(group.repo)}</small>` : `<strong>${escapeText(group.repo)}</strong>`;
+        const title = group.project_name && group.project_name !== group.repo
+          ? `<strong>${escapeText(group.project_name)}</strong><br><small>${escapeText(group.repo)}</small><br><small>${escapeText(group.repo_origin || "origin unavailable")}</small>`
+          : `<strong>${escapeText(group.repo)}</strong><br><small>${escapeText(group.repo_origin || "origin unavailable")}</small>`;
         row.innerHTML = `<td><span class="code">${escapeText(group.billing_code ?? "unmapped")}</span></td><td>${title}</td><td class="branch">${escapeText(group.branch)}</td><td class="num">${countFmt.format(group.records)}</td><td class="num">${creditsFmt.format(group.credits)}</td><td class="num">${moneyFmt.format(group.cost)}</td><td class="num">${pct(group.known, group.records)}</td>`;
         $("detail").append(row);
       }
@@ -328,6 +356,8 @@
       const messages = [];
       if (REPORT.unmapped_repositories.length) messages.push(`Unmapped repositories: ${REPORT.unmapped_repositories.join(", ")}`);
       if (REPORT.invalid_records.length) messages.push(`${REPORT.invalid_records.length} invalid ledger records were excluded.`);
+      const unknownSessions = filteredSessions().filter(session => !session.has_usage).length;
+      if (unknownSessions) messages.push(`${unknownSessions} sessions have no captured usage events; usage is unknown, not zero.`);
       if (REPORT.duplicate_record_keys_skipped.length) messages.push(`${REPORT.duplicate_record_keys_skipped.length} duplicate records were skipped.`);
       $("notice").hidden = !messages.length;
       $("notice").textContent = messages.join(" ");

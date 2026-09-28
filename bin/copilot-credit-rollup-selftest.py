@@ -140,14 +140,15 @@ def main() -> int:
         if ledger.is_file():
             live = rollup.build_summary(ledger)
             records = [json.loads(line) for line in ledger.read_text(encoding="utf-8").splitlines() if line.strip()]
+            usage_records = [r for r in records if r.get("record_kind") != "session_marker"]
             keys = [r["record_key"] for r in records]
             assert len(keys) == len(set(keys)), "ledger contains duplicate record_key values"
             assert not live["invalid_records"], live["invalid_records"]
-            direct = round(sum(r["estimated_ai_credits"] for r in records if r["estimated_ai_credits"] is not None), 4)
+            direct = round(sum(r["estimated_ai_credits"] for r in usage_records if r["estimated_ai_credits"] is not None), 4)
             assert live["totals"]["estimated_ai_credits"] == direct, (live["totals"], direct)
-            assert live["records_counted"] == len(records)
-            assert sum(w["records"] for w in live["weekly"]) == len(records)
-            assert sum(p["records"] for p in live["billing_periods"]) == len(records)
+            assert live["records_counted"] == len(usage_records)
+            assert sum(w["records"] for w in live["weekly"]) == len(usage_records)
+            assert sum(p["records"] for p in live["billing_periods"]) == len(usage_records)
             assert rollup.render(live) == rollup.render(rollup.build_summary(ledger))
 
     print("ok: all copilot-credit-rollup self-checks passed")

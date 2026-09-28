@@ -19,9 +19,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 SCHEMA_VERSION = 1
 DEFAULT_USD_PER_AI_CREDIT = 0.01
@@ -35,8 +37,50 @@ DEFAULT_PROJECTS = DEFAULT_USAGE_DIR / "acs-billing-projects.json"
 UNKNOWN = "unknown"
 
 
+def normalize_repo_origin(value: str | None) -> str | None:
+    """Canonicalize HTTPS, SSH, and scp-style remotes to one credential-free origin."""
+    if not isinstance(value, str) or not value.strip() or value == UNKNOWN:
+        return None
+
+    remote = value.strip()
+    if "://" not in remote:
+        match = re.fullmatch(r"(?:[^@/]+@)?([^:/]+):(.+)", remote)
+        if match is None:
+            return None
+        host, path = match.groups()
+        port = None
+    else:
+        try:
+            parsed = urlsplit(remote)
+            if parsed.scheme.lower() not in {"https", "http", "ssh", "git"} or not parsed.hostname:
+                return None
+            host = parsed.hostname
+            path = parsed.path
+            port = parsed.port
+        except ValueError:
+            return None
+
+    host = host.lower()
+    if port is not None and port not in {22, 80, 443, 9418}:
+        host = f"{host}:{port}"
+    path = "/" + "/".join(part for part in path.split("/") if part)
+    if path == "/":
+        return None
+    path = re.sub(r"\.git$", "", path, flags=re.IGNORECASE)
+    if host == "github.com":
+        path = path.lower()
+    return f"https://{host}{path}"
+
+
+def repo_name_from_origin(origin: str | None) -> str:
+    if not origin:
+        return UNKNOWN
+    path = urlsplit(origin).path.strip("/")
+    return path or UNKNOWN
+
+
 def load_projects(path: Path) -> dict[str, dict]:
-    """Index the billing-code map by repo_name and by workspace_path."""
+    """Index the billing-code map by origin, repo_name, and workspace_path."""
     if not path.is_file():
         return {}
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -50,6 +94,9 @@ def load_projects(path: Path) -> dict[str, dict]:
             "project_name": entry.get("project_name"),
             "client": entry.get("client"),
         }
+        origin = normalize_repo_origin(entry.get("repo_origin"))
+        if origin:
+            index[origin] = details
         for key in (entry.get("repo_name"), entry.get("workspace_path")):
             if isinstance(key, str) and key and key != UNKNOWN:
                 index[key] = details
@@ -128,6 +175,7 @@ def accumulate(bucket: dict, credits: float | None, rate: float, actual: float |
         repo = new_bucket(
             {
                 "repo_name": scope["repo_name"],
+                "repo_origin": scope["repo_origin"],
                 "billing_code": scope["billing_code"],
                 "project_name": scope["project_name"],
                 "client": scope["client"],
@@ -188,6 +236,7 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
     rows: list[dict] = []
     invalid: list[dict] = []
     duplicates: list[dict] = []
+    session_markers: list[dict] = []
     seen_keys: dict[str, int] = {}
     unmapped: set[str] = set()
     fallback_timestamps = 0
@@ -230,6 +279,55 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
                     errors.append(f"unparseable timestamp {stamp!r}")
                     moment = None
 
+            session_id = text_or_unknown(record.get("session_id"))
+            repo_name = text_or_unknown(record.get("repo_name"))
+            workspace_path = text_or_unknown(record.get("workspace_path"))
+            repo_origin = normalize_repo_origin(record.get("repo_remote") or record.get("repo_origin"))
+            if repo_name == UNKNOWN:
+                repo_name = repo_name_from_origin(repo_origin)
+            repo_key = (
+                f"origin:{repo_origin}"
+                if repo_origin
+                else f"workspace:{workspace_path}"
+                if workspace_path != UNKNOWN
+                else f"session:{session_id}"
+                if session_id != UNKNOWN
+                else f"record:{key or line_number}"
+            )
+            mapping = projects.get(repo_origin) or projects.get(repo_name) or projects.get(workspace_path)
+            if mapping is None:
+                mapping = {"billing_code": None, "project_name": None, "client": None}
+                unmapped.add(repo_origin or (repo_name if repo_name != UNKNOWN else repo_key))
+
+            if errors or moment is None:
+                invalid.append({"line": line_number, "reason": "; ".join(errors) or "unusable record"})
+                continue
+            if stamp_source != "session_created_at_utc":
+                fallback_timestamps += 1
+
+            scope = {
+                "repo_key": repo_key,
+                "repo_name": repo_name,
+                "repo_origin": repo_origin,
+                "workspace_path": workspace_path,
+                "branch": text_or_unknown(record.get("branch")),
+                **mapping,
+            }
+
+            if record.get("record_kind") == "session_marker":
+                if session_id == UNKNOWN:
+                    invalid.append({"line": line_number, "reason": "session marker has no session_id"})
+                    continue
+                session_markers.append(
+                    {
+                        "session_id": session_id,
+                        "date_utc": moment.date().isoformat(),
+                        "scope": scope,
+                    }
+                )
+                continue
+
+            errors = []
             credits = numeric_or_none(record.get("estimated_ai_credits"), "estimated_ai_credits", errors)
             actual = numeric_or_none(record.get("actual_ai_credits"), "actual_ai_credits", errors)
             basis = record.get("estimate_basis")
@@ -238,28 +336,9 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
                 basis_rate = numeric_or_none(basis.get("usd_per_ai_credit"), "usd_per_ai_credit", errors)
                 if basis_rate:
                     rate = basis_rate
-
-            if errors or moment is None:
-                invalid.append({"line": line_number, "reason": "; ".join(errors) or "unusable record"})
+            if errors:
+                invalid.append({"line": line_number, "reason": "; ".join(errors)})
                 continue
-
-            if stamp_source != "session_created_at_utc":
-                fallback_timestamps += 1
-
-            repo_name = text_or_unknown(record.get("repo_name"))
-            workspace_path = text_or_unknown(record.get("workspace_path"))
-            repo_key = repo_name if repo_name != UNKNOWN else f"workspace:{workspace_path}"
-            mapping = projects.get(repo_name) or projects.get(workspace_path)
-            if mapping is None:
-                mapping = {"billing_code": None, "project_name": None, "client": None}
-                unmapped.add(repo_key)
-            scope = {
-                "repo_key": repo_key,
-                "repo_name": repo_name,
-                "workspace_path": workspace_path,
-                "branch": text_or_unknown(record.get("branch")),
-                **mapping,
-            }
 
             week_key, week_start, week_end = week_bucket(moment)
             billed_on, period_start, period_end = billing_bucket(moment)
@@ -267,6 +346,7 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
                 {
                     "line": line_number,
                     "moment": moment,
+                    "session_id": session_id,
                     "date_utc": moment.date().isoformat(),
                     "credits": credits,
                     "rate": rate,
@@ -285,6 +365,7 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
         "rows": rows,
         "invalid_records": invalid,
         "duplicate_record_keys_skipped": duplicates,
+        "session_markers": session_markers,
         "unmapped_repositories": sorted(unmapped),
         "records_bucketed_by_fallback_timestamp": fallback_timestamps,
     }
@@ -295,6 +376,13 @@ def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) ->
     weeks: dict[str, dict] = {}
     periods: dict[str, dict] = {}
     totals = new_bucket({})
+    usage_session_ids = {row["session_id"] for row in parsed["rows"] if row["session_id"] != UNKNOWN}
+    observed_session_ids = usage_session_ids | {item["session_id"] for item in parsed["session_markers"]}
+    session_coverage = {
+        "sessions_observed": len(observed_session_ids),
+        "sessions_with_usage_records": len(usage_session_ids),
+        "sessions_without_usage_records": len(observed_session_ids - usage_session_ids),
+    }
 
     for row in parsed["rows"]:
         week = weeks.setdefault(
@@ -326,7 +414,9 @@ def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) ->
         "billing_period_definition": "21st of a month (inclusive) through the 21st of the next month (exclusive), named by the billing date",
         "bucketed_by": "session_created_at_utc (falls back to recorded_at_utc)",
         "grouped_by": "repository, then branch, within totals and every week and billing period",
+        "repository_identity": "normalized credential-free remote origin; workspace/session fallback when unavailable",
         "billing_code_source": DEFAULT_PROJECTS.name,
+        "session_coverage": session_coverage,
         "unmapped_repositories": parsed["unmapped_repositories"],
         "records_counted": len(parsed["rows"]),
         "records_bucketed_by_fallback_timestamp": parsed["records_bucketed_by_fallback_timestamp"],
