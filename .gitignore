@@ -28,3 +28,9 @@ skills/mermaid-skill
 attachments/
 mcp-oauth-config/
 chats/
+
+# Generated artifacts
+copilot-usage/copilot-credit-usage-report.html
+
+# Python caches
+__pycache__/
