@@ -6,125 +6,127 @@
 				"--host=copilot",
 				"--session=kepler"
 			],
-			"command": "/Users/mitch/Library/Application Support/GitKrakenCLI/gk-alpha",
+			"command": "C:\\Users\\MitchellLandreth\\AppData\\Local\\GitKrakenCLI\\gk-alpha.exe",
 			"tools": [
 				"*"
 			],
 			"type": "local"
 		},
 		"carefree-core-web-postgres-alarmjournal": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_alarmjournal"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-am": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_am"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-audit": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_audit"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-auth": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_auth"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-legacy": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_legacy"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-tracknow": {
+			"tools": [
+				"list_schemas",
+				"list_objects",
+				"get_object_details",
+				"execute_sql",
+				"explain_query",
+				"get_top_queries",
+				"analyze_workload_indexes",
+				"analyze_query_indexes",
+				"analyze_db_health"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"args": [
 				"carefree_tracknow"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
-			"tools": [
-				"list_schemas",
-				"list_objects",
-				"get_object_details",
-				"execute_sql",
-				"explain_query",
-				"get_top_queries",
-				"analyze_workload_indexes",
-				"analyze_query_indexes",
-				"analyze_db_health"
-			],
-			"type": "local"
+			]
 		},
 		"carefree-core-web-postgres-feedlot": {
-			"args": [
-				"feedlot_manager"
-			],
-			"command": "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
 			"tools": [
 				"list_schemas",
 				"list_objects",
@@ -136,19 +138,24 @@
 				"analyze_query_indexes",
 				"analyze_db_health"
 			],
-			"type": "local"
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.config/carefree/run-core-web-postgres-mcp.sh",
+			"args": [
+				"feedlot_manager"
+			]
 		},
 		"unifi-network": {
-			"type":    "local",
-			"command": "/Users/mitch/.local/bin/uvx",
+			"tools": [
+				"*"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.local/bin/uvx",
 			"args": [
 				"--python-preference",
 				"system",
 				"unifi-network-mcp@latest"
-			],
-			"deferTools": "auto",
-			"tools": [
-				"*"
 			],
 			"env": {
 				"UNIFI_NETWORK_HOST":       "192.168.192.2",
@@ -159,16 +166,16 @@
 			}
 		},
 		"unifi-protect": {
-			"type":    "local",
-			"command": "/Users/mitch/.local/bin/uvx",
+			"tools": [
+				"*"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.local/bin/uvx",
 			"args": [
 				"--python-preference",
 				"system",
 				"unifi-protect-mcp@latest"
-			],
-			"deferTools": "auto",
-			"tools": [
-				"*"
 			],
 			"env": {
 				"UNIFI_PROTECT_HOST":       "192.168.195.2",
@@ -179,22 +186,58 @@
 			}
 		},
 		"unifi-access": {
-			"type":    "local",
-			"command": "/Users/mitch/.local/bin/uvx",
+			"tools": [
+				"*"
+			],
+			"deferTools": "auto",
+			"type":       "local",
+			"command":    "/Users/mitch/.local/bin/uvx",
 			"args": [
 				"--python-preference",
 				"system",
 				"unifi-access-mcp@latest"
-			],
-			"deferTools": "auto",
-			"tools": [
-				"*"
 			],
 			"env": {
 				"UNIFI_ACCESS_HOST":       "192.168.195.2",
 				"UNIFI_ACCESS_PORT":       "12445",
 				"UNIFI_ACCESS_VERIFY_SSL": "false",
 				"UNIFI_ACCESS_API_KEY":    "k9b7LgdVtmQFiVClhS9Xjw"
+			}
+		},
+		"context7": {
+			"tools": [
+				"*"
+			],
+			"type": "http",
+			"url":  "https://mcp.context7.com/mcp"
+		},
+		"playwright": {
+			"tools": [
+				"*"
+			],
+			"type":    "local",
+			"command": "npx",
+			"args": [
+				"-y",
+				"@playwright/mcp@latest"
+			]
+		},
+		"github": {
+			"tools": [
+				"*"
+			],
+			"type":    "local",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"GITHUB_PERSONAL_ACCESS_TOKEN",
+				"ghcr.io/github/github-mcp-server"
+			],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
 			}
 		}
 	}

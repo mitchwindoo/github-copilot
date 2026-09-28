@@ -1,5 +1,65 @@
 // User settings belong in settings.json.
 // This file is managed automatically.
 {
-  "firstLaunchAt": "2026-07-24T18:07:01.417Z"
+  "firstLaunchAt": "2026-07-24T18:07:01.417Z",
+  "installedPlugins": [
+    {
+      "name": "power-automate",
+      "marketplace": "copilot-plugins",
+      "installed_at": "2026-09-17T15:44:19.531Z",
+      "enabled": true,
+      "version": "3.0.5",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\copilot-plugins\\power-automate",
+      "source_sha": "7817e939b31746643ac633e445076141a3e8d17bb76092b206661aa036e2f8ab"
+    },
+    {
+      "name": "workiq",
+      "marketplace": "copilot-plugins",
+      "installed_at": "2026-09-17T15:44:38.307Z",
+      "enabled": true,
+      "version": "2.0.2",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\copilot-plugins\\workiq",
+      "source_sha": "2ba688ed71d1373b91c4ebe668b70407d917dbeb6f489d7a43194491a0437182"
+    },
+    {
+      "name": "microsoft-365-agents-toolkit",
+      "marketplace": "copilot-plugins",
+      "installed_at": "2026-09-17T15:44:42.004Z",
+      "enabled": true,
+      "version": "1.3.1",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\copilot-plugins\\microsoft-365-agents-toolkit",
+      "source_sha": "572d048354058f4f2e9f8f70437ceb5ab45a6624af95cb6896cfdcfc00daa341"
+    },
+    {
+      "name": "workiq-productivity",
+      "marketplace": "copilot-plugins",
+      "installed_at": "2026-09-17T15:44:48.110Z",
+      "enabled": true,
+      "version": "1.0.0",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\copilot-plugins\\workiq-productivity",
+      "source_sha": "e8c6f6061ea72c2c2208913a52fd294c3c45b526cfc400f16822d8ab1f6f9160"
+    },
+    {
+      "name": "fabric-skills",
+      "marketplace": "copilot-plugins",
+      "installed_at": "2026-09-17T15:44:50.263Z",
+      "enabled": true,
+      "version": "0.3.17",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\copilot-plugins\\fabric-skills",
+      "source_sha": "96ac976e048aafb6880f153b559ae7505ca2dc2a280893121ba18e2cf6152886"
+    },
+    {
+      "name": "security-best-practices",
+      "marketplace": "",
+      "version": "1.0.0",
+      "installed_at": "2026-09-17T15:47:52.6262165Z",
+      "cache_path": "C:\\Users\\MitchellLandreth\\.copilot\\installed-plugins\\_direct\\github--awesome-copilot--plugins-security-best-practices",
+      "enabled": true,
+      "source": {
+        "source": "github",
+        "repo": "github/awesome-copilot",
+        "path": "plugins/security-best-practices"
+      }
+    }
+  ]
 }

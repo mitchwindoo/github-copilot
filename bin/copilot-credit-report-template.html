@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Copilot Credit Usage Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14261f;
+      --muted: #66756e;
+      --paper: #f4f1e8;
+      --surface: #fffdf7;
+      --line: #d9d4c5;
+      --green: #0d694c;
+      --green-2: #18a06f;
+      --lime: #cbe85e;
+      --amber: #d38a20;
+      --danger: #a23d36;
+      --shadow: 0 18px 60px rgba(20, 38, 31, 0.1);
+      font-family: "Segoe UI Variable", "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); }
+    button, input, select { font: inherit; }
+    .masthead {
+      background: var(--ink);
+      color: white;
+      padding: clamp(2.4rem, 5vw, 5rem) clamp(1.25rem, 5vw, 5rem) clamp(5rem, 8vw, 8rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .masthead::after {
+      content: ""; position: absolute; width: 34rem; height: 34rem; border-radius: 50%;
+      right: -12rem; top: -17rem; border: 6rem solid rgba(203, 232, 94, .1);
+    }
+    .eyebrow { color: var(--lime); font-size: .76rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.4rem, 6vw, 5.7rem); letter-spacing: -.055em; line-height: .95; margin: .7rem 0 1.25rem; max-width: 900px; }
+    .subtitle { color: #c7d0cc; max-width: 760px; font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.6; }
+    .meta { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; color: #9eaca6; margin-top: 2rem; font-size: .83rem; }
+    main { width: min(1500px, calc(100% - 2rem)); margin: clamp(-4.3rem, -6vw, -3rem) auto 4rem; position: relative; }
+    .filters {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: clamp(1.15rem, 2.5vw, 2rem); box-shadow: var(--shadow);
+      display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)) auto; gap: 1rem; align-items: end;
+    }
+    label { display: grid; gap: .45rem; color: var(--muted); font-size: .72rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    select, input {
+      width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 9px;
+      padding: .65rem .75rem; background: white; color: var(--ink); outline: none;
+    }
+    select:focus, input:focus { border-color: var(--green-2); box-shadow: 0 0 0 3px rgba(24, 160, 111, .12); }
+    button {
+      min-height: 44px; border: 0; border-radius: 9px; padding: .7rem 1.15rem;
+      background: var(--ink); color: white; font-weight: 700; cursor: pointer;
+    }
+    button:hover { background: var(--green); }
+    .filter-note { grid-column: 1 / -1; color: var(--muted); font-size: .86rem; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1rem 0; }
+    .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1rem, 2vw, 1.6rem); }
+    .kpi .label { color: var(--muted); text-transform: uppercase; letter-spacing: .09em; font-size: .69rem; font-weight: 800; }
+    .kpi strong { display: block; margin-top: .55rem; font-size: clamp(1.6rem, 3vw, 2.65rem); letter-spacing: -.04em; }
+    .kpi small { display: block; color: var(--muted); margin-top: .4rem; }
+    .panel {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+      padding: clamp(1rem, 2.4vw, 1.8rem); margin-top: 1rem;
+    }
+    .panel-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.25rem; }
+    h2 { margin: 0; font-size: 1.15rem; letter-spacing: -.02em; }
+    .panel-head p { margin: .3rem 0 0; color: var(--muted); font-size: .88rem; }
+    .legend { display: flex; gap: 1rem; color: var(--muted); font-size: .78rem; white-space: nowrap; }
+    .legend i { width: .65rem; height: .65rem; display: inline-block; border-radius: 2px; background: var(--green); margin-right: .3rem; }
+    .chart { min-height: 250px; display: flex; align-items: stretch; gap: max(2px, .35vw); border-bottom: 1px solid var(--line); padding-top: 1rem; }
+    .bar-wrap { flex: 1 1 0; min-width: 3px; display: flex; align-items: end; position: relative; }
+    .bar { width: 100%; min-height: 1px; background: linear-gradient(180deg, var(--green-2), var(--green)); border-radius: 3px 3px 0 0; }
+    .bar-wrap:hover .tip { opacity: 1; transform: translate(-50%, -8px); pointer-events: none; }
+    .tip {
+      opacity: 0; position: absolute; z-index: 4; bottom: 100%; left: 50%; transform: translate(-50%, 0);
+      background: var(--ink); color: white; border-radius: 6px; padding: .45rem .55rem; white-space: nowrap;
+      font-size: .7rem; transition: .18s ease; box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    }
+    .axis { display: flex; justify-content: space-between; color: var(--muted); font-size: .72rem; margin-top: .6rem; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 920px; }
+    th { text-align: left; color: var(--muted); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; padding: .8rem; border-bottom: 1px solid var(--line); }
+    td { padding: .9rem .8rem; border-bottom: 1px solid #ece8dd; font-size: .88rem; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tbody tr:hover { background: #f8f6ef; }
+    .branch { font-family: "Cascadia Code", Consolas, monospace; font-size: .78rem; color: var(--green); }
+    .code { display: inline-block; border-radius: 999px; padding: .2rem .55rem; background: #e8eadf; font-size: .75rem; }
+    .empty { text-align: center; color: var(--muted); padding: 3rem; }
+    .notice { border: 1px solid #e7c98e; background: #fff7e7; border-radius: 9px; padding: .9rem 1rem; margin-top: 1rem; color: #72501d; font-size: .86rem; }
+    footer { color: var(--muted); font-size: .78rem; line-height: 1.6; margin: 1.5rem .25rem 0; }
+    @media (max-width: 1100px) { .filters { grid-template-columns: repeat(3, 1fr); } .kpis { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px) { .filters { grid-template-columns: 1fr; } .kpis { grid-template-columns: 1fr; } main { width: min(100% - 1rem, 1500px); } .legend { display: none; } }
+    @media print {
+      body { background: white; } .masthead { padding: 1.5rem; } main { width: 100%; margin: 0; }
+      .filters { display: none; } .panel, .kpi { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="eyebrow">ACS · Engineering Intelligence</div>
+    <h1>Copilot credit usage</h1>
+    <div class="subtitle">Estimated AI-credit consumption and cost, attributed to billing projects, repositories, and branches.</div>
+    <div class="meta">
+      <span id="generated"></span><span id="source"></span><span>All dates UTC</span>
+    </div>
+  </header>
+  <main>
+    <section class="filters" aria-label="Report filters">
+      <label>Time view
+        <select id="timeMode">
+          <option value="cycle">ACS billing cycle</option>
+          <option value="all">All recorded usage</option>
+          <option value="custom">Manual date range</option>
+        </select>
+      </label>
+      <label>Billing cycle
+        <select id="cycle"></select>
+      </label>
+      <label>Start date
+        <input id="start" type="date">
+      </label>
+      <label>End date
+        <input id="end" type="date">
+      </label>
+      <label>Repository
+        <select id="repo"><option value="">All repositories</option></select>
+      </label>
+      <label>Branch
+        <select id="branch"><option value="">All branches</option></select>
+      </label>
+      <button id="reset" type="button">Reset filters</button>
+      <div class="filter-note" id="scope"></div>
+    </section>
+
+    <section class="kpis" aria-label="Key usage metrics">
+      <article class="kpi"><span class="label">Estimated credits</span><strong id="credits">—</strong><small id="coverage"></small></article>
+      <article class="kpi"><span class="label">Estimated cost</span><strong id="cost">—</strong><small>at each record's stored rate</small></article>
+      <article class="kpi"><span class="label">Usage records</span><strong id="records">—</strong><small id="dateSpan"></small></article>
+      <article class="kpi"><span class="label">Active branches</span><strong id="branches">—</strong><small id="repos"></small></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div><h2>Usage over time</h2><p>Estimated credits by UTC session date</p></div>
+        <div class="legend"><span><i></i>Estimated AI credits</span></div>
+      </div>
+      <div class="chart" id="chart" role="img" aria-label="Estimated credits by date"></div>
+      <div class="axis"><span id="axisStart"></span><span id="axisEnd"></span></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div><h2>Project and branch detail</h2><p>Sorted by estimated cost, highest first</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Billing code</th><th>Project / repository</th><th>Branch</th><th class="num">Records</th><th class="num">Credits</th><th class="num">Cost</th><th class="num">Coverage</th></tr></thead>
+          <tbody id="detail"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="notice" id="notice" hidden></div>
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    const REPORT = /*__REPORT_DATA__*/null;
+    const $ = id => document.getElementById(id);
+    const creditsFmt = new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 });
+    const countFmt = new Intl.NumberFormat("en-US");
+    const moneyFmt = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+
+    function unique(values) { return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b)); }
+    function option(value, label = value) { const node = document.createElement("option"); node.value = value; node.textContent = label; return node; }
+    function pct(value, total) { return total ? `${Math.round(value / total * 100)}%` : "—"; }
+    function escapeText(value) { const span = document.createElement("span"); span.textContent = value ?? "—"; return span.innerHTML; }
+
+    function setup() {
+      $("generated").textContent = `Generated ${REPORT.generated_at_utc}`;
+      $("source").textContent = `Source: ${REPORT.source_ledger}`;
+      for (const period of REPORT.billing_periods.slice().reverse()) {
+        $("cycle").append(option(period.billed_on, `${period.start} – ${dayBefore(period.end_exclusive)} · bills ${period.billed_on}`));
+      }
+      for (const repo of unique(REPORT.rows.map(row => row.repo))) $("repo").append(option(repo));
+      reset(false);
+      for (const id of ["timeMode", "cycle", "start", "end", "repo", "branch"]) $(id).addEventListener("change", handleFilterChange);
+      $("reset").addEventListener("click", () => reset(true));
+      render();
+    }
+
+    function dayBefore(iso) { const date = new Date(`${iso}T00:00:00Z`); date.setUTCDate(date.getUTCDate() - 1); return date.toISOString().slice(0, 10); }
+    function selectedPeriod() { return REPORT.billing_periods.find(period => period.billed_on === $("cycle").value); }
+
+    function reset(renderNow) {
+      $("timeMode").value = REPORT.billing_periods.length ? "cycle" : "all";
+      if (REPORT.billing_periods.length) $("cycle").value = REPORT.billing_periods.at(-1).billed_on;
+      $("repo").value = "";
+      $("branch").value = "";
+      syncDates();
+      rebuildBranches();
+      if (renderNow) render();
+    }
+
+    function syncDates() {
+      const mode = $("timeMode").value;
+      const period = selectedPeriod();
+      $("cycle").disabled = mode !== "cycle";
+      $("start").disabled = mode !== "custom";
+      $("end").disabled = mode !== "custom";
+      if (mode === "cycle" && period) {
+        $("start").value = period.start;
+        $("end").value = dayBefore(period.end_exclusive);
+      } else if (mode === "all" && REPORT.rows.length) {
+        $("start").value = REPORT.rows[0].date;
+        $("end").value = REPORT.rows.at(-1).date;
+      } else if (mode === "custom" && (!$("start").value || !$("end").value) && REPORT.rows.length) {
+        $("start").value = REPORT.rows[0].date;
+        $("end").value = REPORT.rows.at(-1).date;
+      }
+    }
+
+    function rebuildBranches() {
+      const current = $("branch").value;
+      const repo = $("repo").value;
+      const branches = unique(REPORT.rows.filter(row => !repo || row.repo === repo).map(row => row.branch));
+      $("branch").replaceChildren(option("", "All branches"), ...branches.map(value => option(value)));
+      $("branch").value = branches.includes(current) ? current : "";
+    }
+
+    function handleFilterChange(event) {
+      if (event.target.id === "timeMode" || event.target.id === "cycle") syncDates();
+      if (event.target.id === "repo") rebuildBranches();
+      render();
+    }
+
+    function filteredRows() {
+      const mode = $("timeMode").value;
+      const start = mode === "all" ? "" : $("start").value;
+      const end = mode === "all" ? "" : $("end").value;
+      const repo = $("repo").value;
+      const branch = $("branch").value;
+      return REPORT.rows.filter(row =>
+        (!start || row.date >= start) && (!end || row.date <= end) &&
+        (!repo || row.repo === repo) && (!branch || row.branch === branch)
+      );
+    }
+
+    function render() {
+      const rows = filteredRows();
+      const known = rows.filter(row => row.credits !== null);
+      const credits = known.reduce((sum, row) => sum + row.credits, 0);
+      const cost = known.reduce((sum, row) => sum + row.cost_usd, 0);
+      const branches = unique(rows.map(row => `${row.repo}\\u0000${row.branch}`));
+      const repos = unique(rows.map(row => row.repo));
+      $("credits").textContent = creditsFmt.format(credits);
+      $("cost").textContent = moneyFmt.format(cost);
+      $("records").textContent = countFmt.format(rows.length);
+      $("branches").textContent = countFmt.format(branches.length);
+      $("coverage").textContent = `${known.length} of ${rows.length} records estimated · ${pct(known.length, rows.length)} coverage`;
+      $("dateSpan").textContent = rows.length ? `${rows[0].date} through ${rows.at(-1).date}` : "No matching dates";
+      $("repos").textContent = `${repos.length} ${repos.length === 1 ? "repository" : "repositories"}`;
+      renderScope(rows);
+      renderChart(rows);
+      renderDetail(rows);
+      renderNotice();
+    }
+
+    function renderScope(rows) {
+      const mode = $("timeMode").value;
+      const period = selectedPeriod();
+      const time = mode === "cycle" && period
+        ? `ACS cycle ${period.start} through ${dayBefore(period.end_exclusive)} (bills ${period.billed_on})`
+        : mode === "custom" ? `${$("start").value || "beginning"} through ${$("end").value || "latest"}` : "All recorded usage";
+      const parts = [time];
+      if ($("repo").value) parts.push($("repo").value);
+      if ($("branch").value) parts.push($("branch").value);
+      $("scope").textContent = `${parts.join(" · ")} · ${rows.length} matching records`;
+    }
+
+    function renderChart(rows) {
+      const byDate = new Map();
+      for (const row of rows) if (row.credits !== null) byDate.set(row.date, (byDate.get(row.date) || 0) + row.credits);
+      const values = [...byDate.entries()].sort(([a], [b]) => a.localeCompare(b));
+      const max = Math.max(...values.map(([, value]) => value), 0);
+      $("chart").replaceChildren();
+      if (!values.length) {
+        const empty = document.createElement("div"); empty.className = "empty"; empty.textContent = "No estimated usage matches these filters."; $("chart").append(empty);
+        $("axisStart").textContent = ""; $("axisEnd").textContent = ""; return;
+      }
+      for (const [date, value] of values) {
+        const wrap = document.createElement("div"); wrap.className = "bar-wrap";
+        const bar = document.createElement("div"); bar.className = "bar"; bar.style.height = `${Math.max(1, value / max * 100)}%`;
+        const tip = document.createElement("span"); tip.className = "tip"; tip.textContent = `${date} · ${creditsFmt.format(value)} credits`;
+        wrap.append(bar, tip); $("chart").append(wrap);
+      }
+      $("axisStart").textContent = values[0][0]; $("axisEnd").textContent = values.at(-1)[0];
+    }
+
+    function renderDetail(rows) {
+      const groups = new Map();
+      for (const row of rows) {
+        const key = `${row.repo}\\u0000${row.branch}`;
+        const group = groups.get(key) || { ...row, records: 0, known: 0, credits: 0, cost: 0 };
+        group.records += 1;
+        if (row.credits !== null) { group.known += 1; group.credits += row.credits; group.cost += row.cost_usd; }
+        groups.set(key, group);
+      }
+      const sorted = [...groups.values()].sort((a, b) => b.cost - a.cost || a.repo.localeCompare(b.repo) || a.branch.localeCompare(b.branch));
+      $("detail").replaceChildren();
+      if (!sorted.length) {
+        const row = document.createElement("tr"); row.innerHTML = '<td colspan="7" class="empty">No usage matches these filters.</td>'; $("detail").append(row); return;
+      }
+      for (const group of sorted) {
+        const row = document.createElement("tr");
+        const title = group.project_name && group.project_name !== group.repo ? `<strong>${escapeText(group.project_name)}</strong><br><small>${escapeText(group.repo)}</small>` : `<strong>${escapeText(group.repo)}</strong>`;
+        row.innerHTML = `<td><span class="code">${escapeText(group.billing_code ?? "unmapped")}</span></td><td>${title}</td><td class="branch">${escapeText(group.branch)}</td><td class="num">${countFmt.format(group.records)}</td><td class="num">${creditsFmt.format(group.credits)}</td><td class="num">${moneyFmt.format(group.cost)}</td><td class="num">${pct(group.known, group.records)}</td>`;
+        $("detail").append(row);
+      }
+    }
+
+    function renderNotice() {
+      const messages = [];
+      if (REPORT.unmapped_repositories.length) messages.push(`Unmapped repositories: ${REPORT.unmapped_repositories.join(", ")}`);
+      if (REPORT.invalid_records.length) messages.push(`${REPORT.invalid_records.length} invalid ledger records were excluded.`);
+      if (REPORT.duplicate_record_keys_skipped.length) messages.push(`${REPORT.duplicate_record_keys_skipped.length} duplicate records were skipped.`);
+      $("notice").hidden = !messages.length;
+      $("notice").textContent = messages.join(" ");
+      $("footer").textContent = `${REPORT.disclaimer} Billing periods: ${REPORT.billing_period_definition}. Billing codes: ${REPORT.billing_code_source}.`;
+    }
+
+    setup();
+  </script>
+</body>
+</html>
