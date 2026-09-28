@@ -1,13 +1,6 @@
 ---
 name: agentic-eval
-description: |
-  Patterns and techniques for evaluating and improving AI agent outputs. Use this skill when:
-  - Implementing self-critique and reflection loops
-  - Building evaluator-optimizer pipelines for quality-critical generation
-  - Creating test-driven code refinement workflows
-  - Designing rubric-based or LLM-as-judge evaluation systems
-  - Adding iterative improvement to agent outputs (code, reports, analysis)
-  - Measuring and improving agent response quality
+description: 'Patterns for evaluating and improving AI outputs and harness configuration. Use when building reflection or evaluator-optimizer loops, calibrating prompts, instructions, skills, tool access, context policies, or budgets against repeatable tasks, and measuring agent quality.'
 ---
 
 # Agentic Evaluation Patterns
@@ -29,6 +22,27 @@ Generate → Evaluate → Critique → Refine → Output
 - **Quality-critical generation**: Code, reports, analysis requiring high accuracy
 - **Tasks with clear evaluation criteria**: Defined success metrics exist
 - **Content requiring specific standards**: Style guides, compliance, formatting
+
+---
+
+## Empirical Harness Configuration Calibration
+
+Use this pattern to improve an agent or harness by changing its configuration, not its model. It applies when runs can be evaluated against a stable task suite or environment with independently checkable outcomes.
+
+### Configuration Channels
+
+Inspect each channel the harness actually exposes; do not assume every harness has all four.
+
+| Channel | Examples |
+|---|---|
+| **Told** | Instructions, prompts, tool descriptions, skill text, plugin guidance, memory supplied before a run |
+| **Shown** | Task input, observations, tool results, retrieved files, history, and the policy that selects or truncates context |
+| **Allowed** | Available tools and plugins, disabled tools, approval checks, and risk gates |
+| **Pace** | Step, time, and cost budgets; decision or retry limits |
+
+These are configuration paths into a run, not model weights or the environment's ground truth. A tool can be both told (its description) and allowed (its availability); record the channel actually affected by a change.
+
+Read the [harness calibration procedure](./references/harness-calibration.md) when applying this pattern. Keep verifiers independent of the configuration; do not optimize by bypassing the target model, weakening safety checks, or broadening permissions. Use probes to diagnose, but validate with the real target.
 
 ---
 
