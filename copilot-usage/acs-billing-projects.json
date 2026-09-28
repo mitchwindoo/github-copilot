@@ -7,7 +7,7 @@
       "repo_name": "NXEdge/SHD-Ignition-BOI1",
       "billing_code": "11384",
       "project_name": "SHD Ignition BOI1",
-      "client": "ACS"
+      "client": "NxEdge"
     },
     {
       "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
@@ -25,7 +25,7 @@
       "repo_name": "NXEdge/SHD-BOI-Line",
       "billing_code": 11384,
       "project_name": "SHD BOI Line",
-      "client": "ACS"
+      "client": "NxEdge"
     },
     {
       "repo_name": "mitchwindoo/github-copilot",

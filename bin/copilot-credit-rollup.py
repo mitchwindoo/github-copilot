@@ -9,7 +9,7 @@ Billing periods run from the 21st of one month (inclusive) to the 21st of the
 next month (exclusive) and are named by the date they are billed on (the end).
 
 Every bucket is also broken down by repository and then by branch, with the ACS
-billing project code taken from local-data/acs-billing-projects.json.
+billing project code taken from copilot-usage/acs-billing-projects.json.
 
 All credit values are ESTIMATES unless reported in `actual_ai_credits`; the
 authoritative source is always the GitHub billing usage report.
@@ -28,9 +28,10 @@ DEFAULT_USD_PER_AI_CREDIT = 0.01
 BILLING_DAY = 21
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_LEDGER = REPO_ROOT / "local-data" / "copilot-credit-usage.jsonl"
-DEFAULT_SUMMARY = REPO_ROOT / "local-data" / "copilot-credit-usage-summary.json"
-DEFAULT_PROJECTS = REPO_ROOT / "local-data" / "acs-billing-projects.json"
+DEFAULT_USAGE_DIR = REPO_ROOT / "copilot-usage"
+DEFAULT_LEDGER = DEFAULT_USAGE_DIR / "copilot-credit-usage.jsonl"
+DEFAULT_SUMMARY = DEFAULT_USAGE_DIR / "copilot-credit-usage-summary.json"
+DEFAULT_PROJECTS = DEFAULT_USAGE_DIR / "acs-billing-projects.json"
 UNKNOWN = "unknown"
 
 
@@ -176,18 +177,20 @@ def numeric_or_none(value, field: str, errors: list[str]) -> float | None:
     return float(value)
 
 
-def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) -> dict:
+def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> dict:
+    """Parse the ledger once into usable rows plus the problems found along the way.
+
+    Both the summary and the HTML report read from this so there is a single
+    interpretation of the ledger.
+    """
     if projects is None:
         projects = load_projects(DEFAULT_PROJECTS)
-    weeks: dict[str, dict] = {}
-    periods: dict[str, dict] = {}
+    rows: list[dict] = []
     invalid: list[dict] = []
     duplicates: list[dict] = []
     seen_keys: dict[str, int] = {}
     unmapped: set[str] = set()
-    counted = 0
     fallback_timestamps = 0
-    totals = new_bucket({})
 
     with ledger_path.open("r", encoding="utf-8") as handle:
         for line_number, raw_line in enumerate(handle, start=1):
@@ -260,14 +263,56 @@ def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) ->
 
             week_key, week_start, week_end = week_bucket(moment)
             billed_on, period_start, period_end = billing_bucket(moment)
-            week = weeks.setdefault(week_key, new_bucket({"iso_week": week_key, "start_utc": week_start, "end_utc": week_end}))
-            period = periods.setdefault(
-                billed_on,
-                new_bucket({"billed_on": billed_on, "start_utc_inclusive": period_start, "end_utc_exclusive": period_end}),
+            rows.append(
+                {
+                    "line": line_number,
+                    "moment": moment,
+                    "date_utc": moment.date().isoformat(),
+                    "credits": credits,
+                    "rate": rate,
+                    "actual": actual,
+                    "iso_week": week_key,
+                    "week_start_utc": week_start,
+                    "week_end_utc": week_end,
+                    "billed_on": billed_on,
+                    "period_start_utc_inclusive": period_start,
+                    "period_end_utc_exclusive": period_end,
+                    "scope": scope,
+                }
             )
-            for bucket in (week, period, totals):
-                accumulate(bucket, credits, rate, actual, scope)
-            counted += 1
+
+    return {
+        "rows": rows,
+        "invalid_records": invalid,
+        "duplicate_record_keys_skipped": duplicates,
+        "unmapped_repositories": sorted(unmapped),
+        "records_bucketed_by_fallback_timestamp": fallback_timestamps,
+    }
+
+
+def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) -> dict:
+    parsed = read_ledger(ledger_path, projects)
+    weeks: dict[str, dict] = {}
+    periods: dict[str, dict] = {}
+    totals = new_bucket({})
+
+    for row in parsed["rows"]:
+        week = weeks.setdefault(
+            row["iso_week"],
+            new_bucket({"iso_week": row["iso_week"], "start_utc": row["week_start_utc"], "end_utc": row["week_end_utc"]}),
+        )
+        period = periods.setdefault(
+            row["billed_on"],
+            new_bucket(
+                {
+                    "billed_on": row["billed_on"],
+                    "start_utc_inclusive": row["period_start_utc_inclusive"],
+                    "end_utc_exclusive": row["period_end_utc_exclusive"],
+                }
+            ),
+        )
+        for bucket in (week, period, totals):
+            accumulate(bucket, row["credits"], row["rate"], row["actual"], row["scope"])
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -282,11 +327,11 @@ def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) ->
         "bucketed_by": "session_created_at_utc (falls back to recorded_at_utc)",
         "grouped_by": "repository, then branch, within totals and every week and billing period",
         "billing_code_source": DEFAULT_PROJECTS.name,
-        "unmapped_repositories": sorted(unmapped),
-        "records_counted": counted,
-        "records_bucketed_by_fallback_timestamp": fallback_timestamps,
-        "duplicate_record_keys_skipped": duplicates,
-        "invalid_records": invalid,
+        "unmapped_repositories": parsed["unmapped_repositories"],
+        "records_counted": len(parsed["rows"]),
+        "records_bucketed_by_fallback_timestamp": parsed["records_bucketed_by_fallback_timestamp"],
+        "duplicate_record_keys_skipped": parsed["duplicate_record_keys_skipped"],
+        "invalid_records": parsed["invalid_records"],
         "totals": finalize(totals),
         "weekly": [finalize(weeks[k]) for k in sorted(weeks)],
         "billing_periods": [finalize(periods[k]) for k in sorted(periods)],

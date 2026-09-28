@@ -28,7 +28,7 @@
               "records_without_estimate": 1
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 134223.3627,
           "estimated_cost_usd": 1342.23,
           "project_name": "SHD Ignition BOI1",
@@ -98,7 +98,7 @@
               "records_without_estimate": 4
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 581.9846,
           "estimated_cost_usd": 5.82,
           "project_name": "SHD Ignition BOI1",
@@ -148,7 +148,7 @@
             "records_without_estimate": 5
           }
         ],
-        "client": "ACS",
+        "client": "NxEdge",
         "estimated_ai_credits": 134805.3473,
         "estimated_cost_usd": 1348.05,
         "project_name": "SHD Ignition BOI1",
@@ -221,7 +221,7 @@
               "records_without_estimate": 0
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 40088.527,
           "estimated_cost_usd": 400.89,
           "project_name": "SHD Ignition BOI1",
@@ -263,7 +263,7 @@
               "records_without_estimate": 1
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 94134.8357,
           "estimated_cost_usd": 941.35,
           "project_name": "SHD Ignition BOI1",
@@ -333,7 +333,7 @@
               "records_without_estimate": 2
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 0.0,
           "estimated_cost_usd": 0.0,
           "project_name": "SHD Ignition BOI1",
@@ -375,7 +375,7 @@
               "records_without_estimate": 2
             }
           ],
-          "client": "ACS",
+          "client": "NxEdge",
           "estimated_ai_credits": 581.9846,
           "estimated_cost_usd": 5.82,
           "project_name": "SHD Ignition BOI1",
