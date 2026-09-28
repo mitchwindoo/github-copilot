@@ -24,3 +24,6 @@ media-cache/
 installed-plugins/
 updater/
 skills/mermaid-skill
+
+attachments/
+mcp-oauth-config/

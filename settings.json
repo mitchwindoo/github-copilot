@@ -7,5 +7,10 @@
     "microsoft-365-agents-toolkit@copilot-plugins": true,
     "workiq-productivity@copilot-plugins": true,
     "fabric-skills@copilot-plugins": true
-  }
+  },
+  "disabledMcpServers": [
+    "powerbi-modeling-mcp",
+    "fabric-sqlendpoint",
+    "FabricIQ"
+  ]
 }
