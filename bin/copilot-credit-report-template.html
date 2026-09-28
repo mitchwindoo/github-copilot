@@ -60,6 +60,18 @@
     }
     button:hover { background: var(--accent); transform: translateY(-1px); }
     .filter-note { grid-column: 1 / -1; color: var(--muted); font-size: .86rem; }
+    .provenance {
+      background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--accent);
+      border-radius: 14px; padding: 1rem 1.15rem; margin: 1rem 0;
+    }
+    .provenance h2 {
+      margin: 0 0 .65rem; font-size: .69rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .09em; color: var(--muted);
+    }
+    .provenance dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .75rem 1.5rem; margin: 0; }
+    .provenance dt { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: .64rem; font-weight: 800; }
+    .provenance dd { margin: .22rem 0 0; font-size: .95rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+    .provenance .filter-note { margin-top: .8rem; }
     .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1rem 0; }
     .kpi {
       background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1rem, 2vw, 1.6rem);
@@ -101,9 +113,97 @@
     footer { color: var(--muted); font-size: .78rem; line-height: 1.6; margin: 1.5rem .25rem 0; }
     @media (max-width: 1100px) { .filters { grid-template-columns: repeat(3, 1fr); } .kpis { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 680px) { .filters { grid-template-columns: 1fr; } .kpis { grid-template-columns: 1fr; } main { width: min(100% - 1rem, 1500px); } .legend { display: none; } }
+    @page {
+      size: letter portrait;
+      margin: .45in .45in .65in;
+      @bottom-center {
+        content: "Page " counter(page) " of " counter(pages);
+        color: #71655c;
+        font: 8pt "Segoe UI", Arial, sans-serif;
+      }
+    }
     @media print {
-      body { background: white; } .masthead { padding: 1.5rem; } main { width: 100%; margin: 0; }
-      .filters { display: none; } .panel, .kpi { box-shadow: none; break-inside: avoid; }
+      *, *::before, *::after {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      html, body { background: white; }
+      body { font-size: 9pt; }
+      .masthead {
+        padding: .28in .35in .34in;
+        break-after: avoid;
+        overflow: hidden;
+      }
+      .masthead::after {
+        width: 9rem;
+        height: 9rem;
+        right: -3rem;
+        top: -4.5rem;
+        border-width: 1.5rem;
+      }
+      .brand-row { gap: .6rem; margin-bottom: .35rem; }
+      .brand-mark { border-radius: 6px; padding: .25rem .45rem; box-shadow: none; }
+      .brand-mark img { height: 20px; }
+      .eyebrow { font-size: 7pt; }
+      h1 { max-width: none; margin: .25rem 0 .35rem; font-size: 27pt; line-height: 1.05; }
+      .subtitle { max-width: 7.2in; font-size: 9pt; line-height: 1.35; }
+      .meta { gap: .25rem 1rem; margin-top: .45rem; font-size: 7pt; }
+      main { width: 100%; margin: 0; position: static; }
+      .filters { display: none; }
+      .provenance {
+        margin: .14in 0 .12in;
+        padding: .14in .18in;
+        border-left-width: 4pt;
+        border-radius: 6px;
+        box-shadow: none;
+        break-inside: avoid;
+        break-after: avoid;
+      }
+      .provenance h2 { margin-bottom: .07in; font-size: 7pt; }
+      .provenance dl { grid-template-columns: repeat(3, 1fr); gap: .09in .22in; }
+      .provenance dt { font-size: 6.5pt; }
+      .provenance dd { margin-top: .03in; font-size: 9.5pt; font-weight: 800; }
+      .provenance .filter-note {
+        margin-top: .09in;
+        color: var(--ink);
+        font-size: 7.5pt;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .kpis { grid-template-columns: repeat(4, 1fr); gap: .08in; margin: .08in 0; }
+      .kpi {
+        padding: .12in;
+        border-radius: 6px;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .kpi strong { margin-top: .2rem; font-size: 17pt; }
+      .kpi small { margin-top: .15rem; font-size: 7pt; line-height: 1.25; }
+      #dateSpan { color: var(--ink); font-size: 8pt; font-weight: 700; }
+      .panel {
+        padding: .14in;
+        margin-top: .1in;
+        border-radius: 6px;
+        box-shadow: none;
+        break-inside: auto;
+      }
+      .panel-head { margin-bottom: .08in; break-after: avoid; }
+      .chart { min-height: 1.6in; padding-top: .08in; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; table-layout: auto; }
+      thead { display: table-header-group; }
+      tfoot { display: table-footer-group; }
+      tr, th, td { break-inside: avoid; page-break-inside: avoid; }
+      th { padding: .08in .06in; font-size: 6.5pt; }
+      td { padding: .08in .06in; font-size: 7.5pt; overflow-wrap: anywhere; }
+      td.num, th.num { white-space: nowrap; }
+      .branch, .code { white-space: normal; overflow-wrap: anywhere; }
+      main > .panel:last-of-type { break-before: page; }
+      .tip { display: none !important; }
+      button:hover, .kpi:hover { transform: none; box-shadow: none; }
+      tbody tr:hover { background: transparent; }
+      .bar-wrap:hover .tip { opacity: 0; transform: none; }
+      footer { margin-top: .14in; font-size: 7pt; }
     }
   </style>
 </head>
@@ -147,6 +247,18 @@
         <select id="model"><option value="">All models</option></select>
       </label>
       <button id="reset" type="button">Reset filters</button>
+    </section>
+
+    <section class="provenance" aria-label="Report scope">
+      <h2>Report scope</h2>
+      <dl>
+        <div><dt>Repository</dt><dd id="scopeRepo">—</dd></div>
+        <div><dt>Branch</dt><dd id="scopeBranch">—</dd></div>
+        <div><dt>Billing code</dt><dd id="scopeBilling">—</dd></div>
+        <div><dt>Model</dt><dd id="scopeModel">—</dd></div>
+        <div><dt>Period</dt><dd id="scopePeriod">—</dd></div>
+        <div><dt>Records</dt><dd id="scopeRecords">—</dd></div>
+      </dl>
       <div class="filter-note" id="scope"></div>
     </section>
 
@@ -355,10 +467,31 @@
       const time = mode === "cycle" && period
         ? `ACS cycle ${period.start} through ${dayBefore(period.end_exclusive)} (bills ${period.billed_on})`
         : mode === "custom" ? `${$("start").value || "beginning"} through ${$("end").value || "latest"}` : "All recorded usage";
-      const parts = [time];
-      if ($("repo").value) parts.push($("repo").selectedOptions[0].textContent);
-      if ($("branch").value) parts.push($("branch").value);
-      $("scope").textContent = `${parts.join(" · ")} · ${rows.length} matching records`;
+      const repo = $("repo").value ? $("repo").selectedOptions[0].textContent : "All repositories";
+      const branch = $("branch").value || "All branches";
+      const model = $("model").value || "All models";
+      const billing = billingScope(rows);
+      const records = `${countFmt.format(rows.length)} matching records`;
+      $("scopeRepo").textContent = repo;
+      $("scopeBranch").textContent = branch;
+      $("scopeBilling").textContent = billing;
+      $("scopeModel").textContent = model;
+      $("scopePeriod").textContent = time;
+      $("scopeRecords").textContent = records;
+      $("scope").textContent =
+        `Repository: ${repo} · Branch: ${branch} · Billing code: ${billing} · Model: ${model} · Period: ${time} · ${records}`;
+    }
+
+    function billingScope(rows) {
+      const codes = new Map();
+      for (const row of rows) {
+        const code = row.billing_code || "unmapped";
+        if (!codes.has(code)) codes.set(code, row.billing_code ? (row.project_name || "") : "no ACS project mapped");
+      }
+      if (!codes.size) return "No matching records";
+      if (codes.size > 1) return `Multiple (${codes.size} billing codes)`;
+      const [[code, name]] = [...codes.entries()];
+      return name ? `${code} — ${name}` : code;
     }
 
     function renderChart(rows) {

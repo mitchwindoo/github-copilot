@@ -1,0 +1,26 @@
+billing_code,project_name,client,repo_origin,repo_name,records,records_with_estimate,coverage_pct,estimated_credits,estimated_cost_usd,input_tokens,cached_input_tokens,cache_write_tokens,output_tokens,first_date,last_date
+11384,SHD Ignition BOI1,NxEdge,https://github.com/nxedge/shd-ignition-boi1,NXEdge/SHD-Ignition-BOI1,10083,10021,99.39,197970.2209,1979.702209,56925410,5117181157,92634347,20459598,2026-06-22,2026-09-28
+1176,Carefree Systems,ACS,https://github-mitchwindoo/advancedcontrolsystems/carefree-systems,advancedcontrolsystems/carefree-systems,2586,2586,100.0,16825.3253,168.253253,4045957,401379360,9204622,1681799,2026-08-24,2026-08-27
+1176,AB-Logix Git,ACS,https://github.com/advancedcontrolsystems/ab-logix-git,advancedcontrolsystems/AB-Logix-Git,2744,2740,99.85,15277.5105,152.775105,7847175,436309438,7421653,1813682,2026-07-24,2026-09-17
+1176,AB-Logix CI/CD,ACS,https://github.com/advancedcontrolsystems/ab-logix-ci-cd,advancedcontrolsystems/AB-Logix-CI-CD,2179,2176,99.86,9340.779,93.40779,7044825,231283029,5639568,1187286,2026-08-04,2026-09-25
+unmapped,Ignition SSWD,ACS,https://github.com/advancedcontrolsystems/ignition-sswd,advancedcontrolsystems/ignition-sswd,509,509,100.0,8034.0365,80.340365,158859,102350287,3033461,439782,2026-08-14,2026-08-18
+unmapped,,,unknown,unknown,615,610,99.19,5444.9213,54.449213,1235,53853748,16537174,232382,2026-08-25,2026-09-15
+1176,Copilot customizations (internal),internal,https://github.com/mitchwindoo/github-copilot,mitchwindoo/github-copilot,673,664,98.66,3438.7128,34.387128,4202350,77079050,3216840,420761,2026-08-18,2026-09-28
+unmapped,,,https://github.com/nxedge/shd-ignition-docs,NXEdge/SHD-Ignition-Docs,458,457,99.78,1338.4415,13.384415,988640,41374921,910918,221847,2026-07-21,2026-07-24
+1176,Copilot customizations (internal),internal,https://github-mitchwindoo/mitchwindoo/github-copilot,mitchwindoo/github-copilot,663,649,97.89,673.8919,6.738919,3613915,71343016,1027875,435637,2026-08-29,2026-09-28
+unmapped,,,https://github.com/trailhq/graft,trailhq/Graft,100,100,100.0,492.2795,4.922795,41863,7417351,197928,39938,2026-09-14,2026-09-14
+unmapped,,,https://github.com/rockwellautomation/ra-logix-designer-vcs-custom-tools,RockwellAutomation/ra-logix-designer-vcs-custom-tools,207,207,100.0,486.8111,4.868111,438254,9411707,231076,102672,2026-07-23,2026-07-24
+1176,AB-Logix Git,ACS,https://github-mitchwindoo/advancedcontrolsystems/AB-Logix-Git,advancedcontrolsystems/AB-Logix-Git,71,70,98.59,332.3235,3.323235,378961,1615991,0,64534,2026-07-24,2026-09-28
+1176,Carefree Systems,ACS,https://github.com/advancedcontrolsystems/carefree-systems,advancedcontrolsystems/carefree-systems,120,120,100.0,216.0478,2.160478,534472,10505216,0,58302,2026-08-12,2026-08-12
+unmapped,,,https://github.com/nxedge/shd-boi-flow,NXEdge/SHD-BOI-Flow,56,46,82.14,140.6586,1.406586,54484,1986990,145710,22079,2026-07-22,2026-07-23
+unmapped,Zoroco Logs (non-repo workspace),internal,unknown,unknown,21,21,100.0,118.4376,1.184376,42,3236186,177494,9332,2026-09-02,2026-09-02
+unmapped,,,unknown,unknown,64,64,100.0,101.1217,1.011217,138672,2659840,0,21648,2026-07-22,2026-07-22
+11384,SHD BOI Wash,NxEdge,https://github.com/nxedge/shd-boi-wash,NXEdge/SHD-BOI-Wash,78,78,100.0,98.0928,0.980928,568364,4984064,0,57259,2026-08-20,2026-09-03
+11384,SHD BOI Line,NxEdge,https://github.com/nxedge/shd-boi-line,NXEdge/SHD-BOI-Line,4,2,50.0,7.5139,0.075139,36370,34304,0,392,2026-08-18,2026-09-17
+unmapped,,,https://github.com/nxedge/shd-boi-rsp,NXEdge/SHD-BOI-RSP,2,0,0.0,0.0,0.0,0,0,0,0,2026-09-01,2026-09-01
+unmapped,GitHub Copilot app (non-repo workspace),internal,unknown,unknown,15,0,0.0,0.0,0.0,0,0,0,0,2026-08-06,2026-09-17
+unmapped,,,unknown,unknown,1,0,0.0,0.0,0.0,0,0,0,0,2026-06-07,2026-06-07
+unmapped,,,unknown,unknown,1,0,0.0,0.0,0.0,0,0,0,0,2026-06-29,2026-06-29
+unmapped,,,unknown,unknown,1,0,0.0,0.0,0.0,0,0,0,0,2026-08-24,2026-08-24
+unmapped,,,unknown,unknown,1,0,0.0,0.0,0.0,0,0,0,0,2026-09-01,2026-09-01
+unmapped,,,unknown,unknown,1,0,0.0,0.0,0.0,0,0,0,0,2026-09-25,2026-09-25

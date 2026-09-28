@@ -6,7 +6,9 @@ Run this by hand whenever you want a fresh report:
     python bin/copilot-credit-report.py --open
 
 It regenerates copilot-usage/copilot-credit-usage-summary.json (same output as
-copilot-credit-rollup.py) and writes a self-contained HTML report next to it.
+copilot-credit-rollup.py), writes a self-contained HTML report next to it, and
+always writes copilot-usage/copilot-credit-usage-by-repo.csv -- one row per
+repository (branches aggregated) with the ACS billing code, for expensing.
 The report needs no network access: every row is embedded, and the ACS billing
 cycle / custom date range / repository / branch filters run in the browser.
 
@@ -17,6 +19,7 @@ authoritative source is always the GitHub billing usage report.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import sys
 import webbrowser
@@ -30,7 +33,97 @@ import importlib
 rollup = importlib.import_module("copilot-credit-rollup")
 
 DEFAULT_REPORT = rollup.DEFAULT_USAGE_DIR / "copilot-credit-usage-report.html"
+DEFAULT_REPO_CSV = rollup.DEFAULT_USAGE_DIR / "copilot-credit-usage-by-repo.csv"
 TEMPLATE = Path(__file__).resolve().parent / "copilot-credit-report-template.html"
+
+REPO_CSV_COLUMNS = (
+    "billing_code",
+    "project_name",
+    "client",
+    "repo_origin",
+    "repo_name",
+    "records",
+    "records_with_estimate",
+    "coverage_pct",
+    "estimated_credits",
+    "estimated_cost_usd",
+    "input_tokens",
+    "cached_input_tokens",
+    "cache_write_tokens",
+    "output_tokens",
+    "first_date",
+    "last_date",
+)
+
+
+def build_repo_csv_rows(parsed: dict) -> list[dict]:
+    """Aggregate the ledger into one row per repository identity, branches folded in.
+
+    Session markers carry no usage telemetry, so they raise `records` (the ledger
+    row count) without touching credits or tokens. `coverage_pct` therefore stays
+    honest: unknown usage is never rendered as zero spend.
+    """
+    buckets: dict[str, dict] = {}
+
+    def bucket_for(scope: dict) -> dict:
+        entry = buckets.get(scope["repo_key"])
+        if entry is None:
+            entry = {
+                "billing_code": scope.get("billing_code") or "unmapped",
+                "project_name": scope.get("project_name") or "",
+                "client": scope.get("client") or "",
+                "repo_origin": scope.get("repo_origin") or rollup.UNKNOWN,
+                "repo_name": scope.get("repo_name") or rollup.UNKNOWN,
+                "records": 0,
+                "records_with_estimate": 0,
+                "coverage_pct": 0.0,
+                "estimated_credits": 0.0,
+                "estimated_cost_usd": 0.0,
+                "first_date": "",
+                "last_date": "",
+                **{field: 0 for field in rollup.TOKEN_FIELDS},
+            }
+            buckets[scope["repo_key"]] = entry
+        return entry
+
+    def observe(entry: dict, date_utc: str) -> None:
+        entry["records"] += 1
+        if not entry["first_date"] or date_utc < entry["first_date"]:
+            entry["first_date"] = date_utc
+        if date_utc > entry["last_date"]:
+            entry["last_date"] = date_utc
+
+    for row in parsed["rows"]:
+        entry = bucket_for(row["scope"])
+        observe(entry, row["date_utc"])
+        for field in rollup.TOKEN_FIELDS:
+            entry[field] += int(row["tokens"].get(field) or 0)
+        if row["credits"] is None:
+            continue
+        entry["records_with_estimate"] += 1
+        entry["estimated_credits"] += row["credits"]
+        entry["estimated_cost_usd"] += row["credits"] * row["rate"]
+
+    for marker in parsed["session_markers"]:
+        observe(bucket_for(marker["scope"]), marker["date_utc"])
+
+    rows = []
+    for entry in buckets.values():
+        entry["coverage_pct"] = round(entry["records_with_estimate"] / entry["records"] * 100, 2)
+        entry["estimated_credits"] = round(entry["estimated_credits"], 4)
+        entry["estimated_cost_usd"] = round(entry["estimated_cost_usd"], 6)
+        rows.append(entry)
+    rows.sort(key=lambda item: (-item["estimated_cost_usd"], item["repo_name"], item["repo_origin"]))
+    return rows
+
+
+def write_repo_csv(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=REPO_CSV_COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({column: row[column] for column in REPO_CSV_COLUMNS})
 
 
 def build_rows(parsed: dict) -> list[dict]:
@@ -146,6 +239,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--summary", type=Path, default=rollup.DEFAULT_SUMMARY, help="summary JSON to write")
     parser.add_argument("--projects", type=Path, default=rollup.DEFAULT_PROJECTS, help="repo -> ACS billing code map")
     parser.add_argument("--out", type=Path, default=DEFAULT_REPORT, help="HTML report to write")
+    parser.add_argument("--repo-csv", type=Path, default=DEFAULT_REPO_CSV, help="per-repository spend CSV to write")
     parser.add_argument("--no-summary", action="store_true", help="build the report without rewriting the summary")
     parser.add_argument("--open", action="store_true", help="open the report in the default browser when done")
     args = parser.parse_args(argv)
@@ -168,6 +262,9 @@ def main(argv: list[str] | None = None) -> int:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(render_html(build_payload(summary, parsed, args.ledger)), encoding="utf-8")
 
+    repo_csv_rows = build_repo_csv_rows(parsed)
+    write_repo_csv(args.repo_csv, repo_csv_rows)
+
     for item in summary["invalid_records"]:
         print(f"warning: line {item['line']}: {item['reason']}", file=sys.stderr)
     for item in summary["duplicate_record_keys_skipped"]:
@@ -183,10 +280,20 @@ def main(argv: list[str] | None = None) -> int:
     if not args.no_summary:
         print(f"summary -> {args.summary}")
     print(f"report  -> {args.out}")
+    print(f"csv     -> {args.repo_csv}")
     print(
         f"{summary['records_counted']} records, {len(totals['repositories'])} repositories, "
         f"{len(summary['billing_periods'])} billing periods; "
         f"estimated {totals['estimated_ai_credits']} credits (~${totals['estimated_cost_usd']})"
+    )
+    unmapped_csv_rows = sum(1 for row in repo_csv_rows if row["billing_code"] == "unmapped")
+    print(
+        f"csv: {len(repo_csv_rows)} repository rows (one row per repository, branches aggregated); "
+        f"{unmapped_csv_rows} with billing_code=unmapped"
+    )
+    print(
+        "csv values are ESTIMATES only; the authoritative source is the GitHub billing usage report. "
+        "Records without usage telemetry count toward `records` but never toward credits - see `coverage_pct`."
     )
 
     if args.open:
