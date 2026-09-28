@@ -39,6 +39,7 @@ def build_rows(parsed: dict) -> list[dict]:
     for row in parsed["rows"]:
         scope = row["scope"]
         credits = row["credits"]
+        tokens = row.get("tokens") or {}
         rows.append(
             {
                 "date": row["date_utc"],
@@ -51,6 +52,12 @@ def build_rows(parsed: dict) -> list[dict]:
                 "billing_code": scope["billing_code"],
                 "project_name": scope["project_name"],
                 "client": scope["client"],
+                "model": row.get("model", "unknown"),
+                "app_client": row.get("app_client", "unknown"),
+                "input_tokens": tokens.get("input_tokens"),
+                "cached_input_tokens": tokens.get("cached_input_tokens"),
+                "cache_write_tokens": tokens.get("cache_write_tokens"),
+                "output_tokens": tokens.get("output_tokens"),
                 "iso_week": row["iso_week"],
                 "week_start": row["week_start_utc"],
                 "billed_on": row["billed_on"],

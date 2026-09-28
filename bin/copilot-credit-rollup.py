@@ -135,6 +135,9 @@ def billing_bucket(moment: datetime) -> tuple[str, str, str]:
     return end.isoformat(), start.isoformat(), end.isoformat()
 
 
+TOKEN_FIELDS = ("input_tokens", "cached_input_tokens", "cache_write_tokens", "output_tokens")
+
+
 def new_bucket(extra: dict) -> dict:
     bucket = dict(extra)
     bucket.update(
@@ -146,12 +149,19 @@ def new_bucket(extra: dict) -> dict:
             "estimated_ai_credits": 0.0,
             "estimated_cost_usd": 0.0,
             "actual_ai_credits": 0.0,
+            "records_with_token_data": 0,
+            "input_tokens": 0,
+            "cached_input_tokens": 0,
+            "cache_write_tokens": 0,
+            "output_tokens": 0,
         }
     )
     return bucket
 
 
-def add_totals(bucket: dict, credits: float | None, rate: float, actual: float | None) -> None:
+def add_totals(
+    bucket: dict, credits: float | None, rate: float, actual: float | None, tokens: dict | None = None
+) -> None:
     bucket["records"] += 1
     if credits is None:
         bucket["records_without_estimate"] += 1
@@ -162,35 +172,55 @@ def add_totals(bucket: dict, credits: float | None, rate: float, actual: float |
     if actual is not None:
         bucket["records_with_actual"] += 1
         bucket["actual_ai_credits"] += actual
+    if tokens and any(tokens.get(field) is not None for field in TOKEN_FIELDS):
+        bucket["records_with_token_data"] += 1
+        for field in TOKEN_FIELDS:
+            value = tokens.get(field)
+            if value is not None:
+                bucket[field] += value
 
 
-def accumulate(bucket: dict, credits: float | None, rate: float, actual: float | None, scope: dict | None = None) -> None:
-    """Add one record to a bucket and to its repository/branch breakdown."""
-    add_totals(bucket, credits, rate, actual)
-    if scope is None:
-        return
-    repos = bucket.setdefault("_repos", {})
-    repo = repos.get(scope["repo_key"])
-    if repo is None:
-        repo = new_bucket(
-            {
-                "repo_name": scope["repo_name"],
-                "repo_origin": scope["repo_origin"],
-                "billing_code": scope["billing_code"],
-                "project_name": scope["project_name"],
-                "client": scope["client"],
-            }
-        )
-        repo["_workspace_paths"] = set()
-        repo["_branches"] = {}
-        repos[scope["repo_key"]] = repo
-    repo["_workspace_paths"].add(scope["workspace_path"])
-    add_totals(repo, credits, rate, actual)
-    branch = repo["_branches"].get(scope["branch"])
-    if branch is None:
-        branch = new_bucket({"branch": scope["branch"]})
-        repo["_branches"][scope["branch"]] = branch
-    add_totals(branch, credits, rate, actual)
+def accumulate(
+    bucket: dict,
+    credits: float | None,
+    rate: float,
+    actual: float | None,
+    scope: dict | None = None,
+    model: str | None = None,
+    tokens: dict | None = None,
+) -> None:
+    """Add one record to a bucket and to its repository/branch and model breakdowns."""
+    add_totals(bucket, credits, rate, actual, tokens)
+    if scope is not None:
+        repos = bucket.setdefault("_repos", {})
+        repo = repos.get(scope["repo_key"])
+        if repo is None:
+            repo = new_bucket(
+                {
+                    "repo_name": scope["repo_name"],
+                    "repo_origin": scope["repo_origin"],
+                    "billing_code": scope["billing_code"],
+                    "project_name": scope["project_name"],
+                    "client": scope["client"],
+                }
+            )
+            repo["_workspace_paths"] = set()
+            repo["_branches"] = {}
+            repos[scope["repo_key"]] = repo
+        repo["_workspace_paths"].add(scope["workspace_path"])
+        add_totals(repo, credits, rate, actual, tokens)
+        branch = repo["_branches"].get(scope["branch"])
+        if branch is None:
+            branch = new_bucket({"branch": scope["branch"]})
+            repo["_branches"][scope["branch"]] = branch
+        add_totals(branch, credits, rate, actual, tokens)
+    if model is not None:
+        models = bucket.setdefault("_models", {})
+        model_bucket = models.get(model)
+        if model_bucket is None:
+            model_bucket = new_bucket({"model": model})
+            models[model] = model_bucket
+        add_totals(model_bucket, credits, rate, actual, tokens)
 
 
 def round_totals(bucket: dict) -> dict:
@@ -213,6 +243,8 @@ def finalize(bucket: dict) -> dict:
         )
         for _, repo in sorted(repos.items(), key=lambda item: item[0])
     ]
+    models = bucket.pop("_models", {})
+    bucket["models"] = [round_totals(dict(models[m])) for m in sorted(models)]
     return bucket
 
 
@@ -336,6 +368,8 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
                 basis_rate = numeric_or_none(basis.get("usd_per_ai_credit"), "usd_per_ai_credit", errors)
                 if basis_rate:
                     rate = basis_rate
+            model = text_or_unknown(record.get("model"))
+            tokens = {field: numeric_or_none(record.get(field), field, errors) for field in TOKEN_FIELDS}
             if errors:
                 invalid.append({"line": line_number, "reason": "; ".join(errors)})
                 continue
@@ -351,6 +385,9 @@ def read_ledger(ledger_path: Path, projects: dict[str, dict] | None = None) -> d
                     "credits": credits,
                     "rate": rate,
                     "actual": actual,
+                    "model": model,
+                    "app_client": text_or_unknown(record.get("client")),
+                    "tokens": tokens,
                     "iso_week": week_key,
                     "week_start_utc": week_start,
                     "week_end_utc": week_end,
@@ -400,7 +437,7 @@ def build_summary(ledger_path: Path, projects: dict[str, dict] | None = None) ->
             ),
         )
         for bucket in (week, period, totals):
-            accumulate(bucket, row["credits"], row["rate"], row["actual"], row["scope"])
+            accumulate(bucket, row["credits"], row["rate"], row["actual"], row["scope"], row["model"], row["tokens"])
 
     return {
         "schema_version": SCHEMA_VERSION,
