@@ -69,13 +69,239 @@
       "actual_ai_credits": 0.0,
       "billed_on": "2026-08-21",
       "end_utc_exclusive": "2026-08-21",
-      "estimated_ai_credits": 437.0869,
-      "estimated_cost_usd": 4.37,
-      "records": 144,
+      "estimated_ai_credits": 32101.7484,
+      "estimated_cost_usd": 321.02,
+      "records": 6953,
       "records_with_actual": 0,
-      "records_with_estimate": 144,
+      "records_with_estimate": 6953,
       "records_without_estimate": 0,
       "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 4683.4651,
+              "estimated_cost_usd": 46.83,
+              "records": 1470,
+              "records_with_actual": 0,
+              "records_with_estimate": 1470,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 4683.4651,
+          "estimated_cost_usd": 46.83,
+          "project_name": "AB-Logix CI/CD",
+          "records": 1470,
+          "records_with_actual": 0,
+          "records_with_estimate": 1470,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "copilot/worktree-2026-07-24T18-14-36",
+              "estimated_ai_credits": 835.5318,
+              "estimated_cost_usd": 8.36,
+              "records": 132,
+              "records_with_actual": 0,
+              "records_with_estimate": 132,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 14426.0098,
+              "estimated_cost_usd": 144.26,
+              "records": 2602,
+              "records_with_actual": 0,
+              "records_with_estimate": 2602,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-codebase-architecture-review",
+              "estimated_ai_credits": 15.9689,
+              "estimated_cost_usd": 0.16,
+              "records": 6,
+              "records_with_actual": 0,
+              "records_with_estimate": 6,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 15277.5105,
+          "estimated_cost_usd": 152.78,
+          "project_name": "AB-Logix Git",
+          "records": 2740,
+          "records_with_actual": 0,
+          "records_with_estimate": 2740,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-Git",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-git",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\AB-Logix-Git\\mitchwindoo-psychic-funicular",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 216.0478,
+              "estimated_cost_usd": 2.16,
+              "records": 120,
+              "records_with_actual": 0,
+              "records_with_estimate": 120,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 216.0478,
+          "estimated_cost_usd": 2.16,
+          "project_name": "Carefree Systems",
+          "records": 120,
+          "records_with_actual": 0,
+          "records_with_estimate": 120,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/carefree-systems",
+          "repo_origin": "https://github.com/advancedcontrolsystems/carefree-systems",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\carefree-systems"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": null,
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 7999.5494,
+              "estimated_cost_usd": 80.0,
+              "records": 478,
+              "records_with_actual": 0,
+              "records_with_estimate": 478,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 7999.5494,
+          "estimated_cost_usd": 80.0,
+          "project_name": "Ignition SSWD",
+          "records": 478,
+          "records_with_actual": 0,
+          "records_with_estimate": 478,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/ignition-sswd",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ignition-sswd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\ignition-sswd"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 336.8928,
+              "estimated_cost_usd": 3.37,
+              "records": 224,
+              "records_with_actual": 0,
+              "records_with_estimate": 224,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 336.8928,
+          "estimated_cost_usd": 3.37,
+          "project_name": "Copilot customizations (internal)",
+          "records": 224,
+          "records_with_actual": 0,
+          "records_with_estimate": 224,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\.copilot",
+            "c:\\Users\\MitchellLandreth\\.copilot\\chats\\dfc61c6c-bd89-4432-b32f-f05be3de6af8"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 7.5139,
+              "estimated_cost_usd": 0.08,
+              "records": 2,
+              "records_with_actual": 0,
+              "records_with_estimate": 2,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 7.5139,
+          "estimated_cost_usd": 0.08,
+          "project_name": "SHD BOI Line",
+          "records": 2,
+          "records_with_actual": 0,
+          "records_with_estimate": 2,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-BOI-Line",
+          "repo_origin": "https://github.com/nxedge/shd-boi-line",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Line"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 95.2997,
+              "estimated_cost_usd": 0.95,
+              "records": 74,
+              "records_with_actual": 0,
+              "records_with_estimate": 74,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 95.2997,
+          "estimated_cost_usd": 0.95,
+          "project_name": "SHD BOI Wash",
+          "records": 74,
+          "records_with_actual": 0,
+          "records_with_estimate": 74,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-BOI-Wash",
+          "repo_origin": "https://github.com/nxedge/shd-boi-wash",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Wash"
+          ]
+        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "11384",
@@ -83,26 +309,37 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 437.0869,
-              "estimated_cost_usd": 4.37,
-              "records": 144,
+              "estimated_ai_credits": 3220.6518,
+              "estimated_cost_usd": 32.21,
+              "records": 1722,
               "records_with_actual": 0,
-              "records_with_estimate": 144,
+              "records_with_estimate": 1722,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 264.8174,
+              "estimated_cost_usd": 2.65,
+              "records": 123,
+              "records_with_actual": 0,
+              "records_with_estimate": 123,
               "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 437.0869,
-          "estimated_cost_usd": 4.37,
+          "estimated_ai_credits": 3485.4692,
+          "estimated_cost_usd": 34.85,
           "project_name": "SHD Ignition BOI1",
-          "records": 144,
+          "records": 1845,
           "records_with_actual": 0,
-          "records_with_estimate": 144,
+          "records_with_estimate": 1845,
           "records_without_estimate": 0,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
           "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
-            "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
+            "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
       ],
@@ -112,11 +349,11 @@
       "actual_ai_credits": 0.0,
       "billed_on": "2026-09-21",
       "end_utc_exclusive": "2026-09-21",
-      "estimated_ai_credits": 178890.6095,
-      "estimated_cost_usd": 1788.91,
-      "records": 5486,
+      "estimated_ai_credits": 179755.1118,
+      "estimated_cost_usd": 1797.55,
+      "records": 5618,
       "records_with_actual": 0,
-      "records_with_estimate": 5485,
+      "records_with_estimate": 5617,
       "records_without_estimate": 1,
       "repositories": [
         {
@@ -150,32 +387,95 @@
         },
         {
           "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 630.7775,
+              "estimated_cost_usd": 6.31,
+              "records": 95,
+              "records_with_actual": 0,
+              "records_with_estimate": 95,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 630.7775,
+          "estimated_cost_usd": 6.31,
+          "project_name": "Copilot customizations (internal)",
+          "records": 95,
+          "records_with_actual": 0,
+          "records_with_estimate": 95,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\.copilot",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\redesigned-fiesta-1c7eae9f",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\ubiquitous-waffle-4a6b1b36",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-18\\ubiquitous-system-875f67b8",
+            "c:\\Users\\MitchellLandreth\\.copilot"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
           "billing_code": "11384",
           "branches": [
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 178881.9863,
-              "estimated_cost_usd": 1788.82,
-              "records": 5484,
+              "estimated_ai_credits": 178997.2735,
+              "estimated_cost_usd": 1789.97,
+              "records": 5500,
               "records_with_actual": 0,
-              "records_with_estimate": 5483,
+              "records_with_estimate": 5499,
               "records_without_estimate": 1
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 178881.9863,
-          "estimated_cost_usd": 1788.82,
+          "estimated_ai_credits": 178997.2735,
+          "estimated_cost_usd": 1789.97,
           "project_name": "SHD Ignition BOI1",
-          "records": 5484,
+          "records": 5500,
           "records_with_actual": 0,
-          "records_with_estimate": 5483,
+          "records_with_estimate": 5499,
           "records_without_estimate": 1,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
           "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
             "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
-            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": null,
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "unknown",
+              "estimated_ai_credits": 118.4376,
+              "estimated_cost_usd": 1.18,
+              "records": 21,
+              "records_with_actual": 0,
+              "records_with_estimate": 21,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 118.4376,
+          "estimated_cost_usd": 1.18,
+          "project_name": "Zoroco Logs (non-repo workspace)",
+          "records": 21,
+          "records_with_actual": 0,
+          "records_with_estimate": 21,
+          "records_without_estimate": 0,
+          "repo_name": "unknown",
+          "repo_origin": null,
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Desktop\\Zoroco Logs"
           ]
         }
       ],
@@ -185,13 +485,77 @@
       "actual_ai_credits": 0.0,
       "billed_on": "2026-10-21",
       "end_utc_exclusive": "2026-10-21",
-      "estimated_ai_credits": 9219.7582,
-      "estimated_cost_usd": 92.2,
-      "records": 1735,
+      "estimated_ai_credits": 14281.5078,
+      "estimated_cost_usd": 142.82,
+      "records": 2291,
       "records_with_actual": 0,
-      "records_with_estimate": 1731,
+      "records_with_estimate": 2287,
       "records_without_estimate": 4,
       "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 1765.452,
+              "estimated_cost_usd": 17.65,
+              "records": 262,
+              "records_with_actual": 0,
+              "records_with_estimate": 262,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-shiny-bassoon",
+              "estimated_ai_credits": 352.6697,
+              "estimated_cost_usd": 3.53,
+              "records": 21,
+              "records_with_actual": 0,
+              "records_with_estimate": 21,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-urban-fiesta",
+              "estimated_ai_credits": 333.288,
+              "estimated_cost_usd": 3.33,
+              "records": 34,
+              "records_with_actual": 0,
+              "records_with_estimate": 34,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-verbose-chainsaw",
+              "estimated_ai_credits": 19.6328,
+              "estimated_cost_usd": 0.2,
+              "records": 28,
+              "records_with_actual": 0,
+              "records_with_estimate": 28,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 2471.0425,
+          "estimated_cost_usd": 24.71,
+          "project_name": "Copilot customizations (internal)",
+          "records": 345,
+          "records_with_actual": 0,
+          "records_with_estimate": 345,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\.copilot",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\cautious-chainsaw-2ffe9635",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\redesigned-parakeet-61859cd7",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-shiny-bassoon",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-urban-fiesta",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-verbose-chainsaw"
+          ]
+        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "11384",
@@ -199,11 +563,11 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 8884.9537,
-              "estimated_cost_usd": 88.85,
-              "records": 1645,
+              "estimated_ai_credits": 11475.6608,
+              "estimated_cost_usd": 114.76,
+              "records": 1856,
               "records_with_actual": 0,
-              "records_with_estimate": 1641,
+              "records_with_estimate": 1852,
               "records_without_estimate": 4
             },
             {
@@ -228,12 +592,12 @@
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 9219.7582,
-          "estimated_cost_usd": 92.2,
+          "estimated_ai_credits": 11810.4653,
+          "estimated_cost_usd": 118.1,
           "project_name": "SHD Ignition BOI1",
-          "records": 1735,
+          "records": 1946,
           "records_with_actual": 0,
-          "records_with_estimate": 1731,
+          "records_with_estimate": 1942,
           "records_without_estimate": 4,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
           "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
@@ -254,22 +618,22 @@
   "grouped_by": "repository, then branch, within totals and every week and billing period",
   "invalid_records": [],
   "records_bucketed_by_fallback_timestamp": 0,
-  "records_counted": 8082,
+  "records_counted": 15579,
   "repository_identity": "normalized credential-free remote origin; workspace/session fallback when unavailable",
   "schema_version": 1,
   "session_coverage": {
-    "sessions_observed": 146,
-    "sessions_with_usage_records": 89,
-    "sessions_without_usage_records": 57
+    "sessions_observed": 262,
+    "sessions_with_usage_records": 173,
+    "sessions_without_usage_records": 89
   },
   "source_ledger": "copilot-credit-usage.jsonl",
   "totals": {
     "actual_ai_credits": 0.0,
-    "estimated_ai_credits": 192219.1698,
-    "estimated_cost_usd": 1922.19,
-    "records": 8082,
+    "estimated_ai_credits": 229810.0832,
+    "estimated_cost_usd": 2298.1,
+    "records": 15579,
     "records_with_actual": 0,
-    "records_with_estimate": 8077,
+    "records_with_estimate": 15574,
     "records_without_estimate": 5,
     "repositories": [
       {
@@ -279,26 +643,263 @@
           {
             "actual_ai_credits": 0.0,
             "branch": "main",
-            "estimated_ai_credits": 8.6232,
-            "estimated_cost_usd": 0.09,
+            "estimated_ai_credits": 4692.0883,
+            "estimated_cost_usd": 46.92,
+            "records": 1472,
+            "records_with_actual": 0,
+            "records_with_estimate": 1472,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "ACS",
+        "estimated_ai_credits": 4692.0883,
+        "estimated_cost_usd": 46.92,
+        "project_name": "AB-Logix CI/CD",
+        "records": 1472,
+        "records_with_actual": 0,
+        "records_with_estimate": 1472,
+        "records_without_estimate": 0,
+        "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+        "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+        "workspace_paths": [
+          "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD",
+          "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "1176",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "copilot/worktree-2026-07-24T18-14-36",
+            "estimated_ai_credits": 835.5318,
+            "estimated_cost_usd": 8.36,
+            "records": 132,
+            "records_with_actual": 0,
+            "records_with_estimate": 132,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 14426.0098,
+            "estimated_cost_usd": 144.26,
+            "records": 2602,
+            "records_with_actual": 0,
+            "records_with_estimate": 2602,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-codebase-architecture-review",
+            "estimated_ai_credits": 15.9689,
+            "estimated_cost_usd": 0.16,
+            "records": 6,
+            "records_with_actual": 0,
+            "records_with_estimate": 6,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "ACS",
+        "estimated_ai_credits": 15277.5105,
+        "estimated_cost_usd": 152.78,
+        "project_name": "AB-Logix Git",
+        "records": 2740,
+        "records_with_actual": 0,
+        "records_with_estimate": 2740,
+        "records_without_estimate": 0,
+        "repo_name": "advancedcontrolsystems/AB-Logix-Git",
+        "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-git",
+        "workspace_paths": [
+          "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\AB-Logix-Git\\mitchwindoo-psychic-funicular",
+          "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git",
+          "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "1176",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 216.0478,
+            "estimated_cost_usd": 2.16,
+            "records": 120,
+            "records_with_actual": 0,
+            "records_with_estimate": 120,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "ACS",
+        "estimated_ai_credits": 216.0478,
+        "estimated_cost_usd": 2.16,
+        "project_name": "Carefree Systems",
+        "records": 120,
+        "records_with_actual": 0,
+        "records_with_estimate": 120,
+        "records_without_estimate": 0,
+        "repo_name": "advancedcontrolsystems/carefree-systems",
+        "repo_origin": "https://github.com/advancedcontrolsystems/carefree-systems",
+        "workspace_paths": [
+          "c:\\Users\\MitchellLandreth\\Git-Local\\carefree-systems"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": null,
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 7999.5494,
+            "estimated_cost_usd": 80.0,
+            "records": 478,
+            "records_with_actual": 0,
+            "records_with_estimate": 478,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "ACS",
+        "estimated_ai_credits": 7999.5494,
+        "estimated_cost_usd": 80.0,
+        "project_name": "Ignition SSWD",
+        "records": 478,
+        "records_with_actual": 0,
+        "records_with_estimate": 478,
+        "records_without_estimate": 0,
+        "repo_name": "advancedcontrolsystems/ignition-sswd",
+        "repo_origin": "https://github.com/advancedcontrolsystems/ignition-sswd",
+        "workspace_paths": [
+          "c:\\Users\\MitchellLandreth\\Git-Local\\ignition-sswd"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "1176",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 2733.1223,
+            "estimated_cost_usd": 27.33,
+            "records": 581,
+            "records_with_actual": 0,
+            "records_with_estimate": 581,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-shiny-bassoon",
+            "estimated_ai_credits": 352.6697,
+            "estimated_cost_usd": 3.53,
+            "records": 21,
+            "records_with_actual": 0,
+            "records_with_estimate": 21,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-urban-fiesta",
+            "estimated_ai_credits": 333.288,
+            "estimated_cost_usd": 3.33,
+            "records": 34,
+            "records_with_actual": 0,
+            "records_with_estimate": 34,
+            "records_without_estimate": 0
+          },
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "mitchwindoo-verbose-chainsaw",
+            "estimated_ai_credits": 19.6328,
+            "estimated_cost_usd": 0.2,
+            "records": 28,
+            "records_with_actual": 0,
+            "records_with_estimate": 28,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "internal",
+        "estimated_ai_credits": 3438.7128,
+        "estimated_cost_usd": 34.39,
+        "project_name": "Copilot customizations (internal)",
+        "records": 664,
+        "records_with_actual": 0,
+        "records_with_estimate": 664,
+        "records_without_estimate": 0,
+        "repo_name": "mitchwindoo/github-copilot",
+        "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+        "workspace_paths": [
+          "C:\\Users\\MitchellLandreth\\.copilot",
+          "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\redesigned-fiesta-1c7eae9f",
+          "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\ubiquitous-waffle-4a6b1b36",
+          "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-18\\ubiquitous-system-875f67b8",
+          "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\cautious-chainsaw-2ffe9635",
+          "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\redesigned-parakeet-61859cd7",
+          "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-shiny-bassoon",
+          "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-urban-fiesta",
+          "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-verbose-chainsaw",
+          "c:\\Users\\MitchellLandreth\\.copilot",
+          "c:\\Users\\MitchellLandreth\\.copilot\\chats\\dfc61c6c-bd89-4432-b32f-f05be3de6af8"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "11384",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 7.5139,
+            "estimated_cost_usd": 0.08,
             "records": 2,
             "records_with_actual": 0,
             "records_with_estimate": 2,
             "records_without_estimate": 0
           }
         ],
-        "client": "ACS",
-        "estimated_ai_credits": 8.6232,
-        "estimated_cost_usd": 0.09,
-        "project_name": "AB-Logix CI/CD",
+        "client": "NxEdge",
+        "estimated_ai_credits": 7.5139,
+        "estimated_cost_usd": 0.08,
+        "project_name": "SHD BOI Line",
         "records": 2,
         "records_with_actual": 0,
         "records_with_estimate": 2,
         "records_without_estimate": 0,
-        "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
-        "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+        "repo_name": "NXEdge/SHD-BOI-Line",
+        "repo_origin": "https://github.com/nxedge/shd-boi-line",
         "workspace_paths": [
-          "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Line"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": "11384",
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "main",
+            "estimated_ai_credits": 95.2997,
+            "estimated_cost_usd": 0.95,
+            "records": 74,
+            "records_with_actual": 0,
+            "records_with_estimate": 74,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "NxEdge",
+        "estimated_ai_credits": 95.2997,
+        "estimated_cost_usd": 0.95,
+        "project_name": "SHD BOI Wash",
+        "records": 74,
+        "records_with_actual": 0,
+        "records_with_estimate": 74,
+        "records_without_estimate": 0,
+        "repo_name": "NXEdge/SHD-BOI-Wash",
+        "repo_origin": "https://github.com/nxedge/shd-boi-wash",
+        "workspace_paths": [
+          "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Wash"
         ]
       },
       {
@@ -318,21 +919,21 @@
           {
             "actual_ai_credits": 0.0,
             "branch": "feature/plc-resident-production-queue",
-            "estimated_ai_credits": 188770.5195,
-            "estimated_cost_usd": 1887.71,
-            "records": 7388,
+            "estimated_ai_credits": 194260.0787,
+            "estimated_cost_usd": 1942.6,
+            "records": 9193,
             "records_with_actual": 0,
-            "records_with_estimate": 7383,
+            "records_with_estimate": 9188,
             "records_without_estimate": 5
           },
           {
             "actual_ai_credits": 0.0,
             "branch": "main",
-            "estimated_ai_credits": 2490.2187,
-            "estimated_cost_usd": 24.9,
-            "records": 472,
+            "estimated_ai_credits": 2755.0361,
+            "estimated_cost_usd": 27.55,
+            "records": 595,
             "records_with_actual": 0,
-            "records_with_estimate": 472,
+            "records_with_estimate": 595,
             "records_without_estimate": 0
           },
           {
@@ -357,12 +958,12 @@
           }
         ],
         "client": "NxEdge",
-        "estimated_ai_credits": 192210.5466,
-        "estimated_cost_usd": 1922.11,
+        "estimated_ai_credits": 197964.9232,
+        "estimated_cost_usd": 1979.65,
         "project_name": "SHD Ignition BOI1",
-        "records": 8080,
+        "records": 10008,
         "records_with_actual": 0,
-        "records_with_estimate": 8075,
+        "records_with_estimate": 10003,
         "records_without_estimate": 5,
         "repo_name": "NXEdge/SHD-Ignition-BOI1",
         "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
@@ -370,7 +971,37 @@
           "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
           "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-glowing-bassoon",
           "/Users/mitch/Git-Local/copilot-worktrees/SHD-Ignition-BOI1/mitchwindoo-solid-disco",
-          "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+          "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1",
+          "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+        ]
+      },
+      {
+        "actual_ai_credits": 0.0,
+        "billing_code": null,
+        "branches": [
+          {
+            "actual_ai_credits": 0.0,
+            "branch": "unknown",
+            "estimated_ai_credits": 118.4376,
+            "estimated_cost_usd": 1.18,
+            "records": 21,
+            "records_with_actual": 0,
+            "records_with_estimate": 21,
+            "records_without_estimate": 0
+          }
+        ],
+        "client": "internal",
+        "estimated_ai_credits": 118.4376,
+        "estimated_cost_usd": 1.18,
+        "project_name": "Zoroco Logs (non-repo workspace)",
+        "records": 21,
+        "records_with_actual": 0,
+        "records_with_estimate": 21,
+        "records_without_estimate": 0,
+        "repo_name": "unknown",
+        "repo_origin": null,
+        "workspace_paths": [
+          "c:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Desktop\\Zoroco Logs"
         ]
       }
     ]
@@ -425,14 +1056,54 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-07-26",
-      "estimated_ai_credits": 3493.7982,
-      "estimated_cost_usd": 34.94,
+      "estimated_ai_credits": 9176.4201,
+      "estimated_cost_usd": 91.76,
       "iso_week": "2026-W30",
-      "records": 731,
+      "records": 1743,
       "records_with_actual": 0,
-      "records_with_estimate": 731,
+      "records_with_estimate": 1743,
       "records_without_estimate": 0,
       "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "copilot/worktree-2026-07-24T18-14-36",
+              "estimated_ai_credits": 835.5318,
+              "estimated_cost_usd": 8.36,
+              "records": 132,
+              "records_with_actual": 0,
+              "records_with_estimate": 132,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 4847.0901,
+              "estimated_cost_usd": 48.47,
+              "records": 880,
+              "records_with_actual": 0,
+              "records_with_estimate": 880,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 5682.6219,
+          "estimated_cost_usd": 56.83,
+          "project_name": "AB-Logix Git",
+          "records": 1012,
+          "records_with_actual": 0,
+          "records_with_estimate": 1012,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-Git",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-git",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git.worktrees\\copilot-worktree-2026-07-24T18-14-36"
+          ]
+        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "11384",
@@ -477,13 +1148,428 @@
     },
     {
       "actual_ai_credits": 0.0,
-      "end_utc": "2026-09-06",
-      "estimated_ai_credits": 44439.5428,
-      "estimated_cost_usd": 444.4,
-      "iso_week": "2026-W36",
-      "records": 5401,
+      "end_utc": "2026-08-02",
+      "estimated_ai_credits": 9578.9197,
+      "estimated_cost_usd": 95.79,
+      "iso_week": "2026-W31",
+      "records": 1722,
       "records_with_actual": 0,
-      "records_with_estimate": 5401,
+      "records_with_estimate": 1722,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 9578.9197,
+              "estimated_cost_usd": 95.79,
+              "records": 1722,
+              "records_with_actual": 0,
+              "records_with_estimate": 1722,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 9578.9197,
+          "estimated_cost_usd": 95.79,
+          "project_name": "AB-Logix Git",
+          "records": 1722,
+          "records_with_actual": 0,
+          "records_with_estimate": 1722,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-Git",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-git",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-Git"
+          ]
+        }
+      ],
+      "start_utc": "2026-07-27"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-08-09",
+      "estimated_ai_credits": 3447.0229,
+      "estimated_cost_usd": 34.47,
+      "iso_week": "2026-W32",
+      "records": 1039,
+      "records_with_actual": 0,
+      "records_with_estimate": 1039,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 3447.0229,
+              "estimated_cost_usd": 34.47,
+              "records": 1039,
+              "records_with_actual": 0,
+              "records_with_estimate": 1039,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 3447.0229,
+          "estimated_cost_usd": 34.47,
+          "project_name": "AB-Logix CI/CD",
+          "records": 1039,
+          "records_with_actual": 0,
+          "records_with_estimate": 1039,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        }
+      ],
+      "start_utc": "2026-08-03"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-08-16",
+      "estimated_ai_credits": 2310.0368,
+      "estimated_cost_usd": 23.1,
+      "iso_week": "2026-W33",
+      "records": 806,
+      "records_with_actual": 0,
+      "records_with_estimate": 806,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 864.8124,
+              "estimated_cost_usd": 8.65,
+              "records": 275,
+              "records_with_actual": 0,
+              "records_with_estimate": 275,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 864.8124,
+          "estimated_cost_usd": 8.65,
+          "project_name": "AB-Logix CI/CD",
+          "records": 275,
+          "records_with_actual": 0,
+          "records_with_estimate": 275,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-codebase-architecture-review",
+              "estimated_ai_credits": 15.9689,
+              "estimated_cost_usd": 0.16,
+              "records": 6,
+              "records_with_actual": 0,
+              "records_with_estimate": 6,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 15.9689,
+          "estimated_cost_usd": 0.16,
+          "project_name": "AB-Logix Git",
+          "records": 6,
+          "records_with_actual": 0,
+          "records_with_estimate": 6,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-Git",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-git",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\AB-Logix-Git\\mitchwindoo-psychic-funicular"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 216.0478,
+              "estimated_cost_usd": 2.16,
+              "records": 120,
+              "records_with_actual": 0,
+              "records_with_estimate": 120,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 216.0478,
+          "estimated_cost_usd": 2.16,
+          "project_name": "Carefree Systems",
+          "records": 120,
+          "records_with_actual": 0,
+          "records_with_estimate": 120,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/carefree-systems",
+          "repo_origin": "https://github.com/advancedcontrolsystems/carefree-systems",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\carefree-systems"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 948.3903,
+              "estimated_cost_usd": 9.48,
+              "records": 282,
+              "records_with_actual": 0,
+              "records_with_estimate": 282,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 264.8174,
+              "estimated_cost_usd": 2.65,
+              "records": 123,
+              "records_with_actual": 0,
+              "records_with_estimate": 123,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 1213.2077,
+          "estimated_cost_usd": 12.13,
+          "project_name": "SHD Ignition BOI1",
+          "records": 405,
+          "records_with_actual": 0,
+          "records_with_estimate": 405,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc": "2026-08-10"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-08-23",
+      "estimated_ai_credits": 10646.0602,
+      "estimated_cost_usd": 106.46,
+      "iso_week": "2026-W34",
+      "records": 2230,
+      "records_with_actual": 0,
+      "records_with_estimate": 2230,
+      "records_without_estimate": 0,
+      "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 371.6298,
+              "estimated_cost_usd": 3.72,
+              "records": 156,
+              "records_with_actual": 0,
+              "records_with_estimate": 156,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 371.6298,
+          "estimated_cost_usd": 3.72,
+          "project_name": "AB-Logix CI/CD",
+          "records": 156,
+          "records_with_actual": 0,
+          "records_with_estimate": 156,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/AB-Logix-CI-CD",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": null,
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 7999.5494,
+              "estimated_cost_usd": 80.0,
+              "records": 478,
+              "records_with_actual": 0,
+              "records_with_estimate": 478,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "ACS",
+          "estimated_ai_credits": 7999.5494,
+          "estimated_cost_usd": 80.0,
+          "project_name": "Ignition SSWD",
+          "records": 478,
+          "records_with_actual": 0,
+          "records_with_estimate": 478,
+          "records_without_estimate": 0,
+          "repo_name": "advancedcontrolsystems/ignition-sswd",
+          "repo_origin": "https://github.com/advancedcontrolsystems/ignition-sswd",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\ignition-sswd"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 336.8928,
+              "estimated_cost_usd": 3.37,
+              "records": 224,
+              "records_with_actual": 0,
+              "records_with_estimate": 224,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 336.8928,
+          "estimated_cost_usd": 3.37,
+          "project_name": "Copilot customizations (internal)",
+          "records": 224,
+          "records_with_actual": 0,
+          "records_with_estimate": 224,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\.copilot",
+            "c:\\Users\\MitchellLandreth\\.copilot\\chats\\dfc61c6c-bd89-4432-b32f-f05be3de6af8"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 7.5139,
+              "estimated_cost_usd": 0.08,
+              "records": 2,
+              "records_with_actual": 0,
+              "records_with_estimate": 2,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 7.5139,
+          "estimated_cost_usd": 0.08,
+          "project_name": "SHD BOI Line",
+          "records": 2,
+          "records_with_actual": 0,
+          "records_with_estimate": 2,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-BOI-Line",
+          "repo_origin": "https://github.com/nxedge/shd-boi-line",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Line"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 95.2997,
+              "estimated_cost_usd": 0.95,
+              "records": 74,
+              "records_with_actual": 0,
+              "records_with_estimate": 74,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 95.2997,
+          "estimated_cost_usd": 0.95,
+          "project_name": "SHD BOI Wash",
+          "records": 74,
+          "records_with_actual": 0,
+          "records_with_estimate": 74,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-BOI-Wash",
+          "repo_origin": "https://github.com/nxedge/shd-boi-wash",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD\\src\\controllers\\SHD_BOI_Wash"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "11384",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "feature/plc-resident-production-queue",
+              "estimated_ai_credits": 1835.1746,
+              "estimated_cost_usd": 18.35,
+              "records": 1296,
+              "records_with_actual": 0,
+              "records_with_estimate": 1296,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "NxEdge",
+          "estimated_ai_credits": 1835.1746,
+          "estimated_cost_usd": 18.35,
+          "project_name": "SHD Ignition BOI1",
+          "records": 1296,
+          "records_with_actual": 0,
+          "records_with_estimate": 1296,
+          "records_without_estimate": 0,
+          "repo_name": "NXEdge/SHD-Ignition-BOI1",
+          "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+          ]
+        }
+      ],
+      "start_utc": "2026-08-17"
+    },
+    {
+      "actual_ai_credits": 0.0,
+      "end_utc": "2026-09-06",
+      "estimated_ai_credits": 44557.9804,
+      "estimated_cost_usd": 445.58,
+      "iso_week": "2026-W36",
+      "records": 5422,
+      "records_with_actual": 0,
+      "records_with_estimate": 5422,
       "records_without_estimate": 0,
       "repositories": [
         {
@@ -514,6 +1600,35 @@
           "workspace_paths": [
             "/Users/mitch/Git-Local/SHD-Ignition-BOI1"
           ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": null,
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "unknown",
+              "estimated_ai_credits": 118.4376,
+              "estimated_cost_usd": 1.18,
+              "records": 21,
+              "records_with_actual": 0,
+              "records_with_estimate": 21,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 118.4376,
+          "estimated_cost_usd": 1.18,
+          "project_name": "Zoroco Logs (non-repo workspace)",
+          "records": 21,
+          "records_with_actual": 0,
+          "records_with_estimate": 21,
+          "records_without_estimate": 0,
+          "repo_name": "unknown",
+          "repo_origin": null,
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Desktop\\Zoroco Logs"
+          ]
         }
       ],
       "start_utc": "2026-08-31"
@@ -521,14 +1636,43 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-09-13",
-      "estimated_ai_credits": 40307.6078,
-      "estimated_cost_usd": 403.08,
+      "estimated_ai_credits": 40739.6016,
+      "estimated_cost_usd": 407.4,
       "iso_week": "2026-W37",
-      "records": 53,
+      "records": 119,
       "records_with_actual": 0,
-      "records_with_estimate": 53,
+      "records_with_estimate": 119,
       "records_without_estimate": 0,
       "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 316.7066,
+              "estimated_cost_usd": 3.17,
+              "records": 50,
+              "records_with_actual": 0,
+              "records_with_estimate": 50,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 316.7066,
+          "estimated_cost_usd": 3.17,
+          "project_name": "Copilot customizations (internal)",
+          "records": 50,
+          "records_with_actual": 0,
+          "records_with_estimate": 50,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "c:\\Users\\MitchellLandreth\\.copilot"
+          ]
+        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "11384",
@@ -536,27 +1680,28 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 40307.6078,
-              "estimated_cost_usd": 403.08,
-              "records": 53,
+              "estimated_ai_credits": 40422.895,
+              "estimated_cost_usd": 404.23,
+              "records": 69,
               "records_with_actual": 0,
-              "records_with_estimate": 53,
+              "records_with_estimate": 69,
               "records_without_estimate": 0
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 40307.6078,
-          "estimated_cost_usd": 403.08,
+          "estimated_ai_credits": 40422.895,
+          "estimated_cost_usd": 404.23,
           "project_name": "SHD Ignition BOI1",
-          "records": 53,
+          "records": 69,
           "records_with_actual": 0,
-          "records_with_estimate": 53,
+          "records_with_estimate": 69,
           "records_without_estimate": 0,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
           "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",
           "workspace_paths": [
             "/Users/mitch/Git-Local/SHD-Ignition-BOI1",
-            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
+            "C:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1",
+            "c:\\Users\\MitchellLandreth\\Git-Local\\SHD-Ignition-BOI1"
           ]
         }
       ],
@@ -565,12 +1710,12 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-09-20",
-      "estimated_ai_credits": 94143.4589,
-      "estimated_cost_usd": 941.43,
+      "estimated_ai_credits": 94457.5298,
+      "estimated_cost_usd": 944.58,
       "iso_week": "2026-W38",
-      "records": 32,
+      "records": 77,
       "records_with_actual": 0,
-      "records_with_estimate": 31,
+      "records_with_estimate": 76,
       "records_without_estimate": 1,
       "repositories": [
         {
@@ -600,6 +1745,38 @@
           "repo_origin": "https://github.com/advancedcontrolsystems/ab-logix-ci-cd",
           "workspace_paths": [
             "C:\\Users\\MitchellLandreth\\Git-Local\\AB-Logix-CI-CD"
+          ]
+        },
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 314.0709,
+              "estimated_cost_usd": 3.14,
+              "records": 45,
+              "records_with_actual": 0,
+              "records_with_estimate": 45,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 314.0709,
+          "estimated_cost_usd": 3.14,
+          "project_name": "Copilot customizations (internal)",
+          "records": 45,
+          "records_with_actual": 0,
+          "records_with_estimate": 45,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\.copilot",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\redesigned-fiesta-1c7eae9f",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-17\\ubiquitous-waffle-4a6b1b36",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-18\\ubiquitous-system-875f67b8"
           ]
         },
         {
@@ -681,14 +1858,78 @@
     {
       "actual_ai_credits": 0.0,
       "end_utc": "2026-10-04",
-      "estimated_ai_credits": 990.7222,
-      "estimated_cost_usd": 9.91,
+      "estimated_ai_credits": 6052.4718,
+      "estimated_cost_usd": 60.52,
       "iso_week": "2026-W40",
-      "records": 166,
+      "records": 722,
       "records_with_actual": 0,
-      "records_with_estimate": 164,
+      "records_with_estimate": 720,
       "records_without_estimate": 2,
       "repositories": [
+        {
+          "actual_ai_credits": 0.0,
+          "billing_code": "1176",
+          "branches": [
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "main",
+              "estimated_ai_credits": 1765.452,
+              "estimated_cost_usd": 17.65,
+              "records": 262,
+              "records_with_actual": 0,
+              "records_with_estimate": 262,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-shiny-bassoon",
+              "estimated_ai_credits": 352.6697,
+              "estimated_cost_usd": 3.53,
+              "records": 21,
+              "records_with_actual": 0,
+              "records_with_estimate": 21,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-urban-fiesta",
+              "estimated_ai_credits": 333.288,
+              "estimated_cost_usd": 3.33,
+              "records": 34,
+              "records_with_actual": 0,
+              "records_with_estimate": 34,
+              "records_without_estimate": 0
+            },
+            {
+              "actual_ai_credits": 0.0,
+              "branch": "mitchwindoo-verbose-chainsaw",
+              "estimated_ai_credits": 19.6328,
+              "estimated_cost_usd": 0.2,
+              "records": 28,
+              "records_with_actual": 0,
+              "records_with_estimate": 28,
+              "records_without_estimate": 0
+            }
+          ],
+          "client": "internal",
+          "estimated_ai_credits": 2471.0425,
+          "estimated_cost_usd": 24.71,
+          "project_name": "Copilot customizations (internal)",
+          "records": 345,
+          "records_with_actual": 0,
+          "records_with_estimate": 345,
+          "records_without_estimate": 0,
+          "repo_name": "mitchwindoo/github-copilot",
+          "repo_origin": "https://github.com/mitchwindoo/github-copilot",
+          "workspace_paths": [
+            "C:\\Users\\MitchellLandreth\\.copilot",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\cautious-chainsaw-2ffe9635",
+            "C:\\Users\\MitchellLandreth\\.copilot\\chats\\2026-09-28\\redesigned-parakeet-61859cd7",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-shiny-bassoon",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-urban-fiesta",
+            "C:\\Users\\MitchellLandreth\\Git-Local\\copilot-worktrees\\.copilot\\mitchwindoo-verbose-chainsaw"
+          ]
+        },
         {
           "actual_ai_credits": 0.0,
           "billing_code": "11384",
@@ -696,11 +1937,11 @@
             {
               "actual_ai_credits": 0.0,
               "branch": "feature/plc-resident-production-queue",
-              "estimated_ai_credits": 655.9177,
-              "estimated_cost_usd": 6.56,
-              "records": 76,
+              "estimated_ai_credits": 3246.6248,
+              "estimated_cost_usd": 32.47,
+              "records": 287,
               "records_with_actual": 0,
-              "records_with_estimate": 74,
+              "records_with_estimate": 285,
               "records_without_estimate": 2
             },
             {
@@ -725,12 +1966,12 @@
             }
           ],
           "client": "NxEdge",
-          "estimated_ai_credits": 990.7222,
-          "estimated_cost_usd": 9.91,
+          "estimated_ai_credits": 3581.4293,
+          "estimated_cost_usd": 35.81,
           "project_name": "SHD Ignition BOI1",
-          "records": 166,
+          "records": 377,
           "records_with_actual": 0,
-          "records_with_estimate": 164,
+          "records_with_estimate": 375,
           "records_without_estimate": 2,
           "repo_name": "NXEdge/SHD-Ignition-BOI1",
           "repo_origin": "https://github.com/nxedge/shd-ignition-boi1",

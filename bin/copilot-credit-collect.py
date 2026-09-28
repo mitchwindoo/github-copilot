@@ -284,6 +284,45 @@ def matches_repository(value: str | None, slug: str, host: str) -> bool:
     return candidate.lower() == slug if host == "github.com" else candidate == slug
 
 
+def discover_all_sessions(connection: sqlite3.Connection) -> tuple[dict[str, dict], int]:
+    """Collect every local session, resolving each one's own repository origin."""
+    rows = connection.execute(
+        """
+        SELECT id, cwd, repository, branch, created_at, host_type
+        FROM sessions
+        ORDER BY created_at, id
+        """
+    ).fetchall()
+    sessions: dict[str, dict] = {}
+    unresolved = 0
+    origin_cache: dict[str, str | None] = {}
+
+    for row in rows:
+        cwd = row["cwd"] or ""
+        if cwd not in origin_cache:
+            origin_cache[cwd] = git_origin(cwd)
+        discovered_origin = origin_cache[cwd]
+        # A missing or unmounted cwd cannot be probed with git, so fall back to the
+        # session's own owner/repo metadata and assume github.com.
+        resolved_origin = discovered_origin
+        if not resolved_origin and isinstance(row["repository"], str) and row["repository"].strip():
+            resolved_origin = rollup.normalize_repo_origin(f"https://github.com/{row['repository'].strip().strip('/')}")
+        if not resolved_origin:
+            unresolved += 1
+
+        sessions[row["id"]] = {
+            "session_id": row["id"],
+            "workspace_path": cwd or UNKNOWN,
+            "repo_name": row["repository"] or rollup.repo_name_from_origin(resolved_origin),
+            "repo_remote": resolved_origin or UNKNOWN,
+            "branch": row["branch"] or UNKNOWN,
+            "session_created_at_utc": utc_timestamp(row["created_at"]),
+            "client": "copilot-app",
+            "origin_inferred": not discovered_origin,
+        }
+    return sessions, unresolved
+
+
 def discover_sessions(
     connection: sqlite3.Connection,
     origin: str,
@@ -466,6 +505,11 @@ def make_session_marker(session: dict, recorded_at: str) -> dict:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-origin", help="repository remote URL; defaults to the current workspace origin")
+    parser.add_argument(
+        "--all-repositories",
+        action="store_true",
+        help="collect every session in the store, resolving each session's own repository origin",
+    )
     parser.add_argument("--workspace", type=Path, default=Path.cwd(), help="workspace used to discover origin")
     parser.add_argument("--session-db", type=Path, default=DEFAULT_SESSION_DB, help="local Copilot session-store SQLite database")
     parser.add_argument("--ledger", type=Path, default=DEFAULT_LEDGER, help="append-only JSONL ledger")
@@ -484,12 +528,17 @@ def main(argv: list[str] | None = None) -> int:
     if not session_db.is_file():
         print(f"error: session database not found: {session_db}", file=sys.stderr)
         return 2
-    origin = rollup.normalize_repo_origin(args.repo_origin) if args.repo_origin else git_origin(str(workspace_root))
-    if not origin:
-        print("error: unable to resolve a repository origin; pass --repo-origin or run inside a Git workspace", file=sys.stderr)
-        return 2
-    if not rollup.repo_name_from_origin(origin):
-        print(f"error: repository origin has no repository path: {origin}", file=sys.stderr)
+    origin = None
+    if not args.all_repositories:
+        origin = rollup.normalize_repo_origin(args.repo_origin) if args.repo_origin else git_origin(str(workspace_root))
+        if not origin:
+            print("error: unable to resolve a repository origin; pass --repo-origin, --all-repositories, or run inside a Git workspace", file=sys.stderr)
+            return 2
+        if not rollup.repo_name_from_origin(origin):
+            print(f"error: repository origin has no repository path: {origin}", file=sys.stderr)
+            return 2
+    elif args.repo_origin:
+        print("error: --all-repositories cannot be combined with --repo-origin", file=sys.stderr)
         return 2
 
     # Step 2: Read matching session metadata and usage events from SQLite in read-only mode.
@@ -504,7 +553,10 @@ def main(argv: list[str] | None = None) -> int:
         }
         if required_tables != {"sessions", "assistant_usage_events"}:
             raise ValueError("session database is missing sessions or assistant_usage_events")
-        sessions, out_of_scope = discover_sessions(connection, origin, workspace_root)
+        if args.all_repositories:
+            sessions, out_of_scope = discover_all_sessions(connection)
+        else:
+            sessions, out_of_scope = discover_sessions(connection, origin, workspace_root)
         event_rows = []
         session_ids = list(sessions)
         for offset in range(0, len(session_ids), 900):
@@ -610,7 +662,7 @@ def main(argv: list[str] | None = None) -> int:
     degraded = bool(pricing_error or estimate_issues or out_of_scope or not sessions)
     status = "degraded" if degraded else "success"
     print(
-        f"status={status} origin={origin} sessions_found={len(sessions)} "
+        f"status={status} origin={origin or 'all-repositories'} sessions_found={len(sessions)} "
         f"sessions_with_usage={len(usage_sessions)} new_sessions={len(newly_recorded_sessions)} "
         f"usage_events_found={len(event_rows)} records_appended={0 if args.dry_run else len(records)} "
         f"records_planned={len(records)} estimated_events={estimated_records} "
@@ -622,9 +674,14 @@ def main(argv: list[str] | None = None) -> int:
     if estimate_issues:
         print(f"warning: {estimate_issues} new usage events have no estimate; see ledger notes", file=sys.stderr)
     if out_of_scope:
-        print(f"warning: {out_of_scope} candidate sessions had a different or unresolved repository identity", file=sys.stderr)
+        message = (
+            f"warning: {out_of_scope} sessions had no resolvable repository origin and were recorded as unknown"
+            if args.all_repositories
+            else f"warning: {out_of_scope} candidate sessions had a different or unresolved repository identity"
+        )
+        print(message, file=sys.stderr)
     if not sessions:
-        print("warning: no local sessions matched this repository origin", file=sys.stderr)
+        print("warning: no local sessions were found" if args.all_repositories else "warning: no local sessions matched this repository origin", file=sys.stderr)
     if marker_count:
         print(
             f"note: {marker_count} sessions were marked unknown because this session store had no usage events; "

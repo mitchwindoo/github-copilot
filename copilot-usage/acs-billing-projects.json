@@ -33,6 +33,39 @@
       "billing_code": 1176,
       "project_name": "Copilot customizations (internal)",
       "client": "internal"
+    },
+    {
+      "repo_name": "advancedcontrolsystems/carefree-systems",
+      "repo_origin": "https://github.com/advancedcontrolsystems/carefree-systems",
+      "billing_code": 1176,
+      "project_name": "Carefree Systems",
+      "client": "ACS"
+    },
+    {
+      "repo_name": "NXEdge/SHD-BOI-Wash",
+      "repo_origin": "https://github.com/nxedge/shd-boi-wash",
+      "billing_code": 11384,
+      "project_name": "SHD BOI Wash",
+      "client": "NxEdge"
+    },
+    {
+      "repo_name": "advancedcontrolsystems/ignition-sswd",
+      "repo_origin": "https://github.com/advancedcontrolsystems/ignition-sswd",
+      "billing_code": null,
+      "project_name": "Ignition SSWD",
+      "client": "ACS"
+    },
+    {
+      "workspace_path": "C:\\Users\\MitchellLandreth\\AppData\\Local\\Programs\\GitHub Copilot",
+      "billing_code": null,
+      "project_name": "GitHub Copilot app (non-repo workspace)",
+      "client": "internal"
+    },
+    {
+      "workspace_path": "c:\\Users\\MitchellLandreth\\OneDrive - Advanced Control Systems\\Desktop\\Zoroco Logs",
+      "billing_code": null,
+      "project_name": "Zoroco Logs (non-repo workspace)",
+      "client": "internal"
     }
   ]
 }
