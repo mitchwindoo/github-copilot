@@ -256,9 +256,11 @@ def estimate_event(event: sqlite3.Row, prices: dict[str, list[dict]]) -> tuple[f
 
 
 def git_origin(workspace: str | None) -> str | None:
-    if not workspace or not Path(workspace).is_dir():
+    if not workspace:
         return None
     try:
+        if not Path(workspace).is_dir():
+            return None
         result = subprocess.run(
             ["git", "-C", workspace, "remote", "get-url", "origin"],
             check=False,
